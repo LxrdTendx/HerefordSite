@@ -1,0 +1,90 @@
+{% load static %}
+{% block content %}
+
+
+  <style>
+
+    html {
+	  background: linear-gradient(90deg, #b9deed, #efefef);
+    }
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    .header{
+        width: 100%;
+        height: 120px;
+        background: #FFF;
+        font-family: Fira Sans Condensed, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .navbar{
+        margin-bottom:auto;
+        margin-top: auto;
+        margin-left: auto;
+        margin-right: 0;
+        height: 25px;
+        width: 823px;
+    }
+    ul{
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        list-style-type: none;
+    }
+    ul li{
+        margin-right: 30px;
+    }
+    .logo{
+        margin-left: 111px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    ul li:hover {
+        cursor: pointer;
+        color: var(--main-green-dark, #8B8D68);
+        text-decoration-line: underline;
+        transition: 0.5s;
+    }
+  </style>
+
+
+    <div class="header" style="display: flex">
+        <div class="logo">
+                <img src="{% static 'Logo.svg' %}">
+        </div>
+        <div class="navbar" style="display: flex">
+            <ul>
+                <li>
+                    <div class="main">Главная</div>
+                </li>
+                    <li>
+                <div class="about-us">О нас</div>
+                    </li>
+                <li>
+                    <div class="production">Продукция</div>
+                </li>
+                <li>
+                    <div class="our-farm">Наши хозяйства</div>
+                </li>
+                <li>
+                    <div class="invite">Вступить</div>
+                </li>
+                <li>
+                    <div class="contacts">Контакты</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}
