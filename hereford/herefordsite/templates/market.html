@@ -1,0 +1,286 @@
+{% load static %}
+{% block content %}
+
+<style>
+    html {
+	  background: linear-gradient(90deg, #b9deed, #efefef);
+    }
+    body{
+        margin: 0;
+        padding: 0;
+        zoom: 80%
+    }
+    @media (min-width: 1920px) {
+        body {
+            zoom: 140%;
+        }
+    }
+    .header{
+        width: 100%;
+        height: 120px;
+        background: #FFF;
+        font-family: Fira Sans Condensed, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    .navbar{
+        margin-bottom:auto;
+        margin-top: auto;
+        margin-left: auto;
+        margin-right: 0;
+        height: 25px;
+        width: 823px;
+    }
+    ul{
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        list-style-type: none;
+    }
+    ul li{
+        margin-left: 30px;
+    }
+    .logo{
+        margin-left: 111px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    a{
+        color: black;
+        text-decoration: none;
+    }
+    a:hover{
+        cursor: pointer;
+        color: var(--main-green-dark, #8B8D68);
+        text-decoration-line: underline;
+        transition: 0.5s;
+    }
+    .filter-section {
+        margin-bottom: 15px;
+    }
+
+    .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        background-color: #f1f1f1;
+        border: 1px solid #d4d4d4;
+        padding: 10px 24px;
+        cursor: pointer;
+        margin-right: 5px;
+    }
+
+    .filter-btn.selected {
+        background-color: #2196F3;
+        color: white;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .filter-button {
+        /* Стили для кнопок-фильтров */
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        background-color: #f5f5f5;
+        margin: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .filter-button.selected {
+        /* Стиль для активной кнопки */
+        background-color: #007BFF;
+        color: #fff;
+    }
+    .forma-filter{
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+</style>
+
+    <title>Продукция</title>
+    <div class="header" style="display: flex">
+        <div class="logo">
+                <img src="{% static 'Logo.svg' %}">
+        </div>
+        <div class="navbar" style="display: flex">
+            <ul>
+                <li>
+                    <div class="main">
+                        <a href="{% url 'login' %}">Главная</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="about-us">
+                        <a href="{% url 'about_us' %}">О нас</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="production">
+                        <a href="{% url 'market' %}">Продукция</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="our-farm">
+                        <a href="{% url 'farm' %}">Наши хозяйства</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="invite">
+                        <a href="{% url 'join'%}">Вступить</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="contacts">Контакты</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <form method="get" action="{% url 'market' %}" class="forma-filter">
+        <!-- Скрытые поля -->
+        <input type="hidden" name="hidden_region" value="{{ region }}">
+        <input type="hidden" name="hidden_product_type" value="{{ product_type_filter }}">
+        <input type="hidden" name="hidden_sub_product_type" value="{{ sub_product_type }}">
+        <input type="hidden" name="hidden_price_order" value="{{ price_order }}">
+
+        <!-- Фильтр по регионам -->
+        <div>Регион:
+            <button type="button" data-toggle="region" class="filter-button" data-value="">Все регионы</button>
+            {% for r in regions %}
+                <button type="button" data-toggle="region" class="filter-button" data-value="{{ r }}">{{ r }}</button>
+            {% endfor %}
+            <input type="hidden" name="region" value="{{ region }}">
+        </div>
+
+        <!-- Фильтр по типу продукции -->
+        <div>Тип продукции:
+            <button type="button" data-toggle="product_type" class="filter-button" data-value="">Все</button>
+            {% for type in product_types %}
+                <button type="button" data-toggle="product_type" class="filter-button" data-value="{{ type.id }}">{{ type.name }}</button>
+            {% endfor %}
+            <input type="hidden" name="product_type" value="{{ product_type_filter }}">
+        </div>
+
+        <!-- Фильтр по подтипу -->
+        <label>Подтип продукции:
+            <select name="sub_product_type">
+                <option value="" {% if not sub_product_type %}selected{% endif %}>Все подтипы</option>
+                {% for subtype in subtypes %}
+                    <option value="{{ subtype.id }}" {% if sub_product_type == subtype.id|stringformat:"s" %}selected{% endif %}>{{ subtype.name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <!-- Сортировка по цене -->
+        <label>Сортировка по цене:
+            <select name="price_order">
+                <option value="" {% if not price_order %}selected{% endif %}>Сортировка по цене</option>
+                <option value="asc" {% if price_order == 'asc' %}selected{% endif %}>По возрастанию</option>
+                <option value="desc" {% if price_order == 'desc' %}selected{% endif %}>По убыванию</option>
+            </select>
+        </label>
+
+        <!-- Поле для поиска -->
+        <input type="text" name="search" placeholder="Поиск...">
+        <button type="submit">Применить фильтры</button>
+    </form>
+
+
+
+
+    <div class="products" style="display: flex; flex-wrap: wrap; width: 75%; margin-left: auto; margin-right: auto">
+    {% for product in products %}
+        <div class="product" style="margin-right: 30px">
+            <h3>{{ product.product_type.name }}</h3>
+            <p>Подтип: {{ product.sub_product_type.name }}</p>
+            <p>Регион: {{ product.region }}</p>
+            <p>Ферма: {{ product.farm }}</p>
+            <p>Телефон для связи: {{ product.contact_phone }}</p>
+            <p>Описание: {{ product.details }}</p>
+            {% if product.product_photo %}
+                <img src="{{ product.product_photo.url }}" style="height: 200px; width: 300px" alt="Фото продукта">
+            {% endif %}
+            <p>Возраст: {{ product.age }}</p>
+            <p>Цена: {{ product.price }}</p>
+        </div>
+    {% endfor %}
+    </div>
+
+<script>
+document.querySelectorAll('.filter-button').forEach(button => {
+    button.addEventListener('click', () => {
+        let targetType = button.getAttribute('data-toggle');
+        let hiddenField = document.querySelector('input[name="' + targetType + '"]');
+        hiddenField.value = button.getAttribute('data-value');
+
+        // Снимаем выделение со всех кнопок в группе и выделяем текущую
+        document.querySelectorAll('[data-toggle="' + targetType + '"]').forEach(b => b.classList.remove('selected'));
+        button.classList.add('selected');
+    });
+});
+
+// При загрузке страницы устанавливаем активные кнопки в соответствии со значениями скрытых полей
+window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('input[type="hidden"]').forEach(hiddenField => {
+        let value = hiddenField.value;
+        let targetType = hiddenField.getAttribute('name');
+
+        // Если значение скрытого поля пусто, выделяем кнопку "Все"
+        if (!value) {
+            let defaultButton = document.querySelector(`.filter-button[data-toggle="${targetType}"][data-value=""]`);
+            if (defaultButton) {
+                document.querySelectorAll(`[data-toggle="${targetType}"]`).forEach(b => b.classList.remove('selected'));
+                defaultButton.classList.add('selected');
+            }
+        } else {
+            let button = document.querySelector(`.filter-button[data-toggle="${targetType}"][data-value="${value}"]`);
+            if (button) {
+                document.querySelectorAll(`[data-toggle="${targetType}"]`).forEach(b => b.classList.remove('selected'));
+                button.classList.add('selected');
+            }
+        }
+    });
+});
+
+</script>
+
+
+{% endblock %}

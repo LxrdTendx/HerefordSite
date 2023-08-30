@@ -1,0 +1,108 @@
+{% load static %}
+{% block content %}
+
+<style>
+    html {
+	  background: linear-gradient(90deg, #b9deed, #efefef);
+    }
+    body{
+        margin: 0;
+        padding: 0;
+        zoom: 80%
+    }
+    @media (min-width: 1920px) {
+        body {
+            zoom: 140%;
+        }
+    }
+    .header{
+        width: 100%;
+        height: 120px;
+        background: #FFF;
+        font-family: Fira Sans Condensed, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    .navbar{
+        margin-bottom:auto;
+        margin-top: auto;
+        margin-left: auto;
+        margin-right: 0;
+        height: 25px;
+        width: 823px;
+    }
+    ul{
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        list-style-type: none;
+    }
+    ul li{
+        margin-left: 30px;
+    }
+    .logo{
+        margin-left: 111px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    a{
+        color: black;
+        text-decoration: none;
+    }
+    a:hover{
+        cursor: pointer;
+        color: var(--main-green-dark, #8B8D68);
+        text-decoration-line: underline;
+        transition: 0.5s;
+    }
+</style>
+
+    <title>Наши хозяйства</title>
+    <div class="header" style="display: flex">
+        <div class="logo">
+                <img src="{% static 'Logo.svg' %}">
+        </div>
+        <div class="navbar" style="display: flex">
+            <ul>
+                <li>
+                    <div class="main">
+                        <a href="{% url 'login' %}">Главная</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="about-us">
+                        <a href="{% url 'about_us' %}">О нас</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="production">
+                        <a href="{% url 'market' %}">Продукция</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="our-farm">
+                        <a href="{% url 'farm' %}">Наши хозяйства</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="invite">
+                        <a href="{% url 'join'%}">Вступить</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="contacts">Контакты</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock %}

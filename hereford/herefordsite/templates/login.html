@@ -10,6 +10,12 @@
     body{
         margin: 0;
         padding: 0;
+        zoom: 80%
+    }
+    @media (min-width: 1920px) {
+        body {
+            zoom: 140%;
+        }
     }
     .header{
         width: 100%;
@@ -20,6 +26,10 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+
+        position: sticky;
+        top: 0;
+        z-index: 10;
     }
     .navbar{
         margin-bottom:auto;
@@ -37,22 +47,200 @@
         list-style-type: none;
     }
     ul li{
-        margin-right: 30px;
+        margin-left: 30px;
     }
     .logo{
         margin-left: 111px;
         margin-top: auto;
         margin-bottom: auto;
     }
-    ul li:hover {
+    a{
+        color: black;
+        text-decoration: none;
+    }
+    a:hover{
         cursor: pointer;
         color: var(--main-green-dark, #8B8D68);
         text-decoration-line: underline;
         transition: 0.5s;
     }
+
+    .main-bg{
+        display: flex;
+        height: 840px;
+        width: 100%;
+        background-color: #1b1b1b;
+    }
+    .main-bg-text{
+        color: var(--main-white, #FFF);
+        font-family: MorfinSans,sans-serif;
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 91%;
+        width: 790px;
+        height: 161.7px;
+        padding-top: 615px;
+        padding-left: 110px;
+    }
+    .main-bg-link{
+        margin-top: auto;
+        margin-bottom: 63px;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: 63px;
+        width: 210px;
+        height: 17.85px;
+        flex-shrink: 0;
+        color: var(--main-white, #FFF);
+        text-align: center;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 100%;
+    }
+    .main-bg-link:hover{
+        color: var(--main-green-dark, #8B8D68);
+        text-decoration-line: underline;
+        transition: 0.5s;
+    }
+    .about-us-trust{
+        height: 1200px;
+        width: 100%;
+        background-color: #fff;
+        min-width: 1380px;
+    }
+    .line{
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        max-width: 1380px;
+        background: var(--main-grey-dark, #595959);
+    }
+    .about-us-block{
+        padding-top: 150px;
+        height: 80px;
+    }
+    .about-us-text{
+        color: #000;
+        font-family: MorfinSans,sans-serif;
+        font-size: 64px;
+        font-style: normal;
+        line-height: 100%;
+        width: 146px;
+        font-weight: 400;
+    }
+    .about-us-link{
+        width: 155px;
+        height: 22px;
+        cursor: pointer;
+        color: var(--main-grey-dark, #595959);
+        text-align: right;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        text-decoration-line: underline;
+        margin-bottom: auto;
+        margin-top: auto;
+    }
+    .about-us-link:hover{
+        cursor: pointer;
+        color: var(--main-green-dark, #8B8D68);
+        text-decoration-line: underline;
+        transition: 0.5s;
+    }
+    .other-text{
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        max-width: 1380px;
+    }
+    .other-text1{
+        margin-right: 20px;
+        width: 680px;
+        height: 176px;
+        color: #000;
+        text-align: justify;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 108%;
+    }
+    .other-text2{
+        width: 680px;
+        height: 154px;
+        color: #000;
+        text-align: justify;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 108%;
+    }
+    .trust{
+        width: 75%;
+        max-width: 1380px;
+        margin-top: 100px;
+        margin-right: auto;
+        margin-left: auto;
+        height: 44px;
+        color: #000;
+        text-align: justify;
+        font-family: Fira Sans Condensed, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 108%;
+    }
+    .trust-text{
+        margin-top: 35px;
+        width: 230px;
+        height: 56px;
+        color: #000;
+        font-family: MorfinSans,sans-serif;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+    }
+    .trust-text-lower{
+        width: 230px;
+        height: 40px;
+        color: #000;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 100%;
+    }
+    .us-bull{
+        height: 1250px;
+        width: 100%;
+        background-color: #fff;
+        min-width: 1380px;
+    }
+    .second-photo-text, .third-photo-text, .first-photo-text{
+        margin-top: 8px;
+        width: 420px;
+        color: #000;
+        font-family: MorfinSans,sans-serif;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 108%;
+    }
+    .news{
+        height: 510px;
+        width: 100%;
+        background-color: #fff;
+        min-width: 1380px;
+    }
   </style>
 
-
+    <title>Национальная ассоциация заводчиков герефордского скота</title>
     <div class="header" style="display: flex">
         <div class="logo">
                 <img src="{% static 'Logo.svg' %}">
@@ -60,19 +248,29 @@
         <div class="navbar" style="display: flex">
             <ul>
                 <li>
-                    <div class="main">Главная</div>
-                </li>
-                    <li>
-                <div class="about-us">О нас</div>
-                    </li>
-                <li>
-                    <div class="production">Продукция</div>
+                    <div class="main">
+                        <a href="{% url 'login' %}">Главная</a>
+                    </div>
                 </li>
                 <li>
-                    <div class="our-farm">Наши хозяйства</div>
+                    <div class="about-us">
+                        <a href="{% url 'about_us' %}">О нас</a>
+                    </div>
                 </li>
                 <li>
-                    <div class="invite">Вступить</div>
+                    <div class="production">
+                        <a href="{% url 'market' %}">Продукция</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="our-farm">
+                        <a href="{% url 'farm' %}">Наши хозяйства</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="invite">
+                        <a href="{% url 'join'%}">Вступить</a>
+                    </div>
                 </li>
                 <li>
                     <div class="contacts">Контакты</div>
@@ -80,7 +278,131 @@
             </ul>
         </div>
     </div>
+    <div class="main-bg">
+        <div class="main-bg-text">Национальная ассоциация заводчиков герефордовского скота</div>
+        <div class="main-bg-link">Узнать больше о нас</div>
+    </div>
+    <div class="about-us-trust">
+        <div class="about-us-block">
+            <hr class="line" style="margin-bottom: 8px">
+            <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
+                <div class="about-us-text">О НАС</div>
+                <div class="about-us-link"><a href="{% url 'about_us' %}">Читать подробнее</a></div>
+            </div>
+            <hr class="line" style="margin-top:8px">
+        </div>
+        <div class="other-text" style="display: flex; justify-content: center; margin-top: 100px;">
+            <div class="other-text1">
+                3 декабря 2009 года была проведена организационная конференция по созданию Национальной Ассоциации заводчиков Герефордского скота, цели и задачи которой определены Уставом Ассоциации, ходе которой, был избран президент - Феклин Иван Евгеньевич, так же утвержден совет директоров и избран генеральный директор. Эта ассоциация является первой, объединяющей заводчиков определённой породы скота в мясном скотоводстве. Функцию таких ассоциаций раньше выполняли советы по породе, которые не работают уже около 18 лет.
+            </div>
+            <div class="other-text2">
+                Ассоциация выполняет функцию активизации рынка племенных герефордов, обеспечение постоянного обмена опытом и информацией среди заводчиков скота, а также увеличение производства высококачественной говядины в товарных хозяйствах. Тесное сотрудничество Ассоциации герефордов и Селекционного центра ФГБНУ ФНЦ БСТ РАН позволяет более эффективно внедрять богатый научный опыт по разведению, технологии содержания, селекции и генетики.
+            </div>
+        </div>
+        <div class="about-us-block">
+            <hr class="line" style="margin-bottom: 8px">
+            <div style="display: flex; justify-content: center; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
+                <div class="about-us-text" style="width: 538px;margin-left: 0;margin-right: auto;">Почему нам доверяют</div>
+            </div>
+            <hr class="line" style="margin-top:8px">
+        </div>
+        <div class="trust">
+            Lorem ipsum dolor sit amet consectetur. Accumsan diam sed eget ac elementum mauris a ultrices. Velit faucibus mattis scelerisque felis nisl fames donec amet. Leo enim urna sed nisi lacus ac risus. Tellus enim felis ullamcorper nisi eu sit. Vitae iaculis sagittis tortor porttitor.
+        </div>
 
+        <div class="trust-plus" style="display: flex; justify-content: space-between; width: 75%; max-width: 1380px; margin-left: auto; margin-right: auto; margin-top: 37px">
+            <div class="trust1" style="display: flex">
+                <img src="{% static 'kolos.svg' %}">
+                <div>
+                    <div class="trust-text">
+                        lorem ipsum dolor sit amet
+                    </div>
+                    <div class="trust-text-lower">
+                        lorem ipsum dolor sit amet consectetur orci sed varius
+                    </div>
+                </div>
+            </div>
+            <div class="trust1" style="display: flex">
+                <img src="{% static 'kolos.svg' %}">
+                <div>
+                    <div class="trust-text">
+                        lorem ipsum dolor sit amet
+                    </div>
+                    <div class="trust-text-lower">
+                        lorem ipsum dolor sit amet consectetur orci sed varius
+                    </div>
+                </div>
+            </div>
+            <div class="trust1" style="display: flex">
+                <img src="{% static 'kolos.svg' %}">
+                <div>
+                    <div class="trust-text">
+                        lorem ipsum dolor sit amet
+                    </div>
+                    <div class="trust-text-lower">
+                        lorem ipsum dolor sit amet consectetur orci sed varius
+                    </div>
+                </div>
+            </div>
+            <div class="trust1" style="display: flex">
+                <img src="{% static 'kolos.svg' %}">
+                <div>
+                    <div class="trust-text">
+                        lorem ipsum dolor sit amet
+                    </div>
+                    <div class="trust-text-lower">
+                        lorem ipsum dolor sit amet consectetur orci sed varius
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="us-bull">
+        <div class="about-us-block" style="padding-top: 0">
+            <hr class="line" style="margin-bottom: 8px">
+            <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
+                <div class="about-us-text" style="width: 256px">наши бычки</div>
+                <div class="about-us-link" style="width: 237px"><a href="{% url 'market' %}">Посмотреть всю продукцию</a></div>
+            </div>
+            <hr class="line" style="margin-top:8px">
+        </div>
+        <div class="trust">
+            Lorem ipsum dolor sit amet consectetur. Accumsan diam sed eget ac elementum mauris a ultrices. Velit faucibus mattis scelerisque felis nisl fames donec amet. Leo enim urna sed nisi lacus ac risus. Tellus enim felis ullamcorper nisi eu sit. Vitae iaculis sagittis tortor porttitor.
+        </div>
+        <div class="bull-photo" style="display: flex; height: 810px; width: 1377px; margin-left: auto; margin-right: auto; margin-top: 50px">
+            <div class="first-photo" style="height: 800px; width: 614px; background-image: url('{% static "first.png" %}')">
+                <div class="first-photo-text" style="color: white; margin-left: 22px;margin-top: 715px;margin-bottom: auto;">Lorem ipsum dolor sit amet consectetur.</div>
+            </div>
+            <hr style="height: 800px; width: 0; background-color:#595959; margin: 0;margin-left: 40px; margin-right: 40px">
+            <div class="double-photo" style="height: 800px; width: 500px; ">
+                <div class="second-photo" style="width: 500px;height: 320px">
+                    <img src="{% static 'second.png' %}" style="width: 500px;height: 320px">
+                </div>
+                <div class="second-photo-text">Lorem ipsum dolor sit amet consectetur. </div>
+                <div class="third-photo" style="width: 500px;height: 320px; margin-top: 13px">
+                    <img src="{% static 'third.png' %}" style="width: 500px;height: 320px">
+                </div>
+                <div class="third-photo-text">Lorem ipsum dolor sit amet consectetur. </div>
+            </div>
+            <div class="pointer-about" style="margin-left: 84px">
+                <a href="{% url 'market' %}"><img src="{% static 'pointer.svg'%}"></a>
+            </div>
+
+        </div>
+    </div>
+    <div class="news">
+         <div class="about-us-block" style="padding-top: 0">
+            <hr class="line" style="margin-bottom: 8px">
+            <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
+                <div class="about-us-text" style="width: 256px">НОВОСТИ</div>
+                <div class="about-us-link" style="width: 277px"><a href="#">Узнать больше о новостях НАЗГС</a></div>
+            </div>
+            <hr class="line" style="margin-top:8px">
+        </div>
+    </div>
 
 
 
