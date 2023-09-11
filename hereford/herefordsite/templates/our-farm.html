@@ -81,7 +81,6 @@
         display: flex;
     }
     .column {
-        flex: 1;
         margin-top: 10px;
     }
 
@@ -275,12 +274,12 @@
     </div>
 
     <footer>
-        <div style="width: 75%; margin-left: auto; margin-right: auto; display: flex; justify-content: space-between">
-            <img src="{% static 'fulllogo.svg' %}">
+        <div style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between">
+            <img src="{% static 'fulllogo.svg' %}" style="margin-right: 100px">
 
-            <div class="footer-info" style="width: 700px; height: 165px; display: flex; justify-content: space-between">
+            <div class="footer-info" style="width: 653px; height: 138px; display: flex; justify-content: space-between">
                 <!-- Колонка Продукция -->
-                <div class="column">
+                <div class="column" style="width: 158px; height: 111px">
                     <strong>Продукция</strong>
                     <a href="#">Племенные животные</a>
                     <a href="#">Товарное стадо</a>
@@ -288,7 +287,7 @@
                 </div>
 
                 <!-- Колонка Компания -->
-                <div class="column" style="margin-left: 100px">
+                <div class="column" style="margin-left: 100px; width: 109px; height: 138px">
                     <strong>Компания</strong>
                     <a href="{% url 'about_us' %}">О нас</a>
                     <a href="{% url 'farm' %}">Наши хозяйства</a>
@@ -297,7 +296,7 @@
                 </div>
 
                 <!-- Колонка Контакты -->
-                <div class="column" style="margin-left: 100px">
+                <div class="column" style="margin-left: 100px; width: 186px; height: 118px">
                     <strong>Контакты</strong>
                     <div align="right" style="width: 186px">Национальная ассоциация заводчиков герефордского скота</div>
                     <div align="right" style="margin-top: 10px">ул. 9 Января, 29, Оренбург</div>
