@@ -24,11 +24,6 @@
             zoom: 140%;
         }
     }
-    @media (min-width: 350px) {
-        body {
-            zoom: 100%;
-        }
-    }
 
 
     .header{
@@ -46,6 +41,7 @@
         z-index: 10;
     }
     .navbar{
+        display: flex;
         margin-bottom:auto;
         margin-top: auto;
         margin-left: auto;
@@ -381,6 +377,37 @@
         color: var(--main-green-dark, #8B8D68);
         transition: 0.5s;
     }
+        /* Стили для гамбургера */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: black;
+        margin: 2px;
+    }
+
+    /* Медиа-запрос для экранов меньше 1000px */
+    @media screen and (max-width: 1000px) {
+        .navbar {
+            display: none; /* Сначала скройте меню */
+            flex-direction: column;
+            position: absolute;
+            top: 120px; /* Высота вашего header */
+            right: 0;
+            background-color: #FFF;
+            width: 200px; /* или нужную вам ширину */
+        }
+
+        .hamburger {
+            display: flex;
+        }
+    }
+
 
 
 
@@ -389,11 +416,16 @@
   </style>
 
     <title>Национальная ассоциация заводчиков герефордского скота</title>
-    <div class="header" style="display: flex">
+    <div class="header" style="display: flex" >
         <div class="logo">
                 <img src="{% static 'Logo.svg' %}">
         </div>
-        <div class="navbar" style="display: flex">
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="navbar">
             <ul>
                 <li>
                     <div class="main">
@@ -598,7 +630,17 @@
 
 
 
+<script>
+    document.querySelector(".hamburger").addEventListener("click", function() {
+    const navbar = document.querySelector(".navbar");
+    if (navbar.style.display === "none" || navbar.style.display === "") {
+        navbar.style.display = "flex";
+    } else {
+        navbar.style.display = "none";
+    }
+});
 
+</script>
 
 
 
