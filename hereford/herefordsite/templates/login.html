@@ -404,7 +404,7 @@
       display: none; /* Сначала скрыть кнопку гамбургера */
       position: fixed;
       top: 60px;
-      right: 20px; /* Изменение с 'left' на 'right' */
+      right: 60px; /* Изменение с 'left' на 'right' */
       width: 26px;
       height: 26px;
       cursor: pointer;
@@ -474,11 +474,17 @@
         .menu__btn {
             display: block; /* Показываем кнопку гамбургера на маленьких экранах */
         }
+        .about-us-trust{
+            zoom:100%
+        }
     }
 
     @media (min-width: 1001px) {
         .hamburger-menu {
             display: none; /* Скрываем гамбургер-меню на больших экранах */
+        }
+        .about-us-trust{
+            zoom:80%
         }
     }
 
