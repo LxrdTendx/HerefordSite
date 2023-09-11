@@ -75,12 +75,26 @@
         transition: 0.5s;
     }
 
-    .main-bg{
-        display: flex;
+    .main-bg {
+        position: relative;
         height: 840px;
         width: 100%;
-        background-color: #1b1b1b;
+        overflow: hidden;
     }
+
+    .bg-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+    }
+
+
     .main-bg-text{
         color: var(--main-white, #FFF);
         font-family: MorfinSans,sans-serif;
@@ -465,10 +479,14 @@
       background-color: #CFD8DC;
     }
 
+
     /* Медиа-запросы */
     @media (max-width: 1000px) {
         .navbar > ul {
             display: none; /* Скрываем основное меню на маленьких экранах */
+        }
+        .trust-plus{
+            justify-content: center;
         }
 
         .menu__btn {
@@ -479,6 +497,23 @@
     @media (min-width: 1001px) {
         .hamburger-menu {
             display: none; /* Скрываем гамбургер-меню на больших экранах */
+        }
+        .trust-plus{
+            justify-content: space-between;
+        }
+
+    }
+    @media (max-width: 1200px) {
+
+        .trust-plus{
+            justify-content: center;
+        }
+
+    }
+
+    @media (min-width: 1201px) {
+        .trust-plus{
+            justify-content: space-between;
         }
     }
 
@@ -546,9 +581,14 @@
         </div>
     </div>
     <div class="main-bg">
+        <video class="bg-video" autoplay muted loop>
+            <source src="{% static 'vidher.mp4' %}" type="video/mp4">
+        </video>
         <div class="main-bg-text">Национальная ассоциация заводчиков герефордовского скота</div>
         <div class="main-bg-link">Узнать больше о нас</div>
+
     </div>
+
     <div class="about-us-trust">
         <div class="about-us-block">
             <hr class="line" style="margin-bottom: 8px">
@@ -577,7 +617,7 @@
             Lorem ipsum dolor sit amet consectetur. Accumsan diam sed eget ac elementum mauris a ultrices. Velit faucibus mattis scelerisque felis nisl fames donec amet. Leo enim urna sed nisi lacus ac risus. Tellus enim felis ullamcorper nisi eu sit. Vitae iaculis sagittis tortor porttitor.
         </div>
 
-        <div class="trust-plus" style="display: flex; justify-content: space-between; width: 75%; max-width: 1380px; margin-left: auto; margin-right: auto; margin-top: 37px">
+        <div class="trust-plus" style="display: flex; width: 75%; max-width: 1380px; margin-left: auto; margin-right: auto; margin-top: 37px">
             <div class="trust1" style="display: flex">
                 <img src="{% static 'kolos.svg' %}">
                 <div>
