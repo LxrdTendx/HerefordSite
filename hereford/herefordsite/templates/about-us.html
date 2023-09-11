@@ -63,6 +63,196 @@
         text-decoration-line: underline;
         transition: 0.5s;
     }
+    .about-us-trust{
+        height: 1403px;
+        width: 100%;
+        background-color: #fff;
+        /*min-width: 1380px;*/
+    }
+    .line{
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        max-width: 1380px;
+        background: var(--main-grey-dark, #595959);
+    }
+    .about-us-block{
+        padding-top: 100px;
+        height: 80px;
+    }
+    .about-us-text{
+        color: #000;
+        font-family: MorfinSans,sans-serif;
+        font-size: 64px;
+        font-style: normal;
+        line-height: 100%;
+        width: 358px;
+        font-weight: 400;
+    }
+    .about-us-link{
+        width: 155px;
+        height: 22px;
+        cursor: pointer;
+        color: var(--main-grey-dark, #595959);
+        text-align: right;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        text-decoration-line: underline;
+        margin-bottom: auto;
+        margin-top: auto;
+    }
+    .about-us-link:hover{
+        cursor: pointer;
+        color: var(--main-green-dark, #8B8D68);
+        text-decoration-line: underline;
+        transition: 0.5s;
+    }
+    .other-text{
+
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        max-width: 1380px;
+    }
+    .other-text1{
+        margin-right: 20px;
+        width: 680px;
+        height: 300px;
+        color: #000;
+        text-align: justify;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 100%; /* 20px */
+    }
+    .other-text2{
+        width: 680px;
+        height: 300px;
+        color: #000;
+        text-align: justify;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 108%; /* 21.6px */
+    }
+    .about-us-animation {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        width: 75%;
+        height: 600px;
+        overflow: hidden;
+    }
+
+    .about-us-animation img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .about-us-animation .moving-text {
+        position: absolute;
+        white-space: nowrap;
+        animation-duration: 7s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    .about-us-animation .text1 {
+        font-family: MorfinSans,sans-serif;
+        font-size: 96px;
+        font-weight: 400;
+        top: 15%;
+        animation-name: moveRight;
+    }
+
+    .about-us-animation .text2 {
+        font-family: MorfinSans,sans-serif;
+        font-size: 96px;
+        font-weight: 400;
+        top: 35%;
+        animation-name: moveLeft;
+    }
+
+    .about-us-animation .text3 {
+        font-family: MorfinSans,sans-serif;
+        font-size: 96px;
+        font-weight: 400;
+        top: 55%;
+        animation-name: moveRight;
+    }
+
+    .about-us-animation .text4 {
+        font-family: MorfinSans,sans-serif;
+        font-size: 96px;
+        font-weight: 400;
+        top: 75%;
+        animation-name: moveLeft;
+    }
+
+    @keyframes moveRight {
+        0% {
+            left: -100%;
+        }
+        100% {
+            left: 100%;
+        }
+    }
+
+    @keyframes moveLeft {
+        0% {
+            right: -100%;
+        }
+        100% {
+            right: 100%;
+        }
+    }
+    footer{
+        margin-bottom: 150px;
+        margin-top: 150px;
+        background-color: white;
+        width: 100%;
+        height: 165px;
+        display: flex;
+    }
+    .column {
+        flex: 1;
+        margin-top: 10px;
+    }
+
+    .column strong {
+        display: block;
+        margin-bottom: 14px;
+        color: #000;
+        text-align: right;
+        font-family: MorfinSans,sans-serif;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 94.5%; /* 26.46px */
+    }
+
+    .column a {
+        display: block;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #000;
+        text-align: right;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 108%; /* 17.28px */
+    }
+    .column a:hover{
+        color: var(--main-green-dark, #8B8D68);
+        transition: 0.5s;
+    }
 </style>
 
     <title>О Нас</title>
@@ -79,7 +269,7 @@
                 </li>
                 <li>
                     <div class="about-us">
-                        <a href="{% url 'about_us' %}">О нас</a>
+                        <a href="{% url 'about_us' %}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">О нас</a>
                     </div>
                 </li>
                 <li>
@@ -98,10 +288,75 @@
                     </div>
                 </li>
                 <li>
-                    <div class="contacts">Контакты</div>
+                    <div class="contacts">
+                        <a href="{% url 'contacts'%}">Контакты</a>
+                    </div>
                 </li>
             </ul>
         </div>
     </div>
+    <div class="about-us-trust">
+        <div class="about-us-block">
+            <hr class="line" style="margin-bottom: 8px">
+            <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
+                <div class="about-us-text">ОБ АССОЦИАЦИИ</div>
+            </div>
+            <hr class="line" style="margin-top:8px">
+        </div>
+        <div class="other-text" style="display: flex; justify-content: center; margin-top: 100px; height: 300px">
+            <div class="other-text1">
+                3 декабря 2009 года была проведена организационная конференция по созданию Национальной Ассоциации заводчиков Герефордского скота, цели и задачи которой определены Уставом Ассоциации, ходе которой, был избран президент - Феклин Иван Евгеньевич, так же утвержден совет директоров и избран генеральный директор. Эта ассоциация является первой, объединяющей заводчиков определённой породы скота в мясном скотоводстве. Функцию таких ассоциаций раньше выполняли советы по породе, которые не работают уже около 18 лет. Ассоциация выполняет функцию активизации рынка племенных герефордов, обеспечение постоянного обмена опытом и информацией среди заводчиков скота, а также увеличение производства высококачественной говядины в товарных хозяйствах. Тесное сотрудничество Ассоциации герефордов и Селекционного центра ФГБНУ ФНЦ БСТ РАН позволяет более эффективно внедрять богатый научный опыт по разведению, технологии содержания, селекции и генетики. На сегодняшний день, членами ассоциации являются хозяйства Челябинской, Тюменской, Нижегородской,
+            </div>
+            <div class="other-text2">
+                Волгонрадской, Саратовской, Самарской и Оренбургской областей, Башкортостана, Ставропольского, Пермского и Алтайского краев. За время работы были выпущены I и II тома Государственной книги племенных животных, следует отметить, что предыдущий том подобной книги был выпущен около 20 лет назад. В планах развития Национальной Ассоциации заводчиков герефордского скота является создание единой информационной общероссийской регистрационной базы племенного скота герефордской породы. К 2013 году разработана форма для регистрации новорожденного чистопородного молодняка в единой базе по герефордской породе. Регистрация молодняка по разработанной форме позволит создать информационную базу по племенному материалу, предназначенному для реализации, и координировать программы селекционно-племенной работы как для отдельных хозяйств, так и по породе в целом.
+            </div>
+        </div>
+        <div class="about-us-animation" style="margin-top: 150px">
+            <img src="{% static 'biglogo.svg' %}" alt="Logo">
+            <div class="moving-text text1"><span style="color:#8B8D68">первая</span> ассоциация,</div>
+            <div class="moving-text text2">объединяющая <span style="color:#9B5C5C">заводчиков</span></div>
+            <div class="moving-text text3"><span style="color:#8B8D68">определённой породы</span> скота</div>
+            <div class="moving-text text4">в <span style="color:#9B5C5C">мясном</span> скотоводстве</div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div style="width: 75%; margin-left: auto; margin-right: auto; display: flex; justify-content: space-between">
+            <img src="{% static 'fulllogo.svg' %}">
+
+            <div class="footer-info" style="width: 700px; height: 165px; display: flex; justify-content: space-between">
+                <!-- Колонка Продукция -->
+                <div class="column">
+                    <strong>Продукция</strong>
+                    <a href="#">Племенные животные</a>
+                    <a href="#">Товарное стадо</a>
+                    <a href="#">Продукты переработки</a>
+                </div>
+
+                <!-- Колонка Компания -->
+                <div class="column" style="margin-left: 100px">
+                    <strong>Компания</strong>
+                    <a href="{% url 'about_us' %}">О нас</a>
+                    <a href="{% url 'farm' %}">Наши хозяйства</a>
+                    <a href="{% url 'join' %}">Вступить</a>
+                    <a href="{% url 'contacts' %}">Контакты</a>
+                </div>
+
+                <!-- Колонка Контакты -->
+                <div class="column" style="margin-left: 100px">
+                    <strong>Контакты</strong>
+                    <div align="right" style="width: 186px">Национальная ассоциация заводчиков герефордского скота</div>
+                    <div align="right" style="margin-top: 10px">ул. 9 Января, 29, Оренбург</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
 
 {% endblock %}

@@ -133,6 +133,90 @@
         margin-left: auto;
         margin-right: auto;
     }
+    .flip-card {
+      background-color: transparent;
+      perspective: 1000px;
+      width: 300px;
+      height: 400px;
+      margin: 3px;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+
+    .flip-card-front {
+      background-color: #FFFFFF;
+      color: black;
+      z-index: 2;
+    }
+
+    .flip-card-back {
+      background-color: #FFFFFF;
+      color: black;
+      transform: rotateY(180deg);
+      z-index: 1;
+    }
+    footer{
+        margin-bottom: 150px;
+        margin-top: 150px;
+        background-color: white;
+        width: 100%;
+        height: 165px;
+        display: flex;
+    }
+    .column {
+        flex: 1;
+        margin-top: 10px;
+    }
+
+    .column strong {
+        display: block;
+        margin-bottom: 14px;
+        color: #000;
+        text-align: right;
+        font-family: MorfinSans,sans-serif;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 94.5%; /* 26.46px */
+    }
+
+    .column a {
+        display: block;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #000;
+        text-align: right;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 108%; /* 17.28px */
+    }
+    .column a:hover{
+        color: var(--main-green-dark, #8B8D68);
+        transition: 0.5s;
+    }
+
+
 
 </style>
 
@@ -155,7 +239,7 @@
                 </li>
                 <li>
                     <div class="production">
-                        <a href="{% url 'market' %}">Продукция</a>
+                        <a href="{% url 'market' %}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Продукция</a>
                     </div>
                 </li>
                 <li>
@@ -169,7 +253,9 @@
                     </div>
                 </li>
                 <li>
-                    <div class="contacts">Контакты</div>
+                    <div class="contacts">
+                        <a href="{% url 'contacts'%}">Контакты</a>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -184,30 +270,31 @@
         <!-- Фильтр по регионам -->
         <div>Регион:
             <button type="button" data-toggle="region" class="filter-button" data-value="">Все регионы</button>
-            {% for r in regions %}
-                <button type="button" data-toggle="region" class="filter-button" data-value="{{ r }}">{{ r }}</button>
+            {% for r in all_regions %}
+                <button type="button" data-toggle="region" class="filter-button" data-value="{{ r }}" data-selected="false">{{ r }}</button>
             {% endfor %}
             <input type="hidden" name="region" value="{{ region }}">
         </div>
 
+
         <!-- Фильтр по типу продукции -->
         <div>Тип продукции:
-            <button type="button" data-toggle="product_type" class="filter-button" data-value="">Все</button>
+            <button type="button" data-toggle="product_type" class="filter-button" data-value="" data-selected="false">Все</button>
             {% for type in product_types %}
-                <button type="button" data-toggle="product_type" class="filter-button" data-value="{{ type.id }}">{{ type.name }}</button>
+                <button type="button" data-toggle="product_type" class="filter-button" data-value="{{ type.id }}" data-selected="false">{{ type.name }}</button>
             {% endfor %}
             <input type="hidden" name="product_type" value="{{ product_type_filter }}">
         </div>
 
         <!-- Фильтр по подтипу -->
-        <label>Подтип продукции:
-            <select name="sub_product_type">
-                <option value="" {% if not sub_product_type %}selected{% endif %}>Все подтипы</option>
-                {% for subtype in subtypes %}
-                    <option value="{{ subtype.id }}" {% if sub_product_type == subtype.id|stringformat:"s" %}selected{% endif %}>{{ subtype.name }}</option>
-                {% endfor %}
-            </select>
-        </label>
+        <div>Подтип продукции:
+            <button type="button" data-toggle="sub_product_type" class="filter-button" data-value="" data-selected="false">Все подтипы</button>
+            {% for subtype in subtypes %}
+                <button type="button" data-toggle="sub_product_type" class="filter-button" data-value="{{ subtype.id }}" data-selected="false">{{ subtype.name }}</button>
+            {% endfor %}
+            <input type="hidden" name="sub_product_type" value="{{ sub_product_type }}">
+        </div>
+
 
         <!-- Сортировка по цене -->
         <label>Сортировка по цене:
@@ -222,60 +309,125 @@
         <input type="text" name="search" placeholder="Поиск...">
         <button type="submit">Применить фильтры</button>
     </form>
-
-
-
-
-    <div class="products" style="display: flex; flex-wrap: wrap; width: 75%; margin-left: auto; margin-right: auto">
+    <div class="products" style="display: flex; flex-wrap: wrap; width: 70%; margin-left: auto; margin-right: auto">
     {% for product in products %}
-        <div class="product" style="margin-right: 30px">
-            <h3>{{ product.product_type.name }}</h3>
-            <p>Подтип: {{ product.sub_product_type.name }}</p>
-            <p>Регион: {{ product.region }}</p>
-            <p>Ферма: {{ product.farm }}</p>
-            <p>Телефон для связи: {{ product.contact_phone }}</p>
-            <p>Описание: {{ product.details }}</p>
-            {% if product.product_photo %}
-                <img src="{{ product.product_photo.url }}" style="height: 200px; width: 300px" alt="Фото продукта">
-            {% endif %}
-            <p>Возраст: {{ product.age }}</p>
-            <p>Цена: {{ product.price }}</p>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h3>{{ product.product_type.name }}</h3>
+                    {% if product.sub_product_type %}
+                        <p>{{ product.sub_product_type.name }}</p>
+                    {% endif %}
+                    <p>Регион: {{ product.region }}</p>
+                    {% if product.product_photo %}
+                        <img src="{{ product.product_photo.url }}" style="height: 200px; width: 300px" alt="Фото продукта">
+                    {% endif %}
+                    <p>Цена: {{ product.price }}</p>
+                </div>
+                <div class="flip-card-back">
+                    <p>Ферма: {{ product.farm }}</p>
+                    <p>Телефон для связи: {{ product.contact_phone }}</p>
+                    <p>Возраст: {{ product.age }}</p>
+                    <p>Описание: {{ product.details }}</p>
+
+                </div>
+            </div>
         </div>
     {% endfor %}
-    </div>
+</div>
+
+    <footer>
+        <div style="width: 75%; margin-left: auto; margin-right: auto; display: flex; justify-content: space-between">
+            <img src="{% static 'fulllogo.svg' %}">
+
+            <div class="footer-info" style="width: 700px; height: 165px; display: flex; justify-content: space-between">
+                <!-- Колонка Продукция -->
+                <div class="column">
+                    <strong>Продукция</strong>
+                    <a href="#">Племенные животные</a>
+                    <a href="#">Товарное стадо</a>
+                    <a href="#">Продукты переработки</a>
+                </div>
+
+                <!-- Колонка Компания -->
+                <div class="column" style="margin-left: 100px">
+                    <strong>Компания</strong>
+                    <a href="{% url 'about_us' %}">О нас</a>
+                    <a href="{% url 'farm' %}">Наши хозяйства</a>
+                    <a href="{% url 'join' %}">Вступить</a>
+                    <a href="{% url 'contacts' %}">Контакты</a>
+                </div>
+
+                <!-- Колонка Контакты -->
+                <div class="column" style="margin-left: 100px">
+                    <strong>Контакты</strong>
+                    <div align="right" style="width: 186px">Национальная ассоциация заводчиков герефордского скота</div>
+                    <div align="right" style="margin-top: 10px">ул. 9 Января, 29, Оренбург</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
 
 <script>
 document.querySelectorAll('.filter-button').forEach(button => {
     button.addEventListener('click', () => {
         let targetType = button.getAttribute('data-toggle');
-        let hiddenField = document.querySelector('input[name="' + targetType + '"]');
-        hiddenField.value = button.getAttribute('data-value');
 
-        // Снимаем выделение со всех кнопок в группе и выделяем текущую
-        document.querySelectorAll('[data-toggle="' + targetType + '"]').forEach(b => b.classList.remove('selected'));
-        button.classList.add('selected');
+        if (button.getAttribute('data-value') === "") {
+            // Если кликают по "Все", снимаем выделение со всех остальных кнопок
+            document.querySelectorAll(`[data-toggle="${targetType}"]`).forEach(b => {
+                b.setAttribute('data-selected', 'false');
+                b.classList.remove('selected');
+            });
+            // И затем активируем кнопку "Все"
+            button.classList.add('selected');
+        } else {
+            // Для всех остальных кнопок меняем их состояние
+            let isSelected = button.getAttribute('data-selected') === 'true';
+            button.setAttribute('data-selected', String(!isSelected));
+
+            // Если какая-либо кнопка активирована, деактивируем кнопку "Все"
+            let allButton = document.querySelector(`.filter-button[data-toggle="${targetType}"][data-value=""]`);
+            allButton.classList.remove('selected');
+
+            if (isSelected) {
+                button.classList.remove('selected');
+            } else {
+                button.classList.add('selected');
+            }
+        }
+
+        // Обновляем значение скрытого поля на основе выбранных кнопок
+        let selectedValues = Array.from(document.querySelectorAll(`[data-toggle="${targetType}"].selected`)).map(b => b.getAttribute('data-value')).join(',');
+        let hiddenField = document.querySelector('input[name="' + targetType + '"]');
+        hiddenField.value = selectedValues;
     });
 });
 
-// При загрузке страницы устанавливаем активные кнопки в соответствии со значениями скрытых полей
 window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('input[type="hidden"]').forEach(hiddenField => {
-        let value = hiddenField.value;
+        let values = hiddenField.value.split(',');
         let targetType = hiddenField.getAttribute('name');
 
-        // Если значение скрытого поля пусто, выделяем кнопку "Все"
-        if (!value) {
+        if (!values[0]) {
             let defaultButton = document.querySelector(`.filter-button[data-toggle="${targetType}"][data-value=""]`);
             if (defaultButton) {
-                document.querySelectorAll(`[data-toggle="${targetType}"]`).forEach(b => b.classList.remove('selected'));
                 defaultButton.classList.add('selected');
             }
         } else {
-            let button = document.querySelector(`.filter-button[data-toggle="${targetType}"][data-value="${value}"]`);
-            if (button) {
-                document.querySelectorAll(`[data-toggle="${targetType}"]`).forEach(b => b.classList.remove('selected'));
-                button.classList.add('selected');
-            }
+            values.forEach(value => {
+                let button = document.querySelector(`.filter-button[data-toggle="${targetType}"][data-value="${value}"]`);
+                if (button) {
+                    button.classList.add('selected');
+                }
+            });
         }
     });
 });

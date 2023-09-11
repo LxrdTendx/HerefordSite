@@ -11,6 +11,7 @@ urlpatterns = [
     path('market/', views.production, name='market'),
     path('our-farm/', views.farm, name='farm'),
     path('join/', views.join, name='join'),
+    path('contacts/', views.contacts, name='contacts'),
     path('product-image/<int:product_id>/', views.product_image, name='product_image'),
 ]
 

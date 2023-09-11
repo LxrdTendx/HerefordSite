@@ -5,7 +5,7 @@
   <style>
 
     html {
-	  background: linear-gradient(90deg, #b9deed, #efefef);
+	  /*background: linear-gradient(90deg, #b9deed, #efefef);*/
     }
     body{
         margin: 0;
@@ -17,6 +17,7 @@
             zoom: 140%;
         }
     }
+
     .header{
         width: 100%;
         height: 120px;
@@ -109,7 +110,7 @@
         height: 1200px;
         width: 100%;
         background-color: #fff;
-        min-width: 1380px;
+        /*min-width: 1380px;*/
     }
     .line{
         margin: 0;
@@ -220,7 +221,7 @@
         height: 1250px;
         width: 100%;
         background-color: #fff;
-        min-width: 1380px;
+        /*min-width: 1380px;*/
     }
     .second-photo-text, .third-photo-text, .first-photo-text{
         margin-top: 8px;
@@ -236,8 +237,142 @@
         height: 510px;
         width: 100%;
         background-color: #fff;
-        min-width: 1380px;
+        /*min-width: 1380px;*/
     }
+    .invite-to-association{
+        background-color: white;
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+        height: 550px;
+    }
+    .association-text{
+        margin-top: 100px;
+        width: 580px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #000;
+        leading-trim: both;
+        text-edge: cap;
+        font-family: MorfinSans,sans-serif;
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 64px */
+    }
+    .sub-association-text{
+        margin-top: 50px;
+        margin-right: auto;
+        margin-left: auto;
+        color: #000;
+        text-align: center;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 108%; /* 21.6px */
+        max-width: 920px;
+    }
+    .custom-button {
+        display: inline-block;
+        background-color: black;
+        color: var(--main-white, #FFF);
+        text-align: center;
+        font-family: 'Fira Sans Condensed', sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 108%; /* 21.6px */
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .custom-button:hover {
+        opacity: 0.8;
+    }
+
+    .details-button {
+        width: 360px;
+        height: 80px;
+    }
+
+    .apply-button {
+        width: 520px;
+        height: 80px;
+    }
+    .trust-plus {
+        display: flex;
+        justify-content: space-between;
+        width: 75%;
+        max-width: 1380px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 37px;
+        flex-wrap: wrap; /* Это свойство позволяет элементам переноситься на следующую строку при необходимости */
+    }
+
+    @media (max-width: 768px) { /* Этот медиа запрос срабатывает, когда ширина экрана уменьшается до 768px или меньше */
+        .trust1 {
+            width: 100%; /* Это заставит каждый блок .trust1 занимать всю ширину родительского элемента */
+            margin-bottom: 20px; /* Добавляет немного отступа снизу для разделения блоков */
+        }
+    }
+        /* Медиа-запрос для экранов шириной меньше 1000px */
+    @media (max-width: 1000px) {
+        .pointer-about {
+            /* Настройте следующие свойства так, чтобы подогнать `pointer-about` под уменьшенный экран. Это могут быть изменения в margin, position, transform или другие свойства в зависимости от желаемого поведения. */
+            margin-left: 40px; /* Пример */
+            /* другие стили для адаптации */
+        }
+    }
+    footer{
+        margin-bottom: 150px;
+        margin-top: 150px;
+        background-color: white;
+        width: 100%;
+        height: 165px;
+        display: flex;
+    }
+    .column {
+        flex: 1;
+        margin-top: 10px;
+    }
+
+    .column strong {
+        display: block;
+        margin-bottom: 14px;
+        color: #000;
+        text-align: right;
+        font-family: MorfinSans,sans-serif;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 94.5%; /* 26.46px */
+    }
+
+    .column a {
+        display: block;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #000;
+        text-align: right;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 108%; /* 17.28px */
+    }
+    .column a:hover{
+        color: var(--main-green-dark, #8B8D68);
+        transition: 0.5s;
+    }
+
+
+
+
+
   </style>
 
     <title>Национальная ассоциация заводчиков герефордского скота</title>
@@ -249,7 +384,7 @@
             <ul>
                 <li>
                     <div class="main">
-                        <a href="{% url 'login' %}">Главная</a>
+                        <a href="{% url 'login' %}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Главная</a>
                     </div>
                 </li>
                 <li>
@@ -273,7 +408,9 @@
                     </div>
                 </li>
                 <li>
-                    <div class="contacts">Контакты</div>
+                    <div class="contacts">
+                        <a href="{% url 'contacts'%}">Контакты</a>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -372,7 +509,7 @@
         <div class="trust">
             Lorem ipsum dolor sit amet consectetur. Accumsan diam sed eget ac elementum mauris a ultrices. Velit faucibus mattis scelerisque felis nisl fames donec amet. Leo enim urna sed nisi lacus ac risus. Tellus enim felis ullamcorper nisi eu sit. Vitae iaculis sagittis tortor porttitor.
         </div>
-        <div class="bull-photo" style="display: flex; height: 810px; width: 1377px; margin-left: auto; margin-right: auto; margin-top: 50px">
+        <div class="bull-photo" style="display: flex; height: 810px; max-width: 1377px; margin-left: auto; margin-right: auto; margin-top: 50px">
             <div class="first-photo" style="height: 800px; width: 614px; background-image: url('{% static "first.png" %}')">
                 <div class="first-photo-text" style="color: white; margin-left: 22px;margin-top: 715px;margin-bottom: auto;">Lorem ipsum dolor sit amet consectetur.</div>
             </div>
@@ -403,6 +540,49 @@
             <hr class="line" style="margin-top:8px">
         </div>
     </div>
+
+    <div class="invite-to-association">
+        <hr class="line" style="">
+        <div class="association-text">вступить в ассоциацию</div>
+        <div class="sub-association-text">Lorem ipsum dolor sit amet consectetur. Accumsan diam sed eget ac elementum mauris a ultrices. Velit faucibus mattis scelerisque felis nisl fames donec amet. Leo enim urna sed nisi lacus ac risus.</div>
+        <div style="margin-top:88px;margin-left: auto;margin-right: auto; width: 910px; justify-content: space-between; display: flex">
+            <button class="custom-button details-button">Узнать подробнее</button>
+            <button class="custom-button apply-button">Подать заявку на членство сейчас</button>
+        </div>
+        <hr class="line" style="margin-top:120px">
+    </div>
+    <footer>
+        <div style="width: 75%; margin-left: auto; margin-right: auto; display: flex; justify-content: space-between">
+            <img src="{% static 'fulllogo.svg' %}">
+
+            <div class="footer-info" style="width: 700px; height: 165px; display: flex; justify-content: space-between">
+                <!-- Колонка Продукция -->
+                <div class="column">
+                    <strong>Продукция</strong>
+                    <a href="#">Племенные животные</a>
+                    <a href="#">Товарное стадо</a>
+                    <a href="#">Продукты переработки</a>
+                </div>
+
+                <!-- Колонка Компания -->
+                <div class="column" style="margin-left: 100px">
+                    <strong>Компания</strong>
+                    <a href="{% url 'about_us' %}">О нас</a>
+                    <a href="{% url 'farm' %}">Наши хозяйства</a>
+                    <a href="{% url 'join' %}">Вступить</a>
+                    <a href="{% url 'contacts' %}">Контакты</a>
+                </div>
+
+                <!-- Колонка Контакты -->
+                <div class="column" style="margin-left: 100px">
+                    <strong>Контакты</strong>
+                    <div align="right" style="width: 186px">Национальная ассоциация заводчиков герефордского скота</div>
+                    <div align="right" style="margin-top: 10px">ул. 9 Января, 29, Оренбург</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 
 
 
