@@ -65,10 +65,14 @@
         margin-bottom: auto;
     }
     a{
+        text-decoration: none;
+        color: white;
+    }
+    .navbar a, .about-us-link a{
         color: black;
         text-decoration: none;
     }
-    a:hover{
+    .navbar a:hover, .about-us-link a:hover{
         cursor: pointer;
         color: var(--main-green-dark, #8B8D68);
         text-decoration-line: underline;
@@ -516,6 +520,39 @@
             justify-content: space-between;
         }
     }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close-button:hover, .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
 
 
 
@@ -716,9 +753,31 @@
         <div class="association-text">вступить в ассоциацию</div>
         <div class="sub-association-text">Lorem ipsum dolor sit amet consectetur. Accumsan diam sed eget ac elementum mauris a ultrices. Velit faucibus mattis scelerisque felis nisl fames donec amet. Leo enim urna sed nisi lacus ac risus.</div>
         <div style="margin-top:88px;margin-left: auto;margin-right: auto; width: 910px; justify-content: space-between; display: flex">
-            <button class="custom-button details-button">Узнать подробнее</button>
-            <button class="custom-button apply-button">Подать заявку на членство сейчас</button>
+            <button class="custom-button details-button" onclick="window.location.href='{% url 'join' %}'">Узнать подробнее</button>
+            <button class="custom-button apply-button" onclick="openModal()">Подать заявку на членство сейчас</button>
         </div>
+        <div class="modal" id="applicationForm">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal()">&times;</span>
+                <h2>Подать заявку</h2>
+                <form action="#" method="post">
+                    <label for="name">ФИО:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="phone">Номер телефона:</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <label for="doc1">Прикрепить документ 1:</label>
+                    <input type="file" id="doc1" name="doc1">
+
+                    <label for="doc2">Прикрепить документ 2:</label>
+                    <input type="file" id="doc2" name="doc2">
+
+                    <input type="submit" value="Отправить">
+                </form>
+            </div>
+        </div>
+
         <hr class="line" style="margin-top:120px">
     </div>
     <footer>
@@ -744,9 +803,9 @@
                 </div>
 
                 <!-- Колонка Контакты -->
-                <div class="column" style="margin-left: 100px; width: 186px; height: 118px">
+                <div class="column" style="margin-left: 100px; width: 186px; height: 118px; color: #000; text-align: right; font-family: Fira Sans Condensed,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; line-height: 108%;">
                     <strong>Контакты</strong>
-                    <div align="right" style="width: 186px">Национальная ассоциация заводчиков герефордского скота</div>
+                    <div align="right" style="width: 186px; ">Национальная ассоциация заводчиков герефордского скота</div>
                     <div align="right" style="margin-top: 10px">ул. 9 Января, 29, Оренбург</div>
                 </div>
             </div>
@@ -754,7 +813,16 @@
     </footer>
 
 
+<script>
+    function openModal() {
+        document.getElementById('applicationForm').style.display = 'block';
+    }
 
+    function closeModal() {
+        document.getElementById('applicationForm').style.display = 'none';
+    }
+
+</script>
 
 
 
