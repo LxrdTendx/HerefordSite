@@ -120,7 +120,7 @@
         transition: 0.5s;
     }
     .other-text{
-
+        height: 300px;
         margin-left: auto;
         margin-right: auto;
         width: 75%;
@@ -165,47 +165,47 @@
         transform: translate(-50%, -50%);
     }
 
-    .about-us-animation .moving-text {
-        position: absolute;
-        white-space: nowrap;
-        animation-duration: 7s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
+    /*.about-us-animation .moving-text {*/
+    /*    position: absolute;*/
+    /*    white-space: nowrap;*/
+    /*    animation-duration: 7s;*/
+    /*    animation-timing-function: linear;*/
+    /*    animation-iteration-count: infinite;*/
+    /*}*/
 
-    .about-us-animation .text1 {
-        font-family: MorfinSans,sans-serif;
-        font-size: 96px;
-        font-weight: 400;
-        top: 15%;
-        animation-name: moveRight;
-    }
+    /*.about-us-animation .text1 {*/
+    /*    font-family: MorfinSans,sans-serif;*/
+    /*    font-size: 96px;*/
+    /*    font-weight: 400;*/
+    /*    top: 15%;*/
+    /*    animation-name: moveRight;*/
+    /*}*/
 
-    .about-us-animation .text2 {
-        font-family: MorfinSans,sans-serif;
-        font-size: 96px;
-        font-weight: 400;
-        top: 35%;
-        animation-name: moveLeft;
-    }
+    /*.about-us-animation .text2 {*/
+    /*    font-family: MorfinSans,sans-serif;*/
+    /*    font-size: 96px;*/
+    /*    font-weight: 400;*/
+    /*    top: 35%;*/
+    /*    animation-name: moveLeft;*/
+    /*}*/
 
-    .about-us-animation .text3 {
-        font-family: MorfinSans,sans-serif;
-        font-size: 96px;
-        font-weight: 400;
-        top: 55%;
-        animation-name: moveRight;
-    }
+    /*.about-us-animation .text3 {*/
+    /*    font-family: MorfinSans,sans-serif;*/
+    /*    font-size: 96px;*/
+    /*    font-weight: 400;*/
+    /*    top: 55%;*/
+    /*    animation-name: moveRight;*/
+    /*}*/
 
-    .about-us-animation .text4 {
-        font-family: MorfinSans,sans-serif;
-        font-size: 96px;
-        font-weight: 400;
-        top: 75%;
-        animation-name: moveLeft;
-    }
+    /*.about-us-animation .text4 {*/
+    /*    font-family: MorfinSans,sans-serif;*/
+    /*    font-size: 96px;*/
+    /*    font-weight: 400;*/
+    /*    top: 75%;*/
+    /*    animation-name: moveLeft;*/
+    /*}*/
 
-    @keyframes moveRight {
+    /*@keyframes moveRight {
         0% {
             left: -100%;
         }
@@ -221,7 +221,7 @@
         100% {
             right: 100%;
         }
-    }
+    }*/
     footer{
         margin-bottom: 150px;
         margin-top: 150px;
@@ -349,6 +349,9 @@
     .menu__item:hover {
       background-color: #CFD8DC;
     }
+    .about-us-animation{
+        margin-top: 150px;
+    }
 
     /* Медиа-запросы */
     @media (max-width: 1000px) {
@@ -359,12 +362,26 @@
         .menu__btn {
             display: block; /* Показываем кнопку гамбургера на маленьких экранах */
         }
+        .header{
+            zoom:140%
+        }
+        .other-text{
+            height: 700px;
+        }
+        .about-us-trust{
+            zoom:140%
+        }
+        .about-us-animation{
+            margin-top: 0;
+            height: 300px;
+        }
     }
 
     @media (min-width: 1001px) {
         .hamburger-menu {
             display: none; /* Скрываем гамбургер-меню на больших экранах */
         }
+
     }
 </style>
 
@@ -430,7 +447,7 @@
             </div>
             <hr class="line" style="margin-top:8px">
         </div>
-        <div class="other-text" style="display: flex; justify-content: center; margin-top: 100px; height: 300px">
+        <div class="other-text" style="display: flex; justify-content: center; margin-top: 100px;">
             <div class="other-text1">
                 3 декабря 2009 года была проведена организационная конференция по созданию Национальной Ассоциации заводчиков Герефордского скота, цели и задачи которой определены Уставом Ассоциации, ходе которой, был избран президент - Феклин Иван Евгеньевич, так же утвержден совет директоров и избран генеральный директор. Эта ассоциация является первой, объединяющей заводчиков определённой породы скота в мясном скотоводстве. Функцию таких ассоциаций раньше выполняли советы по породе, которые не работают уже около 18 лет. Ассоциация выполняет функцию активизации рынка племенных герефордов, обеспечение постоянного обмена опытом и информацией среди заводчиков скота, а также увеличение производства высококачественной говядины в товарных хозяйствах. Тесное сотрудничество Ассоциации герефордов и Селекционного центра ФГБНУ ФНЦ БСТ РАН позволяет более эффективно внедрять богатый научный опыт по разведению, технологии содержания, селекции и генетики. На сегодняшний день, членами ассоциации являются хозяйства Челябинской, Тюменской, Нижегородской,
             </div>
@@ -438,12 +455,8 @@
                 Волгонрадской, Саратовской, Самарской и Оренбургской областей, Башкортостана, Ставропольского, Пермского и Алтайского краев. За время работы были выпущены I и II тома Государственной книги племенных животных, следует отметить, что предыдущий том подобной книги был выпущен около 20 лет назад. В планах развития Национальной Ассоциации заводчиков герефордского скота является создание единой информационной общероссийской регистрационной базы племенного скота герефордской породы. К 2013 году разработана форма для регистрации новорожденного чистопородного молодняка в единой базе по герефордской породе. Регистрация молодняка по разработанной форме позволит создать информационную базу по племенному материалу, предназначенному для реализации, и координировать программы селекционно-племенной работы как для отдельных хозяйств, так и по породе в целом.
             </div>
         </div>
-        <div class="about-us-animation" style="margin-top: 150px">
-            <img src="{% static 'biglogo.svg' %}" alt="Logo">
-            <div class="moving-text text1"><span style="color:#8B8D68">первая</span> ассоциация,</div>
-            <div class="moving-text text2">объединяющая <span style="color:#9B5C5C">заводчиков</span></div>
-            <div class="moving-text text3"><span style="color:#8B8D68">определённой породы</span> скота</div>
-            <div class="moving-text text4">в <span style="color:#9B5C5C">мясном</span> скотоводстве</div>
+        <div class="about-us-animation" style="">
+            <img src="{% static 'biglogo.svg' %}" alt="Logo" style="width: 100%">
         </div>
     </div>
 
@@ -456,9 +469,9 @@
                 <!-- Колонка Продукция -->
                 <div class="column" style="width: 158px; height: 111px">
                     <strong>Продукция</strong>
-                    <a href="#">Племенные животные</a>
-                    <a href="#">Товарное стадо</a>
-                    <a href="#">Продукты переработки</a>
+                    <a href="{% url 'market' %}?product_type=1">Племенные животные</a>
+                    <a href="{% url 'market' %}?product_type=2">Товарное стадо</a>
+                    <a href="{% url 'market' %}?product_type=3">Продукты переработки</a>
                 </div>
 
                 <!-- Колонка Компания -->
