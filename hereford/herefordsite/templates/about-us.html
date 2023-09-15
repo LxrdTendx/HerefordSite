@@ -12,7 +12,7 @@
         font-style: normal;
     }
     html {
-	  background: linear-gradient(90deg, #b9deed, #efefef);
+	  /*background: linear-gradient(90deg, #b9deed, #efefef);*/
     }
     body{
         margin: 0;
@@ -120,6 +120,7 @@
         transition: 0.5s;
     }
     .other-text{
+        display: flex;
         height: 300px;
         margin-left: auto;
         margin-right: auto;
@@ -352,6 +353,9 @@
     .about-us-animation{
         margin-top: 150px;
     }
+    .about-us-animation img{
+        width: 100%
+    }
 
     /* Медиа-запросы */
     @media (max-width: 1000px) {
@@ -371,15 +375,38 @@
         footer{
             zoom:150%
         }
+        .column a{
+            font-size: 18px;
+        }
+        .column strong{
+            font-size: 30px;
+        }
+
+
         .other-text{
-            height: 700px;
+            height: auto;
+            display: block;
+
+        }
+        .other-text1{
+            height: auto;
+            font-size: 24px;
+        }
+        .other-text2{
+            height: auto;
+            font-size: 24px;
+            margin-top: 50px;
         }
         .about-us-trust{
+            height: auto;
             zoom:140%
         }
         .about-us-animation{
             margin-top: 0;
-
+        }
+        .about-us-animation img{
+            width: 650px;
+            height: auto;
         }
     }
 
@@ -453,7 +480,7 @@
             </div>
             <hr class="line" style="margin-top:8px">
         </div>
-        <div class="other-text" style="display: flex; justify-content: center; margin-top: 100px;">
+        <div class="other-text" style="justify-content: center; margin-top: 100px;">
             <div class="other-text1">
                 3 декабря 2009 года была проведена организационная конференция по созданию Национальной Ассоциации заводчиков Герефордского скота, цели и задачи которой определены Уставом Ассоциации, ходе которой, был избран президент - Феклин Иван Евгеньевич, так же утвержден совет директоров и избран генеральный директор. Эта ассоциация является первой, объединяющей заводчиков определённой породы скота в мясном скотоводстве. Функцию таких ассоциаций раньше выполняли советы по породе, которые не работают уже около 18 лет. Ассоциация выполняет функцию активизации рынка племенных герефордов, обеспечение постоянного обмена опытом и информацией среди заводчиков скота, а также увеличение производства высококачественной говядины в товарных хозяйствах. Тесное сотрудничество Ассоциации герефордов и Селекционного центра ФГБНУ ФНЦ БСТ РАН позволяет более эффективно внедрять богатый научный опыт по разведению, технологии содержания, селекции и генетики. На сегодняшний день, членами ассоциации являются хозяйства Челябинской, Тюменской, Нижегородской,
             </div>
@@ -462,7 +489,7 @@
             </div>
         </div>
         <div class="about-us-animation" style="">
-            <img src="{% static 'biglogo.svg' %}" alt="Logo" style="width: 100%">
+            <img src="{% static 'biglogo.svg' %}" alt="Logo" style="">
         </div>
     </div>
 
