@@ -1,10 +1,17 @@
 from django.shortcuts import render
-from .models import Product, ProductType, SubProductType
+from .models import Product, ProductType, SubProductType, CarouselImage
 from django.http import HttpResponse
 import psycopg2
 
+
 def login_view(request):
-    return render(request, 'login.html')
+    carousel_images = CarouselImage.objects.all()
+
+    context = {
+        'carousel_images': carousel_images
+    }
+
+    return render(request, 'login.html', context)
 
 def about_us(request):
     return render(request, 'about-us.html')
@@ -68,56 +75,4 @@ def production(request):
     }
 
     return render(request, 'market.html', context)
-
-
-
-def get_products_from_db():
-    DATABASE = {
-        'dbname': 'herefordsite',
-        'user': 'postgres',
-        'password': '12345',
-        'host': 'localhost',
-        'port': '5432',
-    }
-
-    conn = psycopg2.connect(**DATABASE)
-    cursor = conn.cursor()
-
-    query = """
-    SELECT product.*, product_type.name
-    FROM product
-    JOIN product_type ON product.product_type_id = product_type.id
-    """
-
-    cursor.execute(query)
-    products = cursor.fetchall()
-
-    cursor.close()
-    conn.close()
-
-    return products
-
-
-def product_image(request, product_id):
-    # Подключение к БД и получение изображения по product_id
-    DATABASE = {
-        'dbname': 'herefordsite',
-        'user': 'postgres',
-        'password': '12345',
-        'host': 'localhost',
-        'port': '5432',
-    }
-
-    conn = psycopg2.connect(**DATABASE)
-    cur = conn.cursor()
-
-    try:
-        cur.execute("SELECT product_photo FROM product WHERE id = %s", (product_id,))
-        image_data = cur.fetchone()[0]
-        return HttpResponse(image_data, content_type="image/jpeg")
-    except Exception as e:
-        print(f"Ошибка при извлечении изображения: {e}")
-    finally:
-        cur.close()
-        conn.close()
 

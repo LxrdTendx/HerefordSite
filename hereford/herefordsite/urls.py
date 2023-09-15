@@ -12,8 +12,7 @@ urlpatterns = [
     path('our-farm/', views.farm, name='farm'),
     path('join/', views.join, name='join'),
     path('contacts/', views.contacts, name='contacts'),
-    path('product-image/<int:product_id>/', views.product_image, name='product_image'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

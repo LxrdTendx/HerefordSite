@@ -252,16 +252,103 @@
         background-color: #fff;
         /*min-width: 1380px;*/
     }
-    .second-photo-text, .third-photo-text, .first-photo-text{
-        margin-top: 8px;
-        width: 420px;
-        color: #000;
+    .bull-photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 1377px;
+        margin: 50px auto;
+        height: 810px;
+    }
+
+    .main-photo {
+        height: 800px;
+        flex: 1.5;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-end;
+        justify-content: start;
+
+    }
+    .main-photo, .small-photo img {
+        transition: opacity 1s;
+    }
+
+    .hidden {
+        opacity: 0;
+    }
+
+    .photo-text {
+        margin-bottom: 17px;
+        color: white;
+        margin-left: 22px;
         font-family: MorfinSans,sans-serif;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 108%; /* 34.56px */
+    }
+    .photo-text, .small-photo-text {
+        transition: opacity 1s;
+    }
+
+    .divider {
+        background-color: #595959;
+        width: 0;
+        height: 800px;
+        margin: 0 40px;
+    }
+
+    .double-photo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* это свойство заставит блоки разойтись */
+        height: 100%; /* убедимся, что блок занимает всю высоту родительского элемента */
+    }
+
+    .small-photo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .small-photo img{
+        max-height: 320px;
+    }
+
+    .photo-container {
+        flex: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .small-photo img {
+        width: 100%;
+        object-fit: cover;
+        max-height: 320px;
+    }
+
+    .small-photo-text {
+        margin-top: 8px;
+        flex: 1;
+        color: #000;
+        font-family: MorfinSans, sans-serif;
         font-size: 32px;
         font-style: normal;
         font-weight: 400;
         line-height: 108%;
     }
+
+
+    .pointer-about {
+        align-self: flex-start; /* это свойство прикрепит элемент к верху */
+        margin-left: 84px;
+    }
+
     .news{
         height: 510px;
         width: 100%;
@@ -578,6 +665,15 @@
         .us-bull .trust{
             font-size: 30px;
         }
+        .bull-photo{
+            width: 75%;
+        }
+        .pointer-about{
+            display: none;
+        }
+        .small-photo img{
+            min-height: 320px;
+        }
     }
 
 
@@ -803,26 +899,26 @@
         <div class="trust">
             Lorem ipsum dolor sit amet consectetur. Accumsan diam sed eget ac elementum mauris a ultrices. Velit faucibus mattis scelerisque felis nisl fames donec amet. Leo enim urna sed nisi lacus ac risus. Tellus enim felis ullamcorper nisi eu sit. Vitae iaculis sagittis tortor porttitor.
         </div>
-        <div class="bull-photo" style="display: flex; height: 810px; max-width: 1377px; margin-left: auto; margin-right: auto; margin-top: 50px">
-            <div class="first-photo" style="height: 800px; width: 614px; background-image: url('{% static "first.png" %}')">
-                <div class="first-photo-text" style="color: white; margin-left: 22px;margin-top: 715px;margin-bottom: auto;">Lorem ipsum dolor sit amet consectetur.</div>
+        <div class="bull-photo">
+            <div class="main-photo" style="background-image: url('{{ carousel_images.0.image.url }}')">
+                <div class="photo-text">{{ carousel_images.0.caption }}</div>
             </div>
-            <hr style="height: 800px; width: 0; background-color:#595959; margin: 0;margin-left: 40px; margin-right: 40px">
-            <div class="double-photo" style="height: 800px; width: 500px; ">
-                <div class="second-photo" style="width: 500px;height: 320px">
-                    <img src="{% static 'second.png' %}" style="width: 500px;height: 320px">
+            <hr class="divider">
+            <div class="double-photo">
+                <div class="small-photo">
+                    <img src="{{ carousel_images.1.image.url }}">
+                    <div class="small-photo-text">{{ carousel_images.1.caption }}</div>
                 </div>
-                <div class="second-photo-text">Lorem ipsum dolor sit amet consectetur. </div>
-                <div class="third-photo" style="width: 500px;height: 320px; margin-top: 13px">
-                    <img src="{% static 'third.png' %}" style="width: 500px;height: 320px">
+                <div class="small-photo">
+                    <img src="{{ carousel_images.2.image.url }}">
+                    <div class="small-photo-text">{{ carousel_images.2.caption }}</div>
                 </div>
-                <div class="third-photo-text">Lorem ipsum dolor sit amet consectetur. </div>
             </div>
-            <div class="pointer-about" style="margin-left: 84px">
+            <div class="pointer-about">
                 <a href="{% url 'market' %}"><img src="{% static 'pointer.svg'%}"></a>
             </div>
-
         </div>
+
     </div>
     <div class="news">
          <div class="about-us-block" style="padding-top: 0">
@@ -909,7 +1005,67 @@
         document.getElementById('applicationForm').style.display = 'none';
     }
 
+
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const photos = [
+        {% for img in carousel_images %}
+        { src: '{{ img.image.url }}', text: '{{ img.caption|escapejs }}' },
+        {% endfor %}
+    ];
+
+    let currentMainIndex = 0;
+
+    function rotatePhotos() {
+        const mainPhoto = document.querySelector('.main-photo');
+        const photoText = mainPhoto.querySelector('.photo-text');
+        const smallPhotos = document.querySelectorAll('.small-photo');
+
+        // Добавляем класс "hidden" для начала плавного перехода
+        mainPhoto.classList.add('hidden');
+        photoText.classList.add('hidden');
+        smallPhotos.forEach(photo => {
+            photo.querySelector('img').classList.add('hidden');
+            photo.querySelector('.small-photo-text').classList.add('hidden');
+        });
+
+        // Используем setTimeout, чтобы дать время CSS-переходу завершиться
+        setTimeout(() => {
+            // Обновляем главное фото и текст
+            mainPhoto.style.backgroundImage = `url(${photos[currentMainIndex].src})`;
+            photoText.textContent = photos[currentMainIndex].text;
+
+            // Обновляем меньшие фото и текст
+            let smallIndex = (currentMainIndex + 1) % photos.length;
+            smallPhotos.forEach((smallPhoto) => {
+                const img = smallPhoto.querySelector('img');
+                const text = smallPhoto.querySelector('.small-photo-text');
+
+                img.src = photos[smallIndex].src;
+                text.textContent = photos[smallIndex].text;
+
+                smallIndex = (smallIndex + 1) % photos.length;
+            });
+
+            // Удаляем класс "hidden" после обновления фото и текста, чтобы сделать их видимыми
+            mainPhoto.classList.remove('hidden');
+            photoText.classList.remove('hidden');
+            smallPhotos.forEach(photo => {
+                photo.querySelector('img').classList.remove('hidden');
+                photo.querySelector('.small-photo-text').classList.remove('hidden');
+            });
+
+            // Перемещаемся к следующему фото для следующей ротации
+            currentMainIndex = (currentMainIndex + 1) % photos.length;
+        }, 1000);  // Это время должно совпадать со временем перехода в CSS
+    }
+
+    setInterval(rotatePhotos, 5000); // Rotate every 5 seconds
+});
+</script>
+
+
 
 
 
