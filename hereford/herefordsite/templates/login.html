@@ -471,7 +471,7 @@
       padding: 12px 24px;
       color: #333;
       font-family: Fira Sans Condensed, sans-serif;
-      font-size: 20px;
+      font-size: 25px;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
@@ -498,6 +498,23 @@
 
         .menu__btn {
             display: block; /* Показываем кнопку гамбургера на маленьких экранах */
+        }
+        footer img{
+            display: none;
+        }
+        footer{
+            zoom:150%
+        }
+        .column a{
+            width: auto;
+            font-size: 18px;
+        }
+        .column strong{
+            font-size: 30px;
+        }
+
+        .second-column{
+            font-size: 18px;
         }
     }
 
@@ -554,6 +571,9 @@
         color: black;
         text-decoration: none;
         cursor: pointer;
+    }
+    .second-column{
+        font-size: 16px;
     }
 
 
@@ -783,7 +803,7 @@
 
         <hr class="line" style="margin-top:120px">
     </div>
-    <footer>
+<footer>
         <div style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between">
             <img src="{% static 'fulllogo.svg' %}" style="margin-right: 100px">
 
@@ -806,7 +826,7 @@
                 </div>
 
                 <!-- Колонка Контакты -->
-                <div class="column" style="margin-left: 100px; width: 186px; height: 118px; color: #000; text-align: right; font-family: Fira Sans Condensed,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; line-height: 108%;">
+                <div class="column second-column" style="margin-left: 100px; width: 186px; height: 118px; color: #000; text-align: right; font-family: Fira Sans Condensed,sans-serif;font-style: normal; font-weight: 400; line-height: 108%;">
                     <strong>Контакты</strong>
                     <div align="right" style="width: 186px; ">Национальная ассоциация заводчиков герефордского скота</div>
                     <div align="right" style="margin-top: 10px">ул. 9 Января, 29, Оренбург</div>
