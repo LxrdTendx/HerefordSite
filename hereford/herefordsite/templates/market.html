@@ -280,6 +280,10 @@
       content: '';
       top: 8px;
     }
+    .products{
+        max-width: 1224px;
+        width: auto;
+    }
 
     .menu__box {
       display: block;
@@ -328,6 +332,9 @@
         }
         .header{
             zoom:150%
+        }
+        .products{
+            width: 75%;
         }
     }
 
@@ -444,7 +451,7 @@
         <input type="text" name="search" placeholder="Поиск...">
         <button type="submit">Применить фильтры</button>
     </form>
-    <div class="products" style="display: flex; flex-wrap: wrap; width: 70%; margin-left: auto; margin-right: auto">
+    <div class="products" style="display: flex; flex-wrap: wrap;  margin-left: auto; margin-right: auto">
     {% for product in products %}
         <div class="flip-card">
             <div class="flip-card-inner">
