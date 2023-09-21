@@ -497,6 +497,10 @@
       top: 0;
       transform: rotate(0deg);
     }
+    .buttondiv{
+        display: flex;
+        width: 910px;
+    }
 
     #menu__toggle:checked + .menu__btn > span::after {
       top: 0;
@@ -681,7 +685,22 @@
         .modal{
             zoom:260%
         }
+        .sub-association-text{
+            font-size: 34px;
+        }
+
+        .buttondiv{
+            zoom:120%;
+            display: grid;
+            align-items: center;
+            width: 520px;
+            justify-items: center;
+        }
+        .apply-button{
+            margin-top: 20px;
+        }
     }
+
 
 
     @media (min-width: 1001px) {
@@ -984,7 +1003,7 @@
         <hr class="line" style="">
         <div class="association-text">вступить в ассоциацию</div>
         <div class="sub-association-text">Lorem ipsum dolor sit amet consectetur. Accumsan diam sed eget ac elementum mauris a ultrices. Velit faucibus mattis scelerisque felis nisl fames donec amet. Leo enim urna sed nisi lacus ac risus.</div>
-        <div style="margin-top:88px;margin-left: auto;margin-right: auto; width: 910px; justify-content: space-between; display: flex">
+        <div class="buttondiv" style="margin-top:88px;margin-left: auto;margin-right: auto; justify-content: space-between">
             <button class="custom-button details-button" onclick="window.location.href='{% url 'join' %}'">Узнать подробнее</button>
             <button class="custom-button apply-button" onclick="openModal()">Подать заявку на членство сейчас</button>
         </div>
