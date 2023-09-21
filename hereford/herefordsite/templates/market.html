@@ -134,13 +134,17 @@
         cursor: pointer;
         transition: background-color 0.3s;
     }
-
+    .filter-button:hover{
+        background-color: #007BFF;
+        color: #fff;
+    }
     .filter-button.selected {
         /* Стиль для активной кнопки */
         background-color: #007BFF;
         color: #fff;
     }
     .forma-filter{
+        margin-top: 20px;
         width: 75%;
         margin-left: auto;
         margin-right: auto;
@@ -430,6 +434,19 @@
         <input type="hidden" name="hidden_sub_product_type" value="{{ sub_product_type }}">
         <input type="hidden" name="hidden_price_order" value="{{ price_order }}">
 
+
+        <!-- Сортировка по цене -->
+        <label>Сортировка по цене:
+            <select name="price_order">
+                <option value="" {% if not price_order %}selected{% endif %}>Сортировка по цене</option>
+                <option value="asc" {% if price_order == 'asc' %}selected{% endif %}>По возрастанию</option>
+                <option value="desc" {% if price_order == 'desc' %}selected{% endif %}>По убыванию</option>
+            </select>
+        </label>
+
+        <!-- Поле для поиска -->
+        <input type="text" name="search" placeholder="Поиск...">
+
         <!-- Фильтр по регионам -->
         <div>Регион:
             <button type="button" data-toggle="region" class="filter-button" data-value="">Все регионы</button>
@@ -459,18 +476,10 @@
         </div>
 
 
-        <!-- Сортировка по цене -->
-        <label>Сортировка по цене:
-            <select name="price_order">
-                <option value="" {% if not price_order %}selected{% endif %}>Сортировка по цене</option>
-                <option value="asc" {% if price_order == 'asc' %}selected{% endif %}>По возрастанию</option>
-                <option value="desc" {% if price_order == 'desc' %}selected{% endif %}>По убыванию</option>
-            </select>
-        </label>
 
-        <!-- Поле для поиска -->
-        <input type="text" name="search" placeholder="Поиск...">
-        <button type="submit">Применить фильтры</button>
+
+
+        <button type="submit" class="filter-button">Применить фильтры</button>
     </form>
     <div class="products" style="display: flex; flex-wrap: wrap;  margin-left: auto; margin-right: auto">
     {% for product in products %}
@@ -478,14 +487,14 @@
             <div class="flip-card-inner">
                 <div class="flip-card-front">
                     <h3>{{ product.product_type.name }}</h3>
-                    {% if product.sub_product_type %}
-                        <p>{{ product.sub_product_type.name }}</p>
-                    {% endif %}
                     <p>Регион: {{ product.region }}</p>
                     {% if product.product_photo %}
                         <img src="{{ product.product_photo.url }}" style="height: 200px; width: 300px" alt="Фото продукта">
                     {% endif %}
                     <p>Цена: {{ product.price }}</p>
+                    {% if product.sub_product_type %}
+                        <p>{{ product.sub_product_type.name }}</p>
+                    {% endif %}
                 </div>
                 <div class="flip-card-back">
                     <p>Ферма: {{ product.farm }}</p>
