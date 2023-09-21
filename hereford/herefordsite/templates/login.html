@@ -678,6 +678,9 @@
         .news .about-us-block{
             margin-top: 50px;
         }
+        .modal{
+            zoom:260%
+        }
     }
 
 
@@ -739,6 +742,48 @@
     .second-column{
         font-size: 16px;
     }
+    /* Colors */
+    :root {
+      --bg: #111111;
+      --vibrant: #E8474C;
+      --text: white;
+      --label: black;
+      --border: transparent;
+      --static: #222222;
+      --focus: #4E4E4E;
+      --active: white;
+      --inactive: #4E4E4E;
+      --error: #E8474C;
+    }
+
+    .modal-content label {
+      font-weight: bold;
+      color: var(--label);
+    }
+
+    .modal-content input[type="text"],
+    .modal-content input[type="tel"],
+    .modal-content input[type="file"] {
+      width: 100%;
+      background: var(--static);
+      color: white;
+      border: none;
+      padding: 0.75em 1em;
+    }
+
+    .modal-content input[type="submit"] {
+      background: var(--vibrant);
+      color: white;
+      cursor: pointer;
+      padding: 0.75em 1.5em;
+    }
+
+    .modal-content input[type="text"]:focus,
+    .modal-content input[type="tel"]:focus,
+    .modal-content input[type="file"]:focus {
+      background: var(--focus);
+    }
+
 
 
 
