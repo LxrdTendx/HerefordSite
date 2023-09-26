@@ -135,12 +135,17 @@
         transition: background-color 0.3s;
     }
     .filter-button:hover{
-        background-color: #007BFF;
+        transition: 0.3s;
+        background-color: #8B8D68;
         color: #fff;
+    }
+    .button-red{
+        color: white;
+        background-color: #8B8D68;
     }
     .filter-button.selected {
         /* Стиль для активной кнопки */
-        background-color: #007BFF;
+        background-color: #8B8D68;
         color: #fff;
     }
     .forma-filter{
@@ -343,7 +348,8 @@
             zoom:200%
         }
         .forma-filter{
-            zoom:160%;
+            zoom: 160%;
+            width: 95%;
         }
         footer img{
             display: none;
@@ -476,11 +482,7 @@
             <input type="hidden" name="sub_product_type" value="{{ sub_product_type }}">
         </div>
 
-
-
-
-
-        <button type="submit" class="filter-button">Применить фильтры</button>
+        <button type="submit" class="filter-button button-red">Применить фильтры</button>
     </form>
     <div class="products" style="display: flex; flex-wrap: wrap;  margin-left: auto; margin-right: auto">
     {% for product in products %}

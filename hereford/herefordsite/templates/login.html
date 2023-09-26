@@ -576,6 +576,84 @@
       background-color: #CFD8DC;
     }
 
+    .modal {
+        font-family: 'Fira Sans Condensed', sans-serif;
+        font-size: 20px;
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close-button:hover, .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .second-column{
+        font-size: 16px;
+    }
+    /* Colors */
+    :root {
+      --bg: #111111;
+      --vibrant: #E8474C;
+      --text: white;
+      --label: black;
+      --border: transparent;
+      --static: #222222;
+      --focus: #4E4E4E;
+      --active: white;
+      --inactive: #4E4E4E;
+      --error: #E8474C;
+    }
+
+    .modal-content label {
+      font-weight: bold;
+      color: var(--label);
+    }
+
+    .modal-content input[type="text"],
+    .modal-content input[type="tel"],
+    .modal-content input[type="file"] {
+      width: 100%;
+      background: var(--static);
+      color: white;
+      border: none;
+      padding: 0.75em 1em;
+    }
+
+    .modal-content input[type="submit"] {
+      background: var(--vibrant);
+      color: white;
+      cursor: pointer;
+      padding: 0.75em 1.5em;
+    }
+
+    .modal-content input[type="text"]:focus,
+    .modal-content input[type="tel"]:focus,
+    .modal-content input[type="file"]:focus {
+      background: var(--focus);
+    }
 
     /* Медиа-запросы */
     @media (max-width: 1000px) {
@@ -638,7 +716,7 @@
             width: auto;
             margin-right: 0;
             height: auto;
-            font-size: 26px;
+            font-size: 38px;
         }
         .other-text2{
             margin-top: 20px;
@@ -725,82 +803,6 @@
         .trust-plus{
             justify-content: space-between;
         }
-    }
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.5);
-    }
-
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-    }
-
-    .close-button {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close-button:hover, .close-button:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    .second-column{
-        font-size: 16px;
-    }
-    /* Colors */
-    :root {
-      --bg: #111111;
-      --vibrant: #E8474C;
-      --text: white;
-      --label: black;
-      --border: transparent;
-      --static: #222222;
-      --focus: #4E4E4E;
-      --active: white;
-      --inactive: #4E4E4E;
-      --error: #E8474C;
-    }
-
-    .modal-content label {
-      font-weight: bold;
-      color: var(--label);
-    }
-
-    .modal-content input[type="text"],
-    .modal-content input[type="tel"],
-    .modal-content input[type="file"] {
-      width: 100%;
-      background: var(--static);
-      color: white;
-      border: none;
-      padding: 0.75em 1em;
-    }
-
-    .modal-content input[type="submit"] {
-      background: var(--vibrant);
-      color: white;
-      cursor: pointer;
-      padding: 0.75em 1.5em;
-    }
-
-    .modal-content input[type="text"]:focus,
-    .modal-content input[type="tel"]:focus,
-    .modal-content input[type="file"]:focus {
-      background: var(--focus);
     }
 
 
@@ -1024,7 +1026,7 @@
                     <label for="doc2">Прикрепить документ 2:</label>
                     <input type="file" id="doc2" name="doc2">
 
-                    <input type="submit" value="Отправить">
+                    <input style="margin-left: auto; margin-right: auto" type="submit" value="Отправить">
                 </form>
             </div>
         </div>
