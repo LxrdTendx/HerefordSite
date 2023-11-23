@@ -452,6 +452,9 @@
         height: 165px;
         display: flex;
     }
+    .footer_div{
+        width: 75%;
+    }
     .column {
         margin-top: 10px;
     }
@@ -595,7 +598,7 @@
         margin: 15% auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 80%;
+        width: 50%;
     }
 
     .close-button {
@@ -655,6 +658,12 @@
       background: var(--focus);
     }
 
+    @media (max-width: 1250px) {
+        .footer_div{
+            width: auto;
+        }
+
+    }
     /* Медиа-запросы */
     @media (max-width: 1000px) {
         .navbar > ul {
@@ -676,6 +685,9 @@
         footer{
             zoom:150%
         }
+        .footer_div{
+            width: 85%;
+        }
         .column a{
             width: auto;
             font-size: 18px;
@@ -686,6 +698,9 @@
 
         .second-column{
             font-size: 18px;
+        }
+        .details-button{
+            width: 520px;
         }
 
         .main-bg{
@@ -760,11 +775,20 @@
         .news .about-us-block{
             margin-top: 50px;
         }
-        .modal{
-            zoom:260%
-        }
         .sub-association-text{
             font-size: 34px;
+        }
+        .close-button{
+            font-size: 50px;
+        }
+        .modal-content{
+            font-size: 50px;
+            height: auto;
+            width: 80%;
+        }
+        .modal-content form input{
+            height: auto;
+            font-size: 46px;
         }
 
         .buttondiv{
@@ -1011,9 +1035,9 @@
         </div>
         <div class="modal" id="applicationForm">
             <div class="modal-content">
-                <span class="close-button" onclick="closeModal()">&times;</span>
+                <span class="close-button" onclick="closeModal()">&#10006;</span>
                 <h2>Подать заявку</h2>
-                <form action="#" method="post">
+                <form action="#" method="post" style="width: 80%; margin-right: auto; margin-left: auto">
                     <label for="name">ФИО:</label>
                     <input type="text" id="name" name="name" required>
 
@@ -1026,7 +1050,7 @@
                     <label for="doc2">Прикрепить документ 2:</label>
                     <input type="file" id="doc2" name="doc2">
 
-                    <input style="margin-left: auto; margin-right: auto" type="submit" value="Отправить">
+                    <input type="submit" style="margin-left: 43%; margin-top: 50px" value="Отправить">
                 </form>
             </div>
         </div>
@@ -1034,7 +1058,7 @@
         <hr class="line" style="margin-top:120px">
     </div>
 <footer>
-        <div style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between">
+        <div class="footer_div" style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; max-width: 1380px;">
             <img src="{% static 'fulllogo.svg' %}" style="margin-right: 100px">
 
             <div class="footer-info" style="width: 653px; height: 138px; display: flex; justify-content: space-between">

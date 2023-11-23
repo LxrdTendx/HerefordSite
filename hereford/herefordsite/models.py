@@ -34,3 +34,14 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.product_type.name} - {self.sub_product_type.name if self.sub_product_type else ''}"
+
+
+class Farm_point(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    contact_phone = models.CharField(max_length=20)
+    address = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    region = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name

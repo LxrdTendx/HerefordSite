@@ -83,6 +83,9 @@
         height: 165px;
         display: flex;
     }
+    .footer_div{
+        width: 75%;
+    }
     .column {
         margin-top: 10px;
     }
@@ -206,6 +209,12 @@
       background-color: #CFD8DC;
     }
 
+    @media (max-width: 1250px) {
+        .footer_div{
+            width: auto;
+        }
+
+    }
     /* Медиа-запросы */
     @media (max-width: 1000px) {
         .navbar > ul {
@@ -217,6 +226,26 @@
         }
         .header{
             zoom:150%
+        }
+        footer img{
+            display: none;
+        }
+        footer{
+            zoom:150%
+        }
+        .footer_div{
+            width: 85%;
+        }
+        .column a{
+            width: auto;
+            font-size: 18px;
+        }
+        .column strong{
+            font-size: 30px;
+        }
+
+        .second-column{
+            font-size: 18px;
         }
     }
 
@@ -283,7 +312,7 @@
     </div>
 
 <footer>
-        <div style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between">
+        <div class="footer_div" style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; max-width: 1380px;">
             <img src="{% static 'fulllogo.svg' %}" style="margin-right: 100px">
 
             <div class="footer-info" style="width: 653px; height: 138px; display: flex; justify-content: space-between">

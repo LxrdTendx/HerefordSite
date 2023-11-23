@@ -12,7 +12,6 @@
         font-style: normal;
     }
     html {
-	  background: linear-gradient(90deg, #b9deed, #efefef);
     }
     body{
         margin: 0;
@@ -37,7 +36,7 @@
 
         position: sticky;
         top: 0;
-        z-index: 10;
+        z-index: 15;
     }
     .navbar{
         display: flex;
@@ -81,6 +80,9 @@
         width: 100%;
         height: 165px;
         display: flex;
+    }
+    .footer_div{
+        width: 75%;
     }
     .column {
         margin-top: 10px;
@@ -204,7 +206,12 @@
     .second-column{
         font-size: 16px;
     }
+    @media (max-width: 1250px) {
+        .footer_div{
+            width: auto;
+        }
 
+    }
     /* Медиа-запросы */
     @media (max-width: 1000px) {
         .navbar > ul {
@@ -217,6 +224,30 @@
         .header{
             zoom:150%
         }
+        .wrapper{
+            zoom: 150%;
+        }
+
+        footer img{
+            display: none;
+        }
+        footer{
+            zoom:150%
+        }
+        .footer_div{
+            width: 85%;
+        }
+        .column a{
+            width: auto;
+            font-size: 18px;
+        }
+        .column strong{
+            font-size: 30px;
+        }
+
+        .second-column{
+            font-size: 18px;
+        }
     }
 
     @media (min-width: 1001px) {
@@ -224,6 +255,142 @@
             display: none; /* Скрываем гамбургер-меню на больших экранах */
         }
     }
+
+    /* Google fonts - Open Sans */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+/* body */
+body {
+
+}
+
+/* links */
+.nfl a, .mlb a, .nhl a, .pga a {
+  text-decoration: none;
+  transition: color 0.2s ease-out;
+}
+.nfl a {
+  color: rgba(79, 192, 210, 1);
+}
+.nfl a:hover {
+  color: #4dc0d2; /* Приблизительное значение для darken(rgba(79, 192, 210, 1), 20%) */
+}
+.mlb a {
+  color: rgba(82, 210, 154, 1);
+}
+.mlb a:hover {
+  color: #52d29a; /* Приблизительное значение для darken(rgba(82, 210, 154, 1), 20%) */
+}
+.nhl a {
+  color: rgba(231, 196, 104, 0.7);
+}
+.nhl a:hover {
+  color: #e7c468; /* Приблизительное значение для darken(rgba(231, 196, 104, 0.7), 20%) */
+}
+.pga a {
+  color: rgba(235, 118, 85, 1);
+}
+.pga a:hover {
+  color: #eb7655; /* Приблизительное значение для darken(rgba(235, 118, 85, 1), 20%) */
+}
+
+/* wrapper */
+.wrapper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 20px auto 100px auto;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  position: relative;
+}
+
+/* lists */
+.row ul {
+  margin: 0;
+  padding: 0;overflow: hidden;
+}
+.row ul li {
+  margin: 0;
+  font-size: 16px;
+  font-weight: normal;
+  list-style: none;
+  display: inline-block;
+  width: 70%;
+    height: 20%;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 767px) and (min-width: 480px) {
+  .row ul li {
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .row ul li {
+    font-size: 13px;
+  }
+}
+
+.title ul li {
+  padding: 15px 13px;
+}
+.row ul li {
+  padding: 5px 10px;
+}
+
+/* rows */
+.row {
+  padding: 20px 0;
+  height: 30px;
+  font-size: 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease-out;
+  border-top: 1px solid #000; /* Значение darken(rgba(255, 255, 255, 0.1), 100%) */
+}
+.row:hover {
+  background-color: #1a1a1a; /* Значение lighten(rgba(0, 0, 0, 0.9), 10%) */
+  height: 65px;
+}
+@media only screen and (max-width: 767px) {
+  .row:hover {
+    height: 85px;
+  }
+}
+@media only screen and (max-width: 359px) {
+  .row:hover {
+    height: 105px;
+  }
+}
+.title {
+  padding: 25px 0 5px 0;
+  height: 45px;
+  font-size: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #fff; /* Значение lighten(rgba(255, 255, 255, 0.1), 100%) */
+}
+.title:hover {
+  height: 45px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #fff; /* Значение lighten(rgba(255, 255, 255, 0.1), 100%) */
+}
+.more-content {
+  display: none; /* Блок скрыт до наведения */
+  position: absolute; /* Позиционируем абсолютно, чтобы он не занимал место в документе */
+  width: 100%; /* Ширина блока равна ширине родительского элемента */
+  bottom: 0; /* Располагаем блок внизу родительского элемента */
+  left: 0; /* Выравниваем блок по левому краю родительского элемента */
+  background-color: #8B8D68;; /* Фоновый цвет блока */
+  color: #fff; /* Цвет текста блока */
+  padding: 10px; /* Отступы внутри блока */
+  box-sizing: border-box; /* Чтобы внутренние отступы не влияли на общую ширину блока */
+  z-index: 10; /* Указываем z-index, чтобы блок оказался поверх основного содержимого */
+}
+.row:hover .more-content {
+  display: block; /* Показываем блок при наведении */
+}
+
 </style>
 
     <title>Наши хозяйства</title>
@@ -280,9 +447,36 @@
             </div>
         </div>
     </div>
+<section class="wrapper" style="color: black">
+    <!-- Row title -->
+    <main class="row title" style="font-family: MorfinSans,sans-serif;font-style: normal; font-weight: 300;">
+        <ul>
+            <li style="font-family: MorfinSans,sans-serif;font-style: normal; font-weight: 300; font-size: 24px">Название</li>
+            <li style="font-family: MorfinSans,sans-serif;font-style: normal; font-weight: 300; font-size: 24px">Телефон</li>
+            <li style="font-family: MorfinSans,sans-serif;font-style: normal; font-weight: 300; font-size: 24px">Адрес</li>
+            <li style="font-family: MorfinSans,sans-serif;font-style: normal; font-weight: 300; font-size: 24px">Регион</li>
+        </ul>
+    </main>
+    <!-- Data Rows -->
+    {% for farm in farms %}
+    <article class="row farm-entry" style="height: 40px; font-family: Fira Sans Condensed,sans-serif;font-style: normal; font-weight: 400">
+        <ul>
+            <li>{{ farm.name }}</li>
+            <li>{{ farm.contact_phone }}</li>
+            <li>{{ farm.address }}</li>
+            <li>{{ farm.region }}</li>
+        </ul>
+        <ul class="more-content">
+            <li style="width: 70%">{{ farm.description }}</li>
+        </ul>
+    </article>
+    {% endfor %}
+</section>
+
+
 
 <footer>
-        <div style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between">
+        <div class="footer_div" style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; max-width: 1380px;">
             <img src="{% static 'fulllogo.svg' %}" style="margin-right: 100px">
 
             <div class="footer-info" style="width: 653px; height: 138px; display: flex; justify-content: space-between">

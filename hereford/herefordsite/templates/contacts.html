@@ -12,7 +12,7 @@
         font-style: normal;
     }
     html {
-	  background: linear-gradient(90deg, #b9deed, #efefef);
+
     }
 
     body{
@@ -82,6 +82,9 @@
         width: 100%;
         height: 165px;
         display: flex;
+    }
+    .footer_div{
+        width: 75%;
     }
     .column {
         margin-top: 10px;
@@ -206,6 +209,12 @@
       background-color: #CFD8DC;
     }
 
+    @media (max-width: 1250px) {
+        .footer_div{
+            width: auto;
+        }
+
+    }
     /* Медиа-запросы */
     @media (max-width: 1000px) {
         .navbar > ul {
@@ -218,17 +227,75 @@
         .header{
             zoom:150%
         }
+        footer img{
+            display: none;
+        }
+        footer{
+            zoom:150%
+        }
+        .footer_div{
+            width: 85%;
+        }
+        .column a{
+            width: auto;
+            font-size: 18px;
+        }
+        .column strong{
+            font-size: 30px;
+        }
+
+        .second-column{
+            font-size: 18px;
+        }
+
     }
+
 
     @media (min-width: 1001px) {
         .hamburger-menu {
             display: none; /* Скрываем гамбургер-меню на больших экранах */
         }
+
     }
+
+    .contact-us, .contact-coordinate{
+        color: #000;
+        font-family: MorfinSans,sans-serif;
+        font-size: 64px;
+        font-style: normal;
+        line-height: 100%;
+        font-weight: 400;
+    }
+    .contact-coordinate{
+        margin-top: 100px;
+    }
+    .contact{
+        color: #000;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+    }
+
+    .position{
+        font-weight: 600;
+    }
+    .name, .tel, .email{
+        margin-top: 5px;
+    }
+    .many-contact{
+        margin-top: 50px;
+        display: flex;
+        gap: 100px;
+        flex-wrap: wrap;
+
+    }
+
+
 </style>
 
     <title>Контакты</title>
-    <div class="header" style="display: flex">
+    <div class="header" style="display: flex;">
         <div class="logo">
                 <a href="{% url 'login' %}"><img src="{% static 'Logo.svg' %}"></a>
         </div>
@@ -281,9 +348,43 @@
             </div>
         </div>
     </div>
+    <div style="margin-left: auto; margin-right: auto; width: 75%">
+        <div class="contact-us">Свяжитесь с нами!</div>
+        <div class="many-contact">
+            <div class="contact">
+                <div class="position">Президент НАЗГС</div>
+                <div class="name">Феклин Иван Евгеньевич</div>
+                <div class="tel">+7 (912) 800-010</div>
+                <div class="email"></div>
+            </div>
+            <div class="contact">
+                <div class="position">Вице-Президент НАЗГС</div>
+                <div class="name">Инзелис Юрий Эдуардович</div>
+                <div class="tel">+7 (922) 711-93-30</div>
+                <div class="email">agrotex.ooo@mail.ru</div>
+            </div>
+            <div class="contact">
+                <div class="position">Генеральный директор НАЗГС</div>
+                <div class="name">Дубовскова Марина Павловна<br><i>доктор сельскохозяйственных наук</i></div>
+                <div class="tel">+7 (922) 621-61-78</div>
+                <div class="email">nazgsr@mail.ru</div>
+            </div>
+            <div class="contact">
+                <div class="position">Ведущий специалист по науке,<br> селекции и технологической политике</div>
+                <div class="name">Колпаков Владимир Иванович<br><i>кандидат сельскохозяйственных наук</i></div>
+                <div class="tel">+7 (987) 341 77-02</div>
+                <div class="email">nazgsr@mail.ru</div>
+            </div>
+        </div>
+        <div class="contact-coordinate">Наши координаты</div>
+        <div class="position" style="font-family: Fira Sans Condensed,sans-serif; font-size: 20px">ул. 9 Января, 29, Оренбург, Оренбургская обл., 460000</div>
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa96771f8ca27b7748a54479c00930d3b5fbab91d622cf5191e3cbe1b0a4fe775&amp;&amp;height=530&amp;lang=ru_RU&amp;scroll=true"></script>
+    </div>
+
+
 
 <footer>
-        <div style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between">
+        <div class="footer_div" style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; max-width: 1380px;">
             <img src="{% static 'fulllogo.svg' %}" style="margin-right: 100px">
 
             <div class="footer-info" style="width: 653px; height: 138px; display: flex; justify-content: space-between">

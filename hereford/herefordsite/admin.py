@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ProductType, SubProductType, Product, CarouselImage
+from .models import ProductType, SubProductType, Product, CarouselImage, Farm_point
 
 
 class ProductTypeAdmin(admin.ModelAdmin):
@@ -16,8 +16,15 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('product_type__name', 'sub_product_type__name', 'region', 'farm')
     list_filter = ('product_type', 'sub_product_type')
 
+class FarmAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'contact_phone', 'address', 'region', 'description')
+    search_fields = ('name', 'region', 'address')
+    list_filter = ('region',)
+
+
 
 admin.site.register(ProductType, ProductTypeAdmin)
 admin.site.register(SubProductType, SubProductTypeAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(CarouselImage)
+admin.site.register(Farm_point, FarmAdmin)
