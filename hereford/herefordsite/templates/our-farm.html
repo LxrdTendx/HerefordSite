@@ -20,7 +20,7 @@
     }
     @media (min-width: 1920px) {
         body {
-            zoom: 140%;
+            zoom: 100%;
         }
     }
     .header{
@@ -264,35 +264,7 @@ body {
 
 }
 
-/* links */
-.nfl a, .mlb a, .nhl a, .pga a {
-  text-decoration: none;
-  transition: color 0.2s ease-out;
-}
-.nfl a {
-  color: rgba(79, 192, 210, 1);
-}
-.nfl a:hover {
-  color: #4dc0d2; /* Приблизительное значение для darken(rgba(79, 192, 210, 1), 20%) */
-}
-.mlb a {
-  color: rgba(82, 210, 154, 1);
-}
-.mlb a:hover {
-  color: #52d29a; /* Приблизительное значение для darken(rgba(82, 210, 154, 1), 20%) */
-}
-.nhl a {
-  color: rgba(231, 196, 104, 0.7);
-}
-.nhl a:hover {
-  color: #e7c468; /* Приблизительное значение для darken(rgba(231, 196, 104, 0.7), 20%) */
-}
-.pga a {
-  color: rgba(235, 118, 85, 1);
-}
-.pga a:hover {
-  color: #eb7655; /* Приблизительное значение для darken(rgba(235, 118, 85, 1), 20%) */
-}
+
 
 /* wrapper */
 .wrapper {
@@ -349,20 +321,7 @@ body {
   transition: all 0.2s ease-out;
   border-top: 1px solid #000; /* Значение darken(rgba(255, 255, 255, 0.1), 100%) */
 }
-.row:hover {
-  background-color: #1a1a1a; /* Значение lighten(rgba(0, 0, 0, 0.9), 10%) */
-  height: 65px;
-}
-@media only screen and (max-width: 767px) {
-  .row:hover {
-    height: 85px;
-  }
-}
-@media only screen and (max-width: 359px) {
-  .row:hover {
-    height: 105px;
-  }
-}
+
 .title {
   padding: 25px 0 5px 0;
   height: 45px;
@@ -386,67 +345,83 @@ body {
   padding: 10px; /* Отступы внутри блока */
   box-sizing: border-box; /* Чтобы внутренние отступы не влияли на общую ширину блока */
   z-index: 10; /* Указываем z-index, чтобы блок оказался поверх основного содержимого */
+  transition: max-height 0.5s ease-out;
+    overflow: hidden;
 }
 .row:hover .more-content {
   display: block; /* Показываем блок при наведении */
 }
+.farm-container {
+  transition: all 0.2s ease-out;
+}
+
+.more-content {
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+  overflow: hidden;
+  /* Other styling */
+}
+
+.farm-container.active .more-content {
+  max-height: 100%; /* Or set a specific pixel value */
+}
 
 </style>
 
-    <title>Наши хозяйства</title>
-    <div class="header" style="display: flex">
-        <div class="logo">
-                <a href="{% url 'login' %}"><img src="{% static 'Logo.svg' %}"></a>
-        </div>
-        <div class="navbar">
-            <ul>
-                <li>
-                    <div class="main">
-                        <a href="{% url 'login' %}" >Главная</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="about-us">
-                        <a href="{% url 'about_us' %}">О нас</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="production">
-                        <a href="{% url 'market' %}" >Продукция</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="our-farm">
-                        <a href="{% url 'farm' %}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Наши хозяйства</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="invite">
-                        <a href="{% url 'join'%}">Вступить</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="contacts">
-                        <a href="{% url 'contacts'%}">Контакты</a>
-                    </div>
-                </li>
+<title>Наши хозяйства</title>
+<div class="header" style="display: flex">
+    <div class="logo">
+            <a href="{% url 'login' %}"><img src="{% static 'Logo.svg' %}"></a>
+    </div>
+    <div class="navbar">
+        <ul>
+            <li>
+                <div class="main">
+                    <a href="{% url 'login' %}" >Главная</a>
+                </div>
+            </li>
+            <li>
+                <div class="about-us">
+                    <a href="{% url 'about_us' %}">О нас</a>
+                </div>
+            </li>
+            <li>
+                <div class="production">
+                    <a href="{% url 'market' %}" >Продукция</a>
+                </div>
+            </li>
+            <li>
+                <div class="our-farm">
+                    <a href="{% url 'farm' %}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Наши хозяйства</a>
+                </div>
+            </li>
+            <li>
+                <div class="invite">
+                    <a href="{% url 'join'%}">Вступить</a>
+                </div>
+            </li>
+            <li>
+                <div class="contacts">
+                    <a href="{% url 'contacts'%}">Контакты</a>
+                </div>
+            </li>
+        </ul>
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+              <span style="margin-top: 10px;"></span>
+            </label>
+            <ul class="menu__box">
+                <li><a class="menu__item" href="{% url 'login' %}" >Главная</a></li>
+                <li><a class="menu__item" href="{% url 'about_us' %}">О нас</a></li>
+                <li><a class="menu__item" href="{% url 'market' %}" >Продукция</a></li>
+                <li><a class="menu__item" href="{% url 'farm' %}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Наши хозяйства</a></li>
+                <li><a class="menu__item" href="{% url 'join'%}">Вступить</a></li>
+                <li><a class="menu__item" href="{% url 'contacts'%}">Контакты</a></li>
             </ul>
-            <div class="hamburger-menu">
-                <input id="menu__toggle" type="checkbox" />
-                <label class="menu__btn" for="menu__toggle">
-                  <span style="margin-top: 10px;"></span>
-                </label>
-                <ul class="menu__box">
-                    <li><a class="menu__item" href="{% url 'login' %}" >Главная</a></li>
-                    <li><a class="menu__item" href="{% url 'about_us' %}">О нас</a></li>
-                    <li><a class="menu__item" href="{% url 'market' %}" >Продукция</a></li>
-                    <li><a class="menu__item" href="{% url 'farm' %}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Наши хозяйства</a></li>
-                    <li><a class="menu__item" href="{% url 'join'%}">Вступить</a></li>
-                    <li><a class="menu__item" href="{% url 'contacts'%}">Контакты</a></li>
-                </ul>
-            </div>
         </div>
     </div>
+</div>
 <section class="wrapper" style="color: black">
     <!-- Row title -->
     <main class="row title" style="font-family: MorfinSans,sans-serif;font-style: normal; font-weight: 300;">
@@ -459,22 +434,33 @@ body {
     </main>
     <!-- Data Rows -->
     {% for farm in farms %}
-    <article class="row farm-entry" style="height: 40px; font-family: Fira Sans Condensed,sans-serif;font-style: normal; font-weight: 400">
-        <ul>
-            <li>{{ farm.name }}</li>
-            <li>{{ farm.contact_phone }}</li>
-            <li>{{ farm.address }}</li>
-            <li>{{ farm.region }}</li>
-        </ul>
+    <div class="farm-container">
+        <article class="row farm-entry" style="height: 40px; font-family: Fira Sans Condensed,sans-serif;font-style: normal; font-weight: 400">
+            <ul>
+                <li>{{ farm.name }}</li>
+                <li>{{ farm.contact_phone }}</li>
+                <li>{{ farm.address }}</li>
+                <li>{{ farm.region }}</li>
+            </ul>
+        </article>
         <ul class="more-content">
             <li style="width: 70%">{{ farm.description }}</li>
         </ul>
-    </article>
+
+    </div>
     {% endfor %}
 </section>
 
 
+<script>
+document.querySelectorAll('.row.farm-entry').forEach(item => {
+  item.addEventListener('click', () => {
+    const parent = item.parentNode;
+    parent.classList.toggle('active');
+  });
+});
 
+</script>
 <footer>
         <div class="footer_div" style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; max-width: 1380px;">
             <img src="{% static 'fulllogo.svg' %}" style="margin-right: 100px">

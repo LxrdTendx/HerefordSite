@@ -22,7 +22,7 @@
     }
     @media (min-width: 1920px) {
         body {
-            zoom: 140%;
+            zoom: 100%;
         }
     }
     .header{
@@ -254,62 +254,128 @@
             display: none; /* Скрываем гамбургер-меню на больших экранах */
         }
     }
+    .about-us-trust{
+        margin-bottom: 150px;
+        height: 1100px;
+        width: 100%;
+        background-color: #fff;
+        /*min-width: 1380px;*/
+    }
+    .line{
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        max-width: 1380px;
+        background: var(--main-grey-dark, #595959);
+    }
+    .about-us-block{
+        padding-top: 150px;
+        height: 80px;
+    }
+    .about-us-text{
+        color: #000;
+        font-family: MorfinSans,sans-serif;
+        font-size: 64px;
+        font-style: normal;
+        line-height: 100%;
+        width: auto;
+        font-weight: 400;
+    }
+    .about-us-link{
+        width: 155px;
+        height: 22px;
+        cursor: pointer;
+        color: var(--main-grey-dark, #595959);
+        text-align: right;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        text-decoration-line: underline;
+        margin-bottom: auto;
+        margin-top: auto;
+    }
+    .about-us-link:hover{
+        cursor: pointer;
+        color: var(--main-green-dark, #8B8D68);
+        text-decoration-line: underline;
+        transition: 0.5s;
+    }
 </style>
 
-    <title>Вступить</title>
-    <div class="header" style="display: flex">
-        <div class="logo">
-                <a href="{% url 'login' %}"><img src="{% static 'Logo.svg' %}"></a>
-        </div>
-        <div class="navbar">
-            <ul>
-                <li>
-                    <div class="main">
-                        <a href="{% url 'login' %}" >Главная</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="about-us">
-                        <a href="{% url 'about_us' %}">О нас</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="production">
-                        <a href="{% url 'market' %}">Продукция</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="our-farm">
-                        <a href="{% url 'farm' %}">Наши хозяйства</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="invite">
-                        <a href="{% url 'join'%}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Вступить</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="contacts">
-                        <a href="{% url 'contacts'%}">Контакты</a>
-                    </div>
-                </li>
+<title>Вступить</title>
+<div class="header" style="display: flex">
+    <div class="logo">
+            <a href="{% url 'login' %}"><img src="{% static 'Logo.svg' %}"></a>
+    </div>
+    <div class="navbar">
+        <ul>
+            <li>
+                <div class="main">
+                    <a href="{% url 'login' %}" >Главная</a>
+                </div>
+            </li>
+            <li>
+                <div class="about-us">
+                    <a href="{% url 'about_us' %}">О нас</a>
+                </div>
+            </li>
+            <li>
+                <div class="production">
+                    <a href="{% url 'market' %}">Продукция</a>
+                </div>
+            </li>
+            <li>
+                <div class="our-farm">
+                    <a href="{% url 'farm' %}">Наши хозяйства</a>
+                </div>
+            </li>
+            <li>
+                <div class="invite">
+                    <a href="{% url 'join'%}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Вступить</a>
+                </div>
+            </li>
+            <li>
+                <div class="contacts">
+                    <a href="{% url 'contacts'%}">Контакты</a>
+                </div>
+            </li>
+        </ul>
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+              <span style="margin-top: 10px;"></span>
+            </label>
+            <ul class="menu__box">
+                <li><a class="menu__item" href="{% url 'login' %}" >Главная</a></li>
+                <li><a class="menu__item" href="{% url 'about_us' %}">О нас</a></li>
+                <li><a class="menu__item" href="{% url 'market' %}">Продукция</a></li>
+                <li><a class="menu__item" href="{% url 'farm' %}">Наши хозяйства</a></li>
+                <li><a class="menu__item" href="{% url 'join'%}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Вступить</a></li>
+                <li><a class="menu__item" href="{% url 'contacts'%}">Контакты</a></li>
             </ul>
-            <div class="hamburger-menu">
-                <input id="menu__toggle" type="checkbox" />
-                <label class="menu__btn" for="menu__toggle">
-                  <span style="margin-top: 10px;"></span>
-                </label>
-                <ul class="menu__box">
-                    <li><a class="menu__item" href="{% url 'login' %}" >Главная</a></li>
-                    <li><a class="menu__item" href="{% url 'about_us' %}">О нас</a></li>
-                    <li><a class="menu__item" href="{% url 'market' %}">Продукция</a></li>
-                    <li><a class="menu__item" href="{% url 'farm' %}">Наши хозяйства</a></li>
-                    <li><a class="menu__item" href="{% url 'join'%}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Вступить</a></li>
-                    <li><a class="menu__item" href="{% url 'contacts'%}">Контакты</a></li>
-                </ul>
-            </div>
         </div>
     </div>
+</div>
+<div class="about-us-block">
+    <hr class="line" style="margin-bottom: 8px">
+    <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
+        <div class="about-us-text">Вступить</div>
+
+    </div>
+    <hr class="line" style="margin-top:8px">
+</div>
+
+<div class="about-us-block">
+    <hr class="line" style="margin-bottom: 8px">
+    <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
+        <div class="about-us-text">Почему мы?</div>
+
+    </div>
+    <hr class="line" style="margin-top:8px">
+</div>
+
+
 
 <footer>
         <div class="footer_div" style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; max-width: 1380px;">
