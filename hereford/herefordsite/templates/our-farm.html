@@ -335,17 +335,18 @@ body {
   border-left: 3px solid #fff; /* Значение lighten(rgba(255, 255, 255, 0.1), 100%) */
 }
 .more-content {
-  display: none; /* Блок скрыт до наведения */
-  position: absolute; /* Позиционируем абсолютно, чтобы он не занимал место в документе */
-  width: 100%; /* Ширина блока равна ширине родительского элемента */
-  bottom: 0; /* Располагаем блок внизу родительского элемента */
-  left: 0; /* Выравниваем блок по левому краю родительского элемента */
-  background-color: #8B8D68;; /* Фоновый цвет блока */
-  color: #fff; /* Цвет текста блока */
-  padding: 10px; /* Отступы внутри блока */
-  box-sizing: border-box; /* Чтобы внутренние отступы не влияли на общую ширину блока */
-  z-index: 10; /* Указываем z-index, чтобы блок оказался поверх основного содержимого */
-  transition: max-height 0.5s ease-out;
+    max-height: 0;
+    display: none; /* Блок скрыт до наведения */
+    position: absolute; /* Позиционируем абсолютно, чтобы он не занимал место в документе */
+    width: 100%; /* Ширина блока равна ширине родительского элемента */
+    bottom: 0; /* Располагаем блок внизу родительского элемента */
+    left: 0; /* Выравниваем блок по левому краю родительского элемента */
+    background-color: #8B8D68;; /* Фоновый цвет блока */
+    color: #fff; /* Цвет текста блока */
+    padding: 10px; /* Отступы внутри блока */
+    box-sizing: border-box; /* Чтобы внутренние отступы не влияли на общую ширину блока */
+    z-index: 10; /* Указываем z-index, чтобы блок оказался поверх основного содержимого */
+    transition: max-height 0.5s ease-out;
     overflow: hidden;
 }
 .row:hover .more-content {
@@ -355,16 +356,7 @@ body {
   transition: all 0.2s ease-out;
 }
 
-.more-content {
-  max-height: 0;
-  transition: max-height 0.5s ease-out;
-  overflow: hidden;
-  /* Other styling */
-}
 
-.farm-container.active .more-content {
-  max-height: 100%; /* Or set a specific pixel value */
-}
 
 </style>
 
@@ -443,24 +435,28 @@ body {
                 <li>{{ farm.region }}</li>
             </ul>
         </article>
-        <ul class="more-content">
-            <li style="width: 70%">{{ farm.description }}</li>
-        </ul>
+        <div class="more-content">
+            <!-- Скрытое содержимое, которое появится при клике -->
+            <p>{{ farm.description }}</p>
+        </div>
 
     </div>
     {% endfor %}
 </section>
 
-
 <script>
-document.querySelectorAll('.row.farm-entry').forEach(item => {
-  item.addEventListener('click', () => {
-    const parent = item.parentNode;
-    parent.classList.toggle('active');
+// При загрузке документа
+document.addEventListener('DOMContentLoaded', function() {
+  // Находим все .farm-container и вешаем на них обработчик событий
+  document.querySelectorAll('.farm-container').forEach(function(container) {
+    container.addEventListener('click', function() {
+      // При клике на контейнер, переключаем класс 'active'
+      this.classList.toggle('active');
+    });
   });
 });
-
 </script>
+
 <footer>
         <div class="footer_div" style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; max-width: 1380px;">
             <img src="{% static 'fulllogo.svg' %}" style="margin-right: 100px">
