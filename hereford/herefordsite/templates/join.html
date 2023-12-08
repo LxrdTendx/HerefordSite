@@ -394,6 +394,10 @@
     margin-top: 20px;
 
     }
+    .text-pdf {
+        font-family: Fira Sans Condensed, sans-serif;
+        font-size: 24px;
+    }
 
 
 
@@ -512,6 +516,18 @@
   <div class="address"><b>Выше перечисленные документы направить по адресу:</b><br>
   460000, Оренбургская область, г. Оренбург, ул. 9 Января, 29<br>
   Национальная Ассоциация заводчиков Герефордского скота</div>
+</div>
+<div style="margin-top:50px;text-align: center; display: flex; align-items: center;  margin-left: auto; margin-right: auto; width: 75%; max-width: 1380px;">
+    <a href="{% static 'Zayavlenie.pdf' %}" target="_blank" style="display: flex; align-items: center; color: inherit;">
+        <img src="{% static 'pdfsvg.svg' %}" alt="Document Icon" style="width: 100px; height: auto; margin-right: 10px;">
+        <div class="text-pdf">Заявление на вступление в НАЗГС (скачать)</div>
+    </a>
+</div>
+<div style="margin-top:50px;text-align: center; display: flex; align-items: center;  margin-left: auto; margin-right: auto; width: 75%; max-width: 1380px;">
+    <a href="{% static 'Info.pdf' %}" target="_blank" style="display: flex; align-items: center; color: inherit;">
+        <img src="{% static 'pdfsvg.svg' %}" alt="Document Icon" style="width: 100px; height: auto; margin-right: 10px;">
+        <div class="text-pdf">Информационное письмо НАЗГС (скачать)</div>
+    </a>
 </div>
 
 <footer>
