@@ -323,104 +323,135 @@
         margin-right: auto;
         margin-left: auto;
     }
+    .directly-persons{
+        font-family: Fira Sans Condensed,sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+    }
+    .directly-persons li{
+        margin-top: 10px;
+    }
 
 
 </style>
 
-    <title>Контакты</title>
-    <div class="header" style="display: flex;">
-        <div class="logo">
-                <a href="{% url 'login' %}"><img src="{% static 'Logo.svg' %}"></a>
-        </div>
-        <div class="navbar">
-            <ul>
-                <li>
-                    <div class="main">
-                        <a href="{% url 'login' %}" >Главная</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="about-us">
-                        <a href="{% url 'about_us' %}">О нас</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="production">
-                        <a href="{% url 'market' %}">Продукция</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="our-farm">
-                        <a href="{% url 'farm' %}">Наши хозяйства</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="invite">
-                        <a href="{% url 'join'%}">Вступить</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="contacts">
-                        <a href="{% url 'contacts'%}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Контакты</a>
-                    </div>
-                </li>
+<title>Контакты</title>
+<div class="header" style="display: flex;">
+    <div class="logo">
+        <a href="{% url 'login' %}"><img src="{% static 'Logo_original.svg' %}"></a>
+    </div>
+    <div class="navbar">
+        <ul>
+            <li>
+                <div class="main">
+                    <a href="{% url 'login' %}" >Главная</a>
+                </div>
+            </li>
+            <li>
+                <div class="about-us">
+                    <a href="{% url 'about_us' %}">О нас</a>
+                </div>
+            </li>
+            <li>
+                <div class="production">
+                    <a href="{% url 'market' %}">Продукция</a>
+                </div>
+            </li>
+            <li>
+                <div class="our-farm">
+                    <a href="{% url 'farm' %}">Наши хозяйства</a>
+                </div>
+            </li>
+            <li>
+                <div class="invite">
+                    <a href="{% url 'join'%}">Вступить</a>
+                </div>
+            </li>
+            <li>
+                <div class="contacts">
+                    <a href="{% url 'contacts'%}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Контакты</a>
+                </div>
+            </li>
+        </ul>
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+              <span style="margin-top: 10px;"></span>
+            </label>
+            <ul class="menu__box">
+                <li><a class="menu__item" href="{% url 'login' %}" >Главная</a></li>
+                <li><a class="menu__item" href="{% url 'about_us' %}">О нас</a></li>
+                <li><a class="menu__item" href="{% url 'market' %}">Продукция</a></li>
+                <li><a class="menu__item" href="{% url 'farm' %}">Наши хозяйства</a></li>
+                <li><a class="menu__item" href="{% url 'join'%}">Вступить</a></li>
+                <li><a class="menu__item" href="{% url 'contacts'%}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Контакты</a></li>
             </ul>
-            <div class="hamburger-menu">
-                <input id="menu__toggle" type="checkbox" />
-                <label class="menu__btn" for="menu__toggle">
-                  <span style="margin-top: 10px;"></span>
-                </label>
-                <ul class="menu__box">
-                    <li><a class="menu__item" href="{% url 'login' %}" >Главная</a></li>
-                    <li><a class="menu__item" href="{% url 'about_us' %}">О нас</a></li>
-                    <li><a class="menu__item" href="{% url 'market' %}">Продукция</a></li>
-                    <li><a class="menu__item" href="{% url 'farm' %}">Наши хозяйства</a></li>
-                    <li><a class="menu__item" href="{% url 'join'%}">Вступить</a></li>
-                    <li><a class="menu__item" href="{% url 'contacts'%}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Контакты</a></li>
-                </ul>
-            </div>
         </div>
     </div>
-    <div style="margin-left: auto; margin-right: auto; width: 75%">
-        <hr class="line" style="margin-bottom: 8px; margin-top: 100px">
-        <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;max-width: 1380px;">
-            <div class="about-us-text">Свяжитесь с нами!</div>
-        </div>
-        <hr class="line" style="margin-bottom: 8px">
-        <div class="many-contact">
-            <div class="contact">
-                <div class="position">Президент НАЗГС</div>
-                <div class="name">Феклин Иван Евгеньевич</div>
-                <div class="tel">+7 (912) 800-010</div>
-                <a href="mailto:" class="email"></a>
-            </div>
-            <div class="contact">
-                <div class="position">Вице-Президент НАЗГС</div>
-                <div class="name">Инзелис Юрий Эдуардович</div>
-                <div class="tel">+7 (922) 711-93-30</div>
-                <a href="mailto:agrotex.ooo@mail.ru" class="email">agrotex.ooo@mail.ru</a>
-            </div>
-            <div class="contact">
-                <div class="position">Генеральный директор НАЗГС</div>
-                <div class="name">Дубовскова Марина Павловна<br><i>доктор сельскохозяйственных наук</i></div>
-                <div href= class="tel">+7 (922) 621-61-78</div>
-                <a href="mailto:nazgsr@mail.ru" class="email">nazgsr@mail.ru</a>
-            </div>
-            <div class="contact">
-                <div class="position">Ведущий специалист по науке,<br> селекции и технологической политике</div>
-                <div class="name">Колпаков Владимир Иванович<br><i>кандидат сельскохозяйственных наук</i></div>
-                <div class="tel">+7 (987) 341 77-02</div>
-                <a href="mailto:nazgsr@mail.ru" class="email">nazgsr@mail.ru</a>
-            </div>
-        </div>
-        <hr class="line" style="margin-bottom: 8px; margin-top: 100px">
-        <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;max-width: 1380px;">
-            <div class="about-us-text">Наши координаты</div>
-        </div>
-        <hr class="line" style="margin-bottom: 8px">
-        <div class="position" style="font-family: Fira Sans Condensed,sans-serif; font-size: 20px; margin-top: 30px; max-width: 1380px; margin-left: auto; margin-right: auto">ул. 9 Января, 29, Оренбург, Оренбургская обл., 460000</div>
-        <script style="max-width: 1380px;margin-right: auto;margin-left: auto;" type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa96771f8ca27b7748a54479c00930d3b5fbab91d622cf5191e3cbe1b0a4fe775&amp;&amp;height=530&amp;lang=ru_RU&amp;scroll=true"></script>
+</div>
+<div style="margin-left: auto; margin-right: auto; width: 75%">
+    <hr class="line" style="margin-bottom: 8px; margin-top: 100px">
+    <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;max-width: 1380px;">
+        <div class="about-us-text">Свяжитесь с нами!</div>
     </div>
+    <hr class="line" style="margin-bottom: 8px">
+    <div class="many-contact">
+        <div class="contact">
+            <div class="position">Президент НАЗГС</div>
+            <div class="name">Феклин Иван Евгеньевич</div>
+            <div class="tel">+7 (912) 800-010</div>
+            <a href="mailto:" class="email"></a>
+        </div>
+        <div class="contact">
+            <div class="position">Вице-Президент НАЗГС</div>
+            <div class="name">Инзелис Юрий Эдуардович</div>
+            <div class="tel">+7 (922) 711-93-30</div>
+            <a href="mailto:agrotex.ooo@mail.ru" class="email">agrotex.ooo@mail.ru</a>
+        </div>
+        <div class="contact">
+            <div class="position">Генеральный директор НАЗГС</div>
+            <div class="name">Дубовскова Марина Павловна<br><i>доктор сельскохозяйственных наук</i></div>
+            <div href= class="tel">+7 (922) 621-61-78</div>
+            <a href="mailto:nazgsr@mail.ru" class="email">nazgsr@mail.ru</a>
+        </div>
+        <div class="contact">
+            <div class="position">Ведущий специалист по науке,<br> селекции и технологической политике</div>
+            <div class="name">Колпаков Владимир Иванович<br><i>кандидат сельскохозяйственных наук</i></div>
+            <div class="tel">+7 (987) 341 77-02</div>
+            <a href="mailto:nazgsr@mail.ru" class="email">nazgsr@mail.ru</a>
+        </div>
+    </div>
+    <hr class="line" style="margin-bottom: 8px; margin-top: 100px">
+    <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;max-width: 1380px;">
+        <div class="about-us-text">Наши координаты</div>
+    </div>
+    <hr class="line" style="margin-bottom: 8px">
+    <div class="position" style="font-family: Fira Sans Condensed,sans-serif; font-size: 20px; margin-top: 30px; max-width: 1380px; margin-left: auto; margin-right: auto">ул. 9 Января, 29, Оренбург, Оренбургская обл., 460000</div>
+    <script style="max-width: 1380px;margin-right: auto;margin-left: auto;" type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa96771f8ca27b7748a54479c00930d3b5fbab91d622cf5191e3cbe1b0a4fe775&amp;&amp;height=530&amp;lang=ru_RU&amp;scroll=true"></script>
+    <hr class="line" style="margin-bottom: 8px; margin-top: 100px">
+        <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;max-width: 1380px;">
+            <div class="about-us-text">Совет директоров</div>
+        </div>
+    <hr class="line" style="margin-bottom: 8px">
+    <div class="directly-persons" style="margin-left: auto; margin-right: auto; width: 75%; max-width: 1380px">
+        <ol>
+            <li>Амерханов Харон Адиевич – директор Департамента животноводства и племенного дела Министерства сельского хозяйства Российской Федерации.</li>
+            <li>Феклин Иван Евгеньевич – президент НАЗГС, председатель Совета директоров НАЗГС.</li>
+            <li>Инзелис Юрий Эдуардович – вице-президент НАЗГС, генеральный директор ООО «Энергия».</li>
+            <li>Дубовскова Марина Павловна – генеральный директор НАЗГС, доктор сельскохозяйственных наук ФГБНУ ФНЦ БСТ РАН.</li>
+            <li>Мирошников Сергей Александрович – директор ФГБНУ ФНЦ БСТ РАН, член-корреспондент РАН.</li>
+            <li>Моисеев Станислав Иванович – директор ООО «Экспериментальное», Оренбургской области.</li>
+            <li>Гребенщикова Евдокия Васильевна – директор ООО «Варшавское», Челябинской области.</li>
+            <li>Завгородний Дмитрий Федорович – заведующий опорным пунктом ВНИИМС по Челябинской области.</li>
+            <li>Плешаков Владимир Александрович – директор ООО «Ассоциация МяСПлем Алтая», Алтайского края.</li>
+            <li>Жадан Виктор Иванович – генеральный директор ОАО «Белокопанское», Ставропольского края.</li>
+            <li>Синицын Всеволод Сергеевич – глава КФХ «Синицын В.С.», Томской области.</li>
+            <li>Гаврилов Леонид Евгеньевич – учредитель КФХ «Кириллов В.В.» Астраханской области.</li>
+        </ol>
+
+    </div>
+</div>
 
 
 

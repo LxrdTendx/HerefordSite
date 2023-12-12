@@ -153,7 +153,7 @@
         margin-top: 50px;
         font-family: 'Fira Sans Condensed', sans-serif;
         max-width: 1380px;
-
+        font-size: 20px;
         width: 75%;
         margin-left: auto;
         margin-right: auto;
@@ -452,7 +452,7 @@
 <title>Продукция</title>
 <div class="header" style="display: flex">
     <div class="logo">
-            <a href="{% url 'login' %}"><img src="{% static 'Logo.svg' %}"></a>
+        <a href="{% url 'login' %}"><img src="{% static 'Logo_original.svg' %}"></a>
     </div>
     <div class="navbar">
         <ul>
@@ -531,7 +531,7 @@
     <input type="text" name="search" placeholder="Поиск продукции по категории" style="font-size:16px;padding: 10px 15px; border: 1px solid #ccc; background-color: #f5f5f5; margin: 5px; cursor: auto; transition: background-color 0.3s; width: 285px">
 
     <!-- Фильтр по регионам -->
-    <div>Регион:
+    <div style="margin-top: 10px">Регион:
         <button type="button" data-toggle="region" class="filter-button" data-value="">Все регионы</button>
         {% for r in all_regions %}
             <button type="button" data-toggle="region" class="filter-button" data-value="{{ r }}" data-selected="false">{{ r }}</button>
@@ -541,7 +541,7 @@
 
 
     <!-- Фильтр по типу продукции -->
-    <div>Тип продукции:
+    <div style="margin-top: 10px">Тип продукции:
         <button type="button" data-toggle="product_type" class="filter-button" data-value="" data-selected="false">Все</button>
         {% for type in product_types %}
             <button type="button" data-toggle="product_type" class="filter-button" data-value="{{ type.id }}" data-selected="false">{{ type.name }}</button>
@@ -550,7 +550,7 @@
     </div>
 
     <!-- Фильтр по подтипу -->
-    <div>Подтип продукции:
+    <div style="margin-top: 10px">Подтип продукции:
         <button type="button" data-toggle="sub_product_type" class="filter-button" data-value="" data-selected="false">Все подтипы</button>
         {% for subtype in subtypes %}
             <button type="button" data-toggle="sub_product_type" class="filter-button" data-value="{{ subtype.id }}" data-selected="false">{{ subtype.name }}</button>
@@ -558,7 +558,7 @@
         <input type="hidden" name="sub_product_type" value="{{ sub_product_type }}">
     </div>
 
-    <button type="submit" class="filter-button button-red">Применить фильтры</button>
+    <button type="submit" class="filter-button button-red" style="margin: 0">Применить фильтры</button>
 </form>
 
 <hr class="line" style="margin-top:50px; margin-bottom: 50px">

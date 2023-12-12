@@ -208,10 +208,20 @@
     .menu__item:hover {
       background-color: #CFD8DC;
     }
+    .file-container{
+        display:flex;
+        width: 75%;
+        max-width: 1380px;
+        margin-left: auto;
+        margin-right: auto
+    }
 
     @media (max-width: 1250px) {
         .footer_div{
             width: auto;
+        }
+        .file-container{
+            display: block;
         }
 
     }
@@ -260,6 +270,7 @@
         .hamburger-menu {
             display: none; /* Скрываем гамбургер-меню на больших экранах */
         }
+
     }
     .about-us-trust{
         margin-bottom: 150px;
@@ -407,13 +418,13 @@
 <title>Вступить</title>
 <div class="header" style="display: flex">
     <div class="logo">
-            <a href="{% url 'login' %}"><img src="{% static 'Logo3.svg' %}"></a>
+        <a href="{% url 'login' %}"><img src="{% static 'Logo_original.svg' %}"></a>
     </div>
     <div class="navbar">
         <ul>
             <li>
                 <div class="main">
-                    <a href="{% url 'login' %}" >Главная</a>
+                    <a href="{% url 'login' %}">Главная</a>
                 </div>
             </li>
             <li>
@@ -467,7 +478,7 @@
     <hr class="line" style="margin-top:8px">
 </div>
 <div class="trust">
-        Lorem ipsum dolor sit amet consectetur. Accumsan diam sed eget ac elementum mauris a ultrices. Velit faucibus mattis scelerisque felis nisl fames donec amet. Leo enim urna sed nisi lacus ac risus. Tellus enim felis ullamcorper nisi eu sit. Vitae iaculis sagittis tortor porttitor.
+    Станьте частью лидирующей ассоциации, объединяющей экспертов и практиков в области разведения герефордского скота. Вместе мы работаем над улучшением качества стад и расширением возможностей отечественного скотоводства.
 </div>
 
 <div class="about-us-block">
@@ -480,15 +491,15 @@
 <div class="number-list">
     <div class="number-block" style="display: flex; align-items: center; ">
         <div class="number">1</div>
-        <div class="short-n">Lorem ipsum dolor sit amet consectetur. Pretium ut eu adipiscing faucibus sed ullamcorper dolor.</div>
+        <div class="short-n">Мы предоставляем доступ к передовым разработкам и инновационным практикам в разведении герефордов.</div>
     </div>
     <div class="number-block" style="display: flex; align-items: center; ">
         <div class="number">2</div>
-        <div class="short-n">Lorem ipsum dolor sit amet consectetur. Pretium ut eu adipiscing faucibus sed ullamcorper dolor.</div>
+        <div class="short-n">Присоединение к НАЗГС открывает возможности для обмена знаниями и создания сетей среди ведущих заводчиков.</div>
     </div>
     <div class="number-block" style="display: flex; align-items: center; ">
         <div class="number">3</div>
-        <div class="short-n">Lorem ipsum dolor sit amet consectetur. Pretium ut eu adipiscing faucibus sed ullamcorper dolor.</div>
+        <div class="short-n">Мы обеспечиваем комплексную поддержку для роста и успеха каждого заводчика.</div>
     </div>
 </div>
 <div class="about-us-block">
@@ -514,21 +525,24 @@
     </div>
   </div>
   <div class="address"><b>Выше перечисленные документы направить по адресу:</b><br>
-  460000, Оренбургская область, г. Оренбург, ул. 9 Января, 29<br>
+  460000, Оренбургская область, г. Оренбург, ул. 9 Января, 29
   Национальная Ассоциация заводчиков Герефордского скота</div>
 </div>
-<div style="margin-top:50px;text-align: center; display: flex; align-items: center;  margin-left: auto; margin-right: auto; width: 75%; max-width: 1380px;">
-    <a href="{% static 'Zayavlenie.pdf' %}" target="_blank" style="display: flex; align-items: center; color: inherit;">
-        <img src="{% static 'pdfsvg.svg' %}" alt="Document Icon" style="width: 100px; height: auto; margin-right: 10px;">
-        <div class="text-pdf">Заявление на вступление в НАЗГС (скачать)</div>
-    </a>
+<div class="file-container">
+    <div style="margin-top:50px;text-align: center; display: flex; align-items: center;  margin-left: auto; margin-right: auto; width: 75%; max-width: 1380px;">
+        <a href="{% static 'Zayavlenie.pdf' %}" target="_blank" style="display: flex; align-items: center; color: inherit;">
+            <img src="{% static 'pdfsvg.svg' %}" alt="Document Icon" style="width: 100px; height: auto; margin-right: 10px;">
+            <div class="text-pdf">Заявление на вступление в НАЗГС (скачать)</div>
+        </a>
+    </div>
+    <div style="margin-top:50px;text-align: center; display: flex; align-items: center;  margin-left: auto; margin-right: auto; width: 75%; max-width: 1380px;">
+        <a href="{% static 'Info.pdf' %}" target="_blank" style="display: flex; align-items: center; color: inherit;">
+            <img src="{% static 'pdfsvg.svg' %}" alt="Document Icon" style="width: 100px; height: auto; margin-right: 10px;">
+            <div class="text-pdf">Информационное письмо НАЗГС (скачать)</div>
+        </a>
+    </div>
 </div>
-<div style="margin-top:50px;text-align: center; display: flex; align-items: center;  margin-left: auto; margin-right: auto; width: 75%; max-width: 1380px;">
-    <a href="{% static 'Info.pdf' %}" target="_blank" style="display: flex; align-items: center; color: inherit;">
-        <img src="{% static 'pdfsvg.svg' %}" alt="Document Icon" style="width: 100px; height: auto; margin-right: 10px;">
-        <div class="text-pdf">Информационное письмо НАЗГС (скачать)</div>
-    </a>
-</div>
+
 
 <footer>
         <div class="footer_div" style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; max-width: 1380px;">

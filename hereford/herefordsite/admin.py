@@ -1,6 +1,10 @@
 from django.contrib import admin
-from .models import ProductType, SubProductType, Product, CarouselImage, Farm_point
+from .models import ProductType, SubProductType, Product, CarouselImage, Farm_point, Region
 
+
+class RegionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')  # Поля, которые будут отображаться в админ-панели
+    search_fields = ('name',)  # Поля, по которым можно будет осуществлять поиск
 
 class ProductTypeAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
@@ -28,3 +32,4 @@ admin.site.register(SubProductType, SubProductTypeAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(CarouselImage)
 admin.site.register(Farm_point, FarmAdmin)
+admin.site.register(Region, RegionAdmin)

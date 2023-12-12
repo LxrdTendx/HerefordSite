@@ -150,7 +150,7 @@
         background: var(--main-grey-dark, #595959);
     }
     .about-us-block{
-        padding-top: 150px;
+        margin-top: 150px;
         height: 80px;
     }
     .about-us-text{
@@ -217,7 +217,7 @@
         margin-top: 100px;
         margin-right: auto;
         margin-left: auto;
-        height: 44px;
+        height: auto;
         color: #000;
         text-align: justify;
         font-family: Fira Sans Condensed, sans-serif;
@@ -843,7 +843,7 @@
     <title>Национальная ассоциация заводчиков герефордского скота</title>
     <div class="header" style="display: flex" >
         <div class="logo">
-            <a href="{% url 'login' %}"><img src="{% static 'Logo3.svg' %}"></a>
+            <a href="{% url 'login' %}"><img src="{% static 'Logo_original.svg' %}"></a>
         </div>
         <div class="navbar">
             <ul>
@@ -928,7 +928,7 @@
             <hr class="line" style="margin-top:8px">
         </div>
         <div class="trust">
-            Lorem ipsum dolor sit amet consectetur. Accumsan diam sed eget ac elementum mauris a ultrices. Velit faucibus mattis scelerisque felis nisl fames donec amet. Leo enim urna sed nisi lacus ac risus. Tellus enim felis ullamcorper nisi eu sit. Vitae iaculis sagittis tortor porttitor.
+            С момента организационной конференции в 2009 году НАЗГС возглавляет развитие герефордского скотоводства в России, улучшая племенную работу и продвигая качество говядины. Наша ассоциация первой начала объединять заводчиков по породам, активизируя рынок и распространяя лучшие практики среди членов. Непрерывное сотрудничество с научными центрами позволяет нам внедрять инновации, ведущие к улучшению качества и производительности стад.
         </div>
 
         <div class="trust-plus" style="display: flex; width: 75%; max-width: 1380px; margin-left: auto; margin-right: auto; margin-top: 37px">
@@ -936,10 +936,10 @@
                 <img src="{% static 'kolos.svg' %}">
                 <div>
                     <div class="trust-text">
-                        lorem ipsum dolor sit amet
+                        Наш опыт и профессионализм
                     </div>
                     <div class="trust-text-lower">
-                        lorem ipsum dolor sit amet consectetur orci sed varius
+                        НАЗГС обеспечивает высокие стандарты в разведении герефордов, опираясь на десятилетия практики и исследований.
                     </div>
                 </div>
             </div>
@@ -947,10 +947,10 @@
                 <img src="{% static 'kolos.svg' %}">
                 <div>
                     <div class="trust-text">
-                        lorem ipsum dolor sit amet
+                        Поддержка членов ассоциации
                     </div>
                     <div class="trust-text-lower">
-                        lorem ipsum dolor sit amet consectetur orci sed varius
+                        Мы предлагаем нашим членам обучение, ресурсы и поддержку, чтобы их хозяйства процветали.
                     </div>
                 </div>
             </div>
@@ -958,10 +958,10 @@
                 <img src="{% static 'kolos.svg' %}">
                 <div>
                     <div class="trust-text">
-                        lorem ipsum dolor sit amet
+                        Содействие в продвижении
                     </div>
                     <div class="trust-text-lower">
-                        lorem ipsum dolor sit amet consectetur orci sed varius
+                        Наша ассоциация активно рекламирует герефордовское мясо, повышая его популярность и ценность на рынке.
                     </div>
                 </div>
             </div>
@@ -969,10 +969,10 @@
                 <img src="{% static 'kolos.svg' %}">
                 <div>
                     <div class="trust-text">
-                        lorem ipsum dolor sit amet
+                        Инновационное развитие
                     </div>
                     <div class="trust-text-lower">
-                        lorem ipsum dolor sit amet consectetur orci sed varius
+                        Мы внедряем новейшие технологии в разведение, помогая членам НАЗГС вести стада к превосходному генетическому потенциалу.
                     </div>
                 </div>
             </div>
@@ -991,7 +991,7 @@
             <hr class="line" style="margin-top:8px">
         </div>
         <div class="trust">
-            Lorem ipsum dolor sit amet consectetur. Accumsan diam sed eget ac elementum mauris a ultrices. Velit faucibus mattis scelerisque felis nisl fames donec amet. Leo enim urna sed nisi lacus ac risus. Tellus enim felis ullamcorper nisi eu sit. Vitae iaculis sagittis tortor porttitor.
+            НАЗГС гордится своими бычками герефордской породы, выведенными в соответствии с мировыми стандартами качества. Каждое животное в нашем стаде — это результат тщательного отбора и стратегической селекционной работы, направленной на улучшение генетических характеристик и продуктивности. Наши бычки — символ нашего стремления к совершенству и обязательства перед заводчиками и потребителями.
         </div>
         <div class="bull-photo">
             <div class="main-photo" style="background-image: url('{{ carousel_images.0.image.url }}')">
@@ -1028,7 +1028,7 @@
     <div class="invite-to-association">
         <hr class="line" style="">
         <div class="association-text">вступить в ассоциацию</div>
-        <div class="sub-association-text">Lorem ipsum dolor sit amet consectetur. Accumsan diam sed eget ac elementum mauris a ultrices. Velit faucibus mattis scelerisque felis nisl fames donec amet. Leo enim urna sed nisi lacus ac risus.</div>
+        <div class="sub-association-text">Присоединяйтесь к Национальной Ассоциации Заводчиков Герефордского Скота и станьте частью ведущего сообщества, направленного на улучшение качества и продуктивности герефордского скота в России. Вместе мы можем достичь большего: от разработки новых стандартов до защиты интересов заводчиков на национальном уровне.</div>
         <div class="buttondiv" style="margin-top:88px;margin-left: auto;margin-right: auto; justify-content: space-between">
             <button class="custom-button details-button" onclick="window.location.href='{% url 'join' %}'">Узнать подробнее</button>
             <button style="display: none" class="custom-button apply-button" onclick="openModal()">Подать заявку на членство сейчас</button>
