@@ -439,7 +439,13 @@ body {
                 <li>{{ farm.contact_phone }}</li>
                 <li>{{ farm.address }}</li>
                 <li>{{ farm.region }}</li>
-                <li><a href="http://{{farm.website}}">{{ farm.website}}</a></li>
+                <li>
+                    {% if farm.website and farm.website != "-" %}
+                        <a href="http://{{ farm.website }}">{{ farm.website }}</a>
+                    {% else %}
+                        <a href="{% static 'Kniga_2019.pdf' %}#page={{ farm.pdf_page }}">PDF страница</a>
+                    {% endif %}
+                </li>
             </ul>
         </article>
         <div class="more-content">

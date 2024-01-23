@@ -48,7 +48,7 @@ class Farm_point(models.Model):
     description = models.TextField(blank=True, null=True)
     region = models.ForeignKey(Region, on_delete=models.SET_NULL, null=True, blank=True)
     website = models.CharField(max_length=50, null=True)
-
+    pdf_page = models.IntegerField(null=True, blank=True)  # новое поле для номера страницы PDF
 
     def __str__(self):
         return self.name
