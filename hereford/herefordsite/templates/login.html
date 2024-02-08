@@ -350,7 +350,7 @@
     }
 
     .news{
-        height: 510px;
+        height: auto;
         width: 100%;
         background-color: #fff;
         /*min-width: 1380px;*/
@@ -666,6 +666,9 @@
         }
 
     }
+
+
+
     /* Медиа-запросы */
     @media (max-width: 1000px) {
         .navbar > ul {
@@ -837,7 +840,7 @@
         margin-left: auto;
         margin-right: auto;
         width: 75%;
-        height: 330px;
+        height: auto;
         display: flex;
         max-width: 1380px;
     }
@@ -895,6 +898,31 @@
         opacity: 0; /* Изначально скрываем все изображения */
         transition: opacity 1s ease, transform 1s ease; /* Плавное изменение прозрачности и сдвиг */
         z-index: 1;
+    }
+    @media (max-width: 1500px) {
+        .pointer-about{
+            display: none;
+        }
+        .news-block-pages{
+            justify-content: space-between;
+
+        }
+    }
+    @media (max-width: 1240px) {
+        .news-block-pages {
+            display: block;
+            width: auto; /* или конкретная ширина, если вы хотите ограничить её */
+            margin-left: auto;
+            margin-right: auto;
+            justify-content: center; /* это свойство уже не будет действовать, так как display не flex */
+            align-items: center; /* это свойство уже не будет действовать, так как display не flex */
+        }
+        .news-card {
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px; /* сохраняем отступ снизу для вертикального стека */
+            box-sizing: border-box; /* убедитесь, что padding и border включены в общую ширину */
+        }
     }
 
 
