@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product, ProductType, SubProductType, CarouselImage, Farm_point, Region
+from .models import Product, ProductType, SubProductType, CarouselImage, Farm_point, Region, News_Page
 from django.db.models import Q
 from django.http import HttpResponse
 import psycopg2
@@ -7,9 +7,11 @@ import psycopg2
 
 def login_view(request):
     carousel_images = CarouselImage.objects.all()
+    news_pages = News_Page.objects.all().order_by('-date')[:2]
 
     context = {
-        'carousel_images': carousel_images
+        'carousel_images': carousel_images,
+        'news_pages': news_pages
     }
 
     return render(request, 'login.html', context)

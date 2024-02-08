@@ -1,4 +1,6 @@
 from django.db import models
+import os
+from django.utils.timezone import now
 
 class Region(models.Model):
     name = models.CharField(max_length=255, unique=True)
@@ -52,3 +54,26 @@ class Farm_point(models.Model):
 
     def __str__(self):
         return self.name
+
+
+def news_image_path(instance, filename):
+    # Форматируем дату в нужный формат, например '07-02-2024'
+    # Если у новости уже есть дата, используем ее, иначе используем текущую дату
+    date_str = instance.date.strftime('%d-%m-%Y') if instance.date else now().strftime('%d-%m-%Y')
+    # Собираем путь, используя сформированную строку даты
+    return os.path.join('news', date_str, filename)
+
+class News_Page(models.Model):
+    title = models.CharField(max_length=70, unique=True)
+    text = models.TextField(max_length=6000, blank=True, null=True)
+    date = models.DateField()
+    photo1 = models.ImageField(upload_to=news_image_path, blank=True, null=True)
+    photo2 = models.ImageField(upload_to=news_image_path, blank=True, null=True)
+    photo3 = models.ImageField(upload_to=news_image_path, blank=True, null=True)
+    photo4 = models.ImageField(upload_to=news_image_path, blank=True, null=True)
+    photo5 = models.ImageField(upload_to=news_image_path, blank=True, null=True)
+    photo6 = models.ImageField(upload_to=news_image_path, blank=True, null=True)
+
+    def get_photos(self):
+        photos = [self.photo1, self.photo2, self.photo3, self.photo4, self.photo5, self.photo6]
+        return [photo.url for photo in photos if photo]
