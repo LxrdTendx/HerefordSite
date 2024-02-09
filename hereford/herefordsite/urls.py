@@ -11,6 +11,8 @@ urlpatterns = [
     path('our-farm/', views.farm, name='farm'),
     path('join/', views.join, name='join'),
     path('contacts/', views.contacts, name='contacts'),
+    path('news/<int:pk>/', views.NewsDetailView.as_view(), name='news_detail')
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

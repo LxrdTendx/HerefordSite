@@ -1,13 +1,19 @@
 from django.shortcuts import render
 from .models import Product, ProductType, SubProductType, CarouselImage, Farm_point, Region, News_Page
+from django.views.generic.detail import DetailView
 from django.db.models import Q
 from django.http import HttpResponse
 import psycopg2
 
 
+
+class NewsDetailView(DetailView):
+    model = News_Page
+    template_name = 'news_detail.html'
+
 def login_view(request):
     carousel_images = CarouselImage.objects.all()
-    news_pages = News_Page.objects.all().order_by('-date')[:2]
+    news_pages = News_Page.objects.all().order_by('-date')  # Получаем все новости, отсортированные по дате
 
     context = {
         'carousel_images': carousel_images,

@@ -1,7 +1,7 @@
 from django.db import models
 import os
 from django.utils.timezone import now
-
+from django.urls import reverse
 class Region(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
@@ -77,3 +77,6 @@ class News_Page(models.Model):
     def get_photos(self):
         photos = [self.photo1, self.photo2, self.photo3, self.photo4, self.photo5, self.photo6]
         return [photo.url for photo in photos if photo]
+
+    def get_absolute_url(self):
+        return reverse('news_detail', args=[str(self.id)])
