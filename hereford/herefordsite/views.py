@@ -11,6 +11,14 @@ class NewsDetailView(DetailView):
     model = News_Page
     template_name = 'news_detail.html'
 
+def news_view(request):
+    news_pages = News_Page.objects.all().order_by('-date')
+    context = {
+        'news_pages': news_pages
+    }
+
+    return render(request, 'news_list.html', context)
+
 def login_view(request):
     carousel_images = CarouselImage.objects.all()
     news_pages = News_Page.objects.all().order_by('-date')  # Получаем все новости, отсортированные по дате

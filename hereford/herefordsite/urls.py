@@ -11,6 +11,7 @@ urlpatterns = [
     path('our-farm/', views.farm, name='farm'),
     path('join/', views.join, name='join'),
     path('contacts/', views.contacts, name='contacts'),
+    path('news', views.news_view, name='news_list'),
     path('news/<int:pk>/', views.NewsDetailView.as_view(), name='news_detail')
 
 

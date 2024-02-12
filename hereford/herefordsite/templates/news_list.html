@@ -672,6 +672,9 @@
         .navbar > ul {
             display: none; /* Скрываем основное меню на маленьких экранах */
         }
+        .news{
+            zoom:140%
+        }
         .trust-plus{
             justify-content: center;
             gap: 100px;
@@ -834,6 +837,9 @@
     }
 
     .news-block-pages{
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
         margin-top: 100px;
         margin-left: auto;
         margin-right: auto;
@@ -848,10 +854,9 @@
         height: 330px;
         border: 1px #000 solid;
         box-sizing: border-box;
-        margin-right: 20px;
         transition: opacity 0.5s ease-out;
-        display: none; /* Начальное состояние: не отображается */
-        opacity: 0; /* Начальное состояние: полностью прозрачный */
+         /* Начальное состояние: не отображается */
+        /*opacity: 0; !* Начальное состояние: полностью прозрачный *!*/
         /* Остальные стили */
     }
 
@@ -926,9 +931,6 @@
         }
     }
     .gallery{
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Создает две колонки равной ширины */
-        grid-gap: 20px; /* Устанавливает расстояние между элементами сетки */
         margin-top: 100px;
         margin-left: auto;
         margin-right: auto;
@@ -1008,26 +1010,39 @@
 </div>
 
 
-<article>
+<div class="news" id="news-section">
     <div class="about-us-block" style="padding-top: 0">
         <hr class="line" style="margin-bottom: 8px">
         <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
-            <div class="about-us-text">{{ object.title }}</div>
+            <div class="about-us-text" style="width: 256px">НОВОСТИ</div>
         </div>
         <hr class="line" style="margin-top:8px">
     </div>
-    <div class="trust">
-        {{ object.text|safe }}
-    </div>
-    <div class="gallery">
-        {% for photo_url in object.get_photos %}
-            <a href="{{ photo_url }}" data-lightbox="news-gallery" data-title="{{ object.title }}">
-                <img src="{{ photo_url }}" alt="News image" style="width: 100%; height: auto;">
-            </a>
+    <div class="news-block-pages">
+        {% for news in news_pages %}
+            <div class="news-card">
+                <a href="{{ news.get_absolute_url }}" style="color: black">
+                    <!-- Форматируем дату как нужно, например, DD.MM.YYYY -->
+                    <div class="news-date">{{ news.date }}</div>
+                    <div class="media-carousel">
+                        <!-- Пример добавления изображений динамически через Django шаблоны -->
+                        {% for photo_url in news.get_photos %}
+                            <img src="{{ photo_url }}" style="width:100%; ">
+                        {% empty %}
+                            <!-- Если изображений нет, показываем блок с фоном -->
+                            <div class="no-image" style="height: 100%; background-color: #9B5C5C;"></div>
+                        {% endfor %}
+                    </div>
+                    <hr style="padding: 0; margin: 0; background-color: black;
+                border: 0;
+                height: 2px;
+                display: block;">
+                    <div class="news-text">{{ news.title }}</div>
+                </a>
+            </div>
         {% endfor %}
     </div>
-
-</article>
+</div>
 
 <footer>
     <div class="footer_div" style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; max-width: 1380px;">
@@ -1061,4 +1076,72 @@
     </div>
 </footer>
 <div style="background-color: white; width: 100%; height: 150px"></div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const carousels = document.querySelectorAll('.media-carousel');
+
+    carousels.forEach(carousel => {
+        const images = carousel.querySelectorAll('img');
+        let currentImgIndex = 0;
+
+        if (images.length > 0) {
+            images[0].style.opacity = '1'; // Делаем первое изображение видимым
+
+            setInterval(() => {
+                const nextImgIndex = (currentImgIndex + 1) % images.length; // Определяем индекс следующего изображения
+                images[currentImgIndex].style.opacity = '0'; // Скрываем текущее изображение
+                images[nextImgIndex].style.transform = 'translateX(100%)'; // Подготавливаем следующее изображение к анимации
+
+                // Анимируем следующее изображение
+                requestAnimationFrame(() => {
+                    images[nextImgIndex].style.opacity = '1';
+                    images[nextImgIndex].style.transform = 'translateX(0)';
+                });
+
+                currentImgIndex = nextImgIndex; // Обновляем индекс текущего изображения
+            }, 3000); // Интервал в 3 секунды
+        }
+    });
+});
+</script>
+
+<!--<script>-->
+<!--let currentIndex = 0; // Текущий индекс первой из отображаемых новостей-->
+<!--const newsPerPage = 2; // Количество новостей, отображаемых на странице-->
+<!--const newsCards = document.querySelectorAll('.news-card'); // Получаем все карточки новостей-->
+
+<!--// Инициализация: показать первые две новости-->
+<!--function showInitialNews() {-->
+<!--    for (let i = 0; i < newsPerPage && i < newsCards.length; i++) {-->
+<!--        newsCards[i].style.display = 'block';-->
+<!--        newsCards[i].style.opacity = '1';-->
+<!--    }-->
+<!--}-->
+
+<!--// Функция для переключения новостей-->
+<!--function nextNews() {-->
+<!--    let newEndIndex = currentIndex + newsPerPage * 2; // Предполагаемый новый конечный индекс-->
+<!--    // Плавное скрытие текущих новостей-->
+<!--    for (let i = currentIndex; i < currentIndex + newsPerPage && i < newsCards.length; i++) {-->
+<!--        newsCards[i].style.opacity = '0';-->
+<!--    }-->
+<!--    // Ожидаем окончания плавного перехода-->
+<!--    setTimeout(() => {-->
+<!--        for (let i = currentIndex; i < currentIndex + newsPerPage && i < newsCards.length; i++) {-->
+<!--            newsCards[i].style.display = 'none'; // Скрываем текущие новости-->
+<!--        }-->
+<!--        currentIndex += newsPerPage; // Переходим к следующему набору новостей-->
+<!--        if (currentIndex >= newsCards.length) currentIndex = 0; // Если достигли конца, начинаем сначала-->
+<!--        // Показываем следующие новости-->
+<!--        for (let i = currentIndex; i < currentIndex + newsPerPage && i < newsCards.length; i++) {-->
+<!--            newsCards[i].style.display = 'block';-->
+<!--            newsCards[i].style.opacity = '1';-->
+<!--        }-->
+<!--    }, 500); // Задержка должна соответствовать продолжительности анимации в CSS-->
+<!--}-->
+
+<!--document.addEventListener('DOMContentLoaded', showInitialNews);-->
+<!--</script>-->
 {% endblock %}
