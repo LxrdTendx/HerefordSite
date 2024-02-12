@@ -81,12 +81,13 @@
 
     .main-bg {
         position: relative;
-        height: 600px;
+        height: 840px;
         width: 100%;
         overflow: hidden;
     }
 
     .bg-video {
+        background-color: black;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -108,7 +109,7 @@
         line-height: 91%;
         width: 790px;
         height: 161.7px;
-        margin-top: 370px;
+        margin-top: 615px;
         padding-left: 110px;
     }
     .main-bg-link{
@@ -995,10 +996,10 @@
 </div>
 <div class="main-bg">
     <video class="bg-video" autoplay muted loop>
-        <source src="{% static 'video.mp4' %}" type="video/mp4">
+        <source src="{% static 'МСХ_4k.mp4' %}" type="video/mp4">
     </video>
     <div class="main-bg-text">Национальная ассоциация заводчиков герефордовского скота</div>
-    <div class="main-bg-link">Узнать больше о нас</div>
+    <div class="main-bg-link"><a href="{% url 'about_us' %}">Узнать больше о нас</a></div>
 
 </div>
 
