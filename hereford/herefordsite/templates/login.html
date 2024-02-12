@@ -346,6 +346,7 @@
 
 
     .pointer-about {
+        animation: arrow-bounce 1s infinite;
         align-self: flex-start; /* это свойство прикрепит элемент к верху */
         margin-left: 84px;
     }
@@ -927,6 +928,14 @@
             margin-bottom: 20px; /* сохраняем отступ снизу для вертикального стека */
             box-sizing: border-box; /* убедитесь, что padding и border включены в общую ширину */
         }
+    }
+    @keyframes arrow-bounce {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(10px);
+      }
     }
 
 
