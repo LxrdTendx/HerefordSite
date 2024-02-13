@@ -846,7 +846,7 @@
         display: flex;
         max-width: 1380px;
     }
-    .news-card{
+    .news-card, .recipe-card{
         position: relative;
         width: 580px;
         height: 330px;
@@ -857,15 +857,6 @@
         display: none; /* Начальное состояние: не отображается */
         opacity: 0; /* Начальное состояние: полностью прозрачный */
         /* Остальные стили */
-    }
-    .recipe-card{
-        position: relative;
-        width: 580px;
-        height: 330px;
-        border: 1px #000 solid;
-        box-sizing: border-box;
-        margin-right: 20px;
-        transition: opacity 0.5s ease-out;
     }
 
     .media-carousel{
@@ -1185,7 +1176,7 @@
     </div>
      <div class="news-block-pages">
         {% for recipe in recipes %}
-            <div class="recipe-card" style="">
+            <div class="recipe-card" style="display: none;">
                 <a href="{{ recipe.get_absolute_url }}" style="color: black">
                     <div class="media-carousel">
                         <!-- Пример добавления изображений динамически через Django шаблоны -->
