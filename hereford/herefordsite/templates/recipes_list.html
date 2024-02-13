@@ -1,7 +1,6 @@
 {% load static %}
 {% block content %}
 
-<link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed&display=swap" rel="stylesheet">
 
 <style>
     @font-face {
@@ -81,13 +80,12 @@
 
     .main-bg {
         position: relative;
-        height: 840px;
+        height: 600px;
         width: 100%;
         overflow: hidden;
     }
 
     .bg-video {
-        background-color: black;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -109,7 +107,7 @@
         line-height: 91%;
         width: 790px;
         height: 161.7px;
-        margin-top: 615px;
+        margin-top: 370px;
         padding-left: 110px;
     }
     .main-bg-link{
@@ -150,8 +148,8 @@
         background: var(--main-grey-dark, #595959);
     }
     .about-us-block{
-        margin-top: 150px;
-        height: 80px;
+        margin-top: 100px;
+
     }
     .about-us-text{
         color: #000;
@@ -159,7 +157,7 @@
         font-size: 64px;
         font-style: normal;
         line-height: 100%;
-        width: 146px;
+        width: auto;
         font-weight: 400;
     }
     .about-us-link{
@@ -346,7 +344,6 @@
 
 
     .pointer-about {
-        animation: arrow-bounce 1s infinite;
         align-self: flex-start; /* это свойство прикрепит элемент к верху */
         margin-left: 84px;
     }
@@ -449,7 +446,6 @@
         }
     }
     footer{
-        margin-bottom: 150px;
         margin-top: 150px;
         background-color: white;
         width: 100%;
@@ -676,6 +672,9 @@
         .navbar > ul {
             display: none; /* Скрываем основное меню на маленьких экранах */
         }
+        .news{
+            zoom:140%
+        }
         .trust-plus{
             justify-content: center;
             gap: 100px;
@@ -838,6 +837,9 @@
     }
 
     .news-block-pages{
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
         margin-top: 100px;
         margin-left: auto;
         margin-right: auto;
@@ -852,20 +854,10 @@
         height: 330px;
         border: 1px #000 solid;
         box-sizing: border-box;
-        margin-right: 20px;
         transition: opacity 0.5s ease-out;
-        display: none; /* Начальное состояние: не отображается */
-        opacity: 0; /* Начальное состояние: полностью прозрачный */
+         /* Начальное состояние: не отображается */
+        /*opacity: 0; !* Начальное состояние: полностью прозрачный *!*/
         /* Остальные стили */
-    }
-    .recipe-card{
-        position: relative;
-        width: 580px;
-        height: 330px;
-        border: 1px #000 solid;
-        box-sizing: border-box;
-        margin-right: 20px;
-        transition: opacity 0.5s ease-out;
     }
 
     .media-carousel{
@@ -923,31 +915,45 @@
         }
     }
     @media (max-width: 1240px) {
-         .news-block-pages, .cook .news-block-pages {
+        .news-block-pages {
             display: block;
-            width: auto;
+            width: auto; /* или конкретная ширина, если вы хотите ограничить её */
             margin-left: auto;
             margin-right: auto;
+            justify-content: center; /* это свойство уже не будет действовать, так как display не flex */
+            align-items: center; /* это свойство уже не будет действовать, так как display не flex */
         }
-        .news-card, .recipe-card {
+        .news-card {
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 20px;
-            display: block; /* Убедитесь, что карточки отображаются как блочные элементы */
+            margin-bottom: 20px; /* сохраняем отступ снизу для вертикального стека */
+            box-sizing: border-box; /* убедитесь, что padding и border включены в общую ширину */
         }
-
     }
-    @keyframes arrow-bounce {
-      0%, 100% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(10px);
-      }
+    .gallery{
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        max-width: 1380px;
+    }
+    .reset-list-style {
+        margin: 0 auto; /* Центрируем список */
+        width: auto; /* Сбрасываем ширину до автоматической */
+        height: auto; /* Сбрасываем высоту до автоматической */
+        display: block; /* Возвращаем блочное отображение */
+        list-style-type: disc; /* Возвращаем стандартные маркеры */
     }
 
+    .reset-list-style li {
+        margin-left: 20px; /* Возвращаем отступ для элементов списка */
+    }
 
-
+    .centered-image {
+        display: block; /* Изображение становится блочным элементом */
+        margin: 0 auto; /* Автоматический отступ слева и справа центрирует блок */
+        max-width: 100%; /* Опционально, чтобы изображение не выходило за пределы своего контейнера */
+    }
 
 
 
@@ -959,7 +965,12 @@
   </style>
 
 <link rel="icon" href="{% static 'logoclear.svg'%}" sizes="32x32">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+
+
 <title>Национальная ассоциация заводчиков герефордского скота</title>
+
 <div class="header" style="display: flex" >
     <div class="logo">
         <a href="{% url 'login' %}"><img src="{% static 'Logo_original 2.svg' %}"></a>
@@ -968,7 +979,7 @@
         <ul>
             <li>
                 <div class="main">
-                    <a href="{% url 'login' %}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Главная</a>
+                    <a href="{% url 'login' %}#news-section" >Главная</a>
                 </div>
             </li>
             <li>
@@ -1013,179 +1024,58 @@
         </div>
     </div>
 </div>
-<div class="main-bg">
-    <video class="bg-video" autoplay muted loop>
-        <source src="{% static 'МСХ_4k.mp4' %}" type="video/mp4">
-    </video>
-    <div class="main-bg-text">Национальная ассоциация заводчиков герефордовского скота</div>
-    <div class="main-bg-link"><a href="{% url 'about_us' %}">Узнать больше о нас</a></div>
-
-</div>
-
-<div class="about-us-trust">
-    <div class="about-us-block">
-        <hr class="line" style="margin-bottom: 8px">
-        <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
-            <div class="about-us-text">О НАС</div>
-            <div class="about-us-link"><a href="{% url 'about_us' %}">Читать подробнее</a></div>
-        </div>
-        <hr class="line" style="margin-top:8px">
-    </div>
-    <div class="other-text" style="justify-content: center; margin-top: 100px;">
-        <div class="other-text1">
-            3 декабря 2009 года была проведена организационная конференция по созданию Национальной Ассоциации заводчиков Герефордского скота, цели и задачи которой определены Уставом Ассоциации, ходе которой, был избран президент - Феклин Иван Евгеньевич, так же утвержден совет директоров и избран генеральный директор. Эта ассоциация является первой, объединяющей заводчиков определённой породы скота в мясном скотоводстве. Функцию таких ассоциаций раньше выполняли советы по породе, которые не работают уже около 18 лет.
-        </div>
-        <div class="other-text2">
-            Ассоциация выполняет функцию активизации рынка племенных герефордов, обеспечение постоянного обмена опытом и информацией среди заводчиков скота, а также увеличение производства высококачественной говядины в товарных хозяйствах. Тесное сотрудничество Ассоциации герефордов и Селекционного центра ФГБНУ ФНЦ БСТ РАН позволяет более эффективно внедрять богатый научный опыт по разведению, технологии содержания, селекции и генетики.
-        </div>
-    </div>
-    <div class="about-us-block">
-        <hr class="line" style="margin-bottom: 8px">
-        <div style="display: flex; justify-content: center; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
-            <div class="about-us-text" style="width: 538px;margin-left: 0;margin-right: auto;">Почему нам доверяют</div>
-        </div>
-        <hr class="line" style="margin-top:8px">
-    </div>
-    <div class="trust">
-        С момента организационной конференции в 2009 году НАЗГС возглавляет развитие герефордского скотоводства в России, улучшая племенную работу и продвигая качество говядины. Наша ассоциация первой начала объединять заводчиков по породам, активизируя рынок и распространяя лучшие практики среди членов. Непрерывное сотрудничество с научными центрами позволяет нам внедрять инновации, ведущие к улучшению качества и производительности стад.
-    </div>
-
-    <div class="trust-plus" style="display: flex; width: 75%; max-width: 1380px; margin-left: auto; margin-right: auto; margin-top: 37px">
-        <div class="trust1" style="display: flex">
-            <img src="{% static 'kolos.svg' %}">
-            <div>
-                <div class="trust-text">
-                    Наш опыт и профессионализм
-                </div>
-                <div class="trust-text-lower">
-                    НАЗГС обеспечивает высокие стандарты в разведении герефордов, опираясь на десятилетия практики и исследований.
-                </div>
-            </div>
-        </div>
-        <div class="trust1" style="display: flex">
-            <img src="{% static 'kolos.svg' %}">
-            <div>
-                <div class="trust-text">
-                    Поддержка членов ассоциации
-                </div>
-                <div class="trust-text-lower">
-                    Мы предлагаем нашим членам обучение, ресурсы и поддержку, чтобы их хозяйства процветали.
-                </div>
-            </div>
-        </div>
-        <div class="trust1" style="display: flex">
-            <img src="{% static 'kolos.svg' %}">
-            <div>
-                <div class="trust-text">
-                    Содействие в продвижении
-                </div>
-                <div class="trust-text-lower">
-                    Наша ассоциация активно рекламирует герефордовское мясо, повышая его популярность и ценность на рынке.
-                </div>
-            </div>
-        </div>
-        <div class="trust1" style="display: flex">
-            <img src="{% static 'kolos.svg' %}">
-            <div>
-                <div class="trust-text">
-                    Инновационное развитие
-                </div>
-                <div class="trust-text-lower">
-                    Мы внедряем новейшие технологии в разведение, помогая членам НАЗГС вести стада к превосходному генетическому потенциалу.
-                </div>
-            </div>
-        </div>
-    </div>
 
 
-
-</div>
-<div class="us-bull">
-    <div class="about-us-block" style="padding-top: 0">
-        <hr class="line" style="margin-bottom: 8px">
-        <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
-            <div class="about-us-text" style="width: 256px">наши бычки</div>
-            <div class="about-us-link" style="width: auto"><a href="{% url 'market' %}">Посмотреть всю продукцию</a></div>
-        </div>
-        <hr class="line" style="margin-top:8px">
-    </div>
-    <div class="trust">
-        НАЗГС гордится своими бычками герефордской породы, выведенными в соответствии с мировыми стандартами качества. Каждое животное в нашем стаде — это результат тщательного отбора и стратегической селекционной работы, направленной на улучшение генетических характеристик и продуктивности. Наши бычки — символ нашего стремления к совершенству и обязательства перед заводчиками и потребителями.
-    </div>
-    <div class="bull-photo">
-        <div class="main-photo" style="background-image: url('{{ carousel_images.0.image.url }}')">
-            <div class="photo-text">{{ carousel_images.0.caption }}</div>
-        </div>
-        <hr class="divider">
-        <div class="double-photo">
-            <div class="small-photo">
-                <img src="{{ carousel_images.1.image.url }}">
-                <div class="small-photo-text">{{ carousel_images.1.caption }}</div>
-            </div>
-            <div class="small-photo">
-                <img src="{{ carousel_images.2.image.url }}">
-                <div class="small-photo-text">{{ carousel_images.2.caption }}</div>
-            </div>
-        </div>
-        <div class="pointer-about">
-            <a href="{% url 'market' %}"><img src="{% static 'pointer.svg'%}"></a>
-        </div>
-    </div>
-
-</div>
 <div class="news" id="news-section">
     <div class="about-us-block" style="padding-top: 0">
         <hr class="line" style="margin-bottom: 8px">
         <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
-            <div class="about-us-text" style="width: 256px">НОВОСТИ</div>
-            <div class="about-us-link" style="width: auto"><a href="{% url 'news_list' %}">Узнать больше о новостях НАЗГС</a></div>
-        </div>
-        <hr class="line" style="margin-top:8px">
-    </div>
-    <div class="news-block-pages">
-        {% for news in news_pages %}
-            <div class="news-card" style="display: none;">
-                <a href="{{ news.get_absolute_url }}" style="color: black">
-                    <!-- Форматируем дату как нужно, например, DD.MM.YYYY -->
-                    <div class="news-date">{{ news.date }}</div>
-                    <div class="media-carousel">
-                        <!-- Пример добавления изображений динамически через Django шаблоны -->
-                        {% for photo_url in news.get_photos %}
-                            <img src="{{ photo_url }}" style="width:100%; ">
-                        {% empty %}
-                            <!-- Если изображений нет, показываем блок с фоном -->
-                            <div class="no-image" style="height: 100%; background-color: #9B5C5C;"></div>
-                        {% endfor %}
-                    </div>
-                    <hr style="padding: 0; margin: 0; background-color: black;
-                border: 0;
-                height: 2px;
-                display: block;">
-                    <div class="news-text">{{ news.title }}</div>
-                </a>
-            </div>
-        {% endfor %}
-        <div class="pointer-about" onclick="nextNews()"> <!-- Добавляем обработчик клика -->
-            <a href="javascript:void(0);"><img src="{% static 'pointer.svg' %}"></a>
-        </div>
-    </div>
-</div>
-
-<div class="cook">
-    <div class="about-us-block" style="padding-top: 0">
-        <hr class="line" style="margin-bottom: 8px">
-        <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
             <div class="about-us-text" style="width: auto">Это интересно</div>
-            <div class="about-us-link" style="width: auto"><a href="{% url 'recipes_list' %}">Узнать больше о рецептах</a></div>
         </div>
         <hr class="line" style="margin-top:8px">
     </div>
     <div class="trust">
-        Исследуйте искусство приготовления стейков: от классических рибай и портерхаус до альтернативных вариантов. Узнайте о важности породы скота, таких как Герефордская и Абердин-ангусская, и влиянии степени прожарки на вкус стейка. Откройте для себя секреты идеального стейка, который станет кульминацией вашего обеда.
+        <article>
+            <p>Стейк — это кусок мяса, полученный от скота только мясного направления продуктивности, который должен быть:</p>
+            <ul class="reset-list-style">
+                <li>толщиной минимум 3 см;</li>
+                <li>иметь жировую прослойку, которая сделает блюдо мягким и сочным;</li>
+                <li>обязательно быть выдержанным (мясу нужно «вызреть», чтобы мышечная ткань обрела рыхлость и податливость).</li>
+            </ul>
+
+            <p>Наиболее подходят для производства стейков такие породы как:</p>
+            <ul class="reset-list-style">
+                <li>Герефордская;</li>
+                <li>Абердин-ангусская;</li>
+                <li>Шаролезская;</li>
+                <li>Лимузинская и другие.</li>
+                <li>Последние две породы получили относительно небольшое распространение, как в мире, так и в России.</li>
+            </ul>
+
+            <p>Стейки бывают классические и альтернативные.</p>
+            <h2>Классические стейки:</h2>
+            <p>Это стейки из лучших частей туши, которые занимают в ней всего 4–6 процентов, и именно поэтому они такие дорогие — ну и конечно, потому что они считаются самыми вкусными. Рибай, ковбой-стейк (тот же рибай, только с костью), томагавк (рибай с длинной костью), стриплойн, филе миньон, шатобриан, тибон, портерхаус – такие стейки не требуют предварительного маринования, все самое интересное о себе это мясо расскажет само, без посторонней помощи. Главное — просто не испортить стейк, не пересушить.</p>
+
+            <h2>Альтернативные стейки</h2>
+            <p>Так называют стейки из тех частей туши, которые раньше большинство и за стейки не считали, и которые раньше предназначались для запекания, тушения — или для фарша. Но оказалось, что если правильно с ними обращаться, то и на сковороде или на гриле альтернативные стейки получаются превосходными. Это мясо может показаться жестковатым, но зато обладает насыщенным говяжьим вкусом и стоит ощутимо дешевле премиальных отрубов (разница в цене доходит до трех раз). Альтернативные стейки можно и замариновать, чтобы сделать мясо мягче, и дополнить его вкус новыми оттенками.</p>
+
+            <p>Не менее важным моментом является не только порода скота, но и степень прожарки стейков, которая в конечном итоги и предопределит вкус выбранного стейка.</p>
+            <p>Разница между степенями прожарки определяется температурой в самом центре стейка, она может быть следующей:</p>
+            <ul class="reset-list-style">
+                <li>Blue (очень слабая прожарка) — 46–49 градусов;</li>
+                <li>Rare (слабая прожарка) — 50–55 градусов;</li>
+                <li>Mediumrare (средне-слабая прожарка) — 55–60 градусов;</li>
+                <li>Medium (средняя прожарка) — 60–65 градусов;</li>
+                <li>Mediumwell (средне-сильная прожарка) — 65–70 градусов;</li>
+                <li>Welldone (полная прожарка) — выше 71 градусов.</li>
+            </ul>
+            <img src="{% static 'steaks.jpg' %}" class="centered-image">
+            <p>Многие не доверяют слабо прожаренному мясу и ошибочно говорят о таких стейках с кровью, что не соответствует действительности, так как кровь спускается при забое животного. Большинство стейков не рекомендуется доводить до полной прожарки (welldone), так как данная прожарка превратит их в самую настоящую подошву, которую прожевать крайне сложно.</p>
+        </article>
     </div>
-     <div class="news-block-pages">
+    <div class="news-block-pages">
         {% for recipe in recipes %}
-            <div class="recipe-card" style="">
+            <div class="news-card">
                 <a href="{{ recipe.get_absolute_url }}" style="color: black">
                     <div class="media-carousel">
                         <!-- Пример добавления изображений динамически через Django шаблоны -->
@@ -1204,148 +1094,42 @@
                 </a>
             </div>
         {% endfor %}
-        <div class="pointer-about" onclick="nextRecipe()"> <!-- Добавляем обработчик клика -->
-            <a href="javascript:void(0);"><img src="{% static 'pointer.svg' %}"></a>
-        </div>
     </div>
-
 </div>
 
-
-
-<div class="invite-to-association">
-    <hr class="line" style="">
-    <div class="association-text">вступить в ассоциацию</div>
-    <div class="sub-association-text">Присоединяйтесь к Национальной Ассоциации Заводчиков Герефордского Скота и станьте частью ведущего сообщества, направленного на улучшение качества и продуктивности герефордского скота в России. Вместе мы можем достичь большего: от разработки новых стандартов до защиты интересов заводчиков на национальном уровне.</div>
-    <div class="buttondiv" style="margin-top:88px;margin-left: auto;margin-right: auto; justify-content: space-between">
-        <button class="custom-button details-button" onclick="window.location.href='{% url 'join' %}'">Узнать подробнее</button>
-<!--            <button style="display: none" class="custom-button apply-button" onclick="openModal()">Подать заявку на членство сейчас</button>-->
-    </div>
-    <div class="modal" id="applicationForm">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal()">&#10006;</span>
-            <h2>Подать заявку</h2>
-            <form action="#" method="post" style="width: 80%; margin-right: auto; margin-left: auto">
-                <label for="name">ФИО:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="phone">Номер телефона:</label>
-                <input type="tel" id="phone" name="phone" required>
-
-                <label for="doc1">Прикрепить документ 1:</label>
-                <input type="file" id="doc1" name="doc1">
-
-                <label for="doc2">Прикрепить документ 2:</label>
-                <input type="file" id="doc2" name="doc2">
-
-                <input type="submit" style="margin-left: 43%; margin-top: 50px" value="Отправить">
-            </form>
-        </div>
-    </div>
-
-    <hr class="line" style="margin-top:120px">
-</div>
 <footer>
-        <div class="footer_div" style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; max-width: 1380px;">
-            <img src="{% static 'fulllogo.svg' %}" style="margin-right: 100px">
+    <div class="footer_div" style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; max-width: 1380px;">
+        <img src="{% static 'fulllogo.svg' %}" style="margin-right: 100px">
 
-            <div class="footer-info" style="width: 653px; height: 138px; display: flex; justify-content: space-between">
-                <!-- Колонка Продукция -->
-                <div class="column" style="width: 158px; height: 111px">
-                    <strong>Продукция</strong>
-                    <a href="{% url 'market' %}?product_type=1">Племенные животные</a>
-                    <a href="{% url 'market' %}?product_type=2">Товарное стадо</a>
-                    <a href="{% url 'market' %}?product_type=3">Продукты переработки</a>
-                </div>
+        <div class="footer-info" style="width: 653px; height: 138px; display: flex; justify-content: space-between">
+            <!-- Колонка Продукция -->
+            <div class="column" style="width: 158px; height: 111px">
+                <strong>Продукция</strong>
+                <a href="{% url 'market' %}?product_type=1">Племенные животные</a>
+                <a href="{% url 'market' %}?product_type=2">Товарное стадо</a>
+                <a href="{% url 'market' %}?product_type=3">Продукты переработки</a>
+            </div>
 
-                <!-- Колонка Компания -->
-                <div class="column" style="margin-left: 100px; width: 109px; height: 138px">
-                    <strong>Компания</strong>
-                    <a href="{% url 'about_us' %}">О нас</a>
-                    <a href="{% url 'farm' %}">Наши хозяйства</a>
-                    <a href="{% url 'join' %}">Вступить</a>
-                    <a href="{% url 'contacts' %}">Контакты</a>
-                </div>
+            <!-- Колонка Компания -->
+            <div class="column" style="margin-left: 100px; width: 109px; height: 138px">
+                <strong>Компания</strong>
+                <a href="{% url 'about_us' %}">О нас</a>
+                <a href="{% url 'farm' %}">Наши хозяйства</a>
+                <a href="{% url 'join' %}">Вступить</a>
+                <a href="{% url 'contacts' %}">Контакты</a>
+            </div>
 
-                <!-- Колонка Контакты -->
-                <div class="column second-column" style="margin-left: 100px; width: 186px; height: 118px; color: #000; text-align: right; font-family: Fira Sans Condensed,sans-serif;font-style: normal; font-weight: 400; line-height: 108%;">
-                    <strong>Контакты</strong>
-                    <div align="right" style="width: 186px; ">Национальная ассоциация заводчиков герефордского скота</div>
-                    <div align="right" style="margin-top: 10px">ул. 9 Января, 29, Оренбург</div>
-                </div>
+            <!-- Колонка Контакты -->
+            <div class="column second-column" style="margin-left: 100px; width: 186px; height: 118px; color: #000; text-align: right; font-family: Fira Sans Condensed,sans-serif;font-style: normal; font-weight: 400; line-height: 108%;">
+                <strong>Контакты</strong>
+                <div align="right" style="width: 186px; ">Национальная ассоциация заводчиков герефордского скота</div>
+                <div align="right" style="margin-top: 10px">ул. 9 Января, 29, Оренбург</div>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
+<div style="background-color: white; width: 100%; height: 150px"></div>
 
-
-<script>
-    function openModal() {
-        document.getElementById('applicationForm').style.display = 'block';
-    }
-
-    function closeModal() {
-        document.getElementById('applicationForm').style.display = 'none';
-    }
-
-
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const photos = [
-        {% for img in carousel_images %}
-        { src: '{{ img.image.url }}', text: '{{ img.caption|escapejs }}' },
-        {% endfor %}
-    ];
-
-    let currentMainIndex = 0;
-
-    function rotatePhotos() {
-        const mainPhoto = document.querySelector('.main-photo');
-        const photoText = mainPhoto.querySelector('.photo-text');
-        const smallPhotos = document.querySelectorAll('.small-photo');
-
-        // Добавляем класс "hidden" для начала плавного перехода
-        mainPhoto.classList.add('hidden');
-        photoText.classList.add('hidden');
-        smallPhotos.forEach(photo => {
-            photo.querySelector('img').classList.add('hidden');
-            photo.querySelector('.small-photo-text').classList.add('hidden');
-        });
-
-        // Используем setTimeout, чтобы дать время CSS-переходу завершиться
-        setTimeout(() => {
-            // Обновляем главное фото и текст
-            mainPhoto.style.backgroundImage = `url(${photos[currentMainIndex].src})`;
-            photoText.textContent = photos[currentMainIndex].text;
-
-            // Обновляем меньшие фото и текст
-            let smallIndex = (currentMainIndex + 1) % photos.length;
-            smallPhotos.forEach((smallPhoto) => {
-                const img = smallPhoto.querySelector('img');
-                const text = smallPhoto.querySelector('.small-photo-text');
-
-                img.src = photos[smallIndex].src;
-                text.textContent = photos[smallIndex].text;
-
-                smallIndex = (smallIndex + 1) % photos.length;
-            });
-
-            // Удаляем класс "hidden" после обновления фото и текста, чтобы сделать их видимыми
-            mainPhoto.classList.remove('hidden');
-            photoText.classList.remove('hidden');
-            smallPhotos.forEach(photo => {
-                photo.querySelector('img').classList.remove('hidden');
-                photo.querySelector('.small-photo-text').classList.remove('hidden');
-            });
-
-            // Перемещаемся к следующему фото для следующей ротации
-            currentMainIndex = (currentMainIndex + 1) % photos.length;
-        }, 1000);  // Это время должно совпадать со временем перехода в CSS
-    }
-
-    setInterval(rotatePhotos, 5000); // Rotate every 5 seconds
-});
-</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -1375,87 +1159,42 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>
-<script>
-let currentIndex = 0; // Текущий индекс первой из отображаемых новостей
-const newsPerPage = 2; // Количество новостей, отображаемых на странице
-const newsCards = document.querySelectorAll('.news-card'); // Получаем все карточки новостей
 
-// Инициализация: показать первые две новости
-function showInitialNews() {
-    for (let i = 0; i < newsPerPage && i < newsCards.length; i++) {
-        newsCards[i].style.display = 'block';
-        newsCards[i].style.opacity = '1';
-    }
-}
+<!--<script>-->
+<!--let currentIndex = 0; // Текущий индекс первой из отображаемых новостей-->
+<!--const newsPerPage = 2; // Количество новостей, отображаемых на странице-->
+<!--const newsCards = document.querySelectorAll('.news-card'); // Получаем все карточки новостей-->
 
-// Функция для переключения новостей
-function nextNews() {
-    let newEndIndex = currentIndex + newsPerPage * 2; // Предполагаемый новый конечный индекс
-    // Плавное скрытие текущих новостей
-    for (let i = currentIndex; i < currentIndex + newsPerPage && i < newsCards.length; i++) {
-        newsCards[i].style.opacity = '0';
-    }
-    // Ожидаем окончания плавного перехода
-    setTimeout(() => {
-        for (let i = currentIndex; i < currentIndex + newsPerPage && i < newsCards.length; i++) {
-            newsCards[i].style.display = 'none'; // Скрываем текущие новости
-        }
-        currentIndex += newsPerPage; // Переходим к следующему набору новостей
-        if (currentIndex >= newsCards.length) currentIndex = 0; // Если достигли конца, начинаем сначала
-        // Показываем следующие новости
-        for (let i = currentIndex; i < currentIndex + newsPerPage && i < newsCards.length; i++) {
-            newsCards[i].style.display = 'block';
-            newsCards[i].style.opacity = '1';
-        }
-    }, 500); // Задержка должна соответствовать продолжительности анимации в CSS
-}
+<!--// Инициализация: показать первые две новости-->
+<!--function showInitialNews() {-->
+<!--    for (let i = 0; i < newsPerPage && i < newsCards.length; i++) {-->
+<!--        newsCards[i].style.display = 'block';-->
+<!--        newsCards[i].style.opacity = '1';-->
+<!--    }-->
+<!--}-->
 
-document.addEventListener('DOMContentLoaded', showInitialNews);
-</script>
+<!--// Функция для переключения новостей-->
+<!--function nextNews() {-->
+<!--    let newEndIndex = currentIndex + newsPerPage * 2; // Предполагаемый новый конечный индекс-->
+<!--    // Плавное скрытие текущих новостей-->
+<!--    for (let i = currentIndex; i < currentIndex + newsPerPage && i < newsCards.length; i++) {-->
+<!--        newsCards[i].style.opacity = '0';-->
+<!--    }-->
+<!--    // Ожидаем окончания плавного перехода-->
+<!--    setTimeout(() => {-->
+<!--        for (let i = currentIndex; i < currentIndex + newsPerPage && i < newsCards.length; i++) {-->
+<!--            newsCards[i].style.display = 'none'; // Скрываем текущие новости-->
+<!--        }-->
+<!--        currentIndex += newsPerPage; // Переходим к следующему набору новостей-->
+<!--        if (currentIndex >= newsCards.length) currentIndex = 0; // Если достигли конца, начинаем сначала-->
+<!--        // Показываем следующие новости-->
+<!--        for (let i = currentIndex; i < currentIndex + newsPerPage && i < newsCards.length; i++) {-->
+<!--            newsCards[i].style.display = 'block';-->
+<!--            newsCards[i].style.opacity = '1';-->
+<!--        }-->
+<!--    }, 500); // Задержка должна соответствовать продолжительности анимации в CSS-->
+<!--}-->
 
-<script>
-let currentRecipeIndex = 0; // Текущий индекс первой из отображаемых рецептов
-const recipesPerPage = 2; // Количество рецептов, отображаемых на странице
-const recipeCards = document.querySelectorAll('.recipe-card'); // Получаем все карточки рецептов
-
-// Инициализация: показать первые два рецепта
-function showInitialRecipes() {
-    for (let i = 0; i < recipesPerPage && i < recipeCards.length; i++) {
-        recipeCards[i].style.display = 'block';
-        recipeCards[i].style.opacity = '1';
-    }
-}
-
-// Функция для переключения рецептов
-function nextRecipe() {
-    // Плавное скрытие текущих рецептов
-    for (let i = currentRecipeIndex; i < currentRecipeIndex + recipesPerPage && i < recipeCards.length; i++) {
-        recipeCards[i].style.opacity = '0';
-    }
-    // Ожидаем окончания плавного перехода
-    setTimeout(() => {
-        for (let i = currentRecipeIndex; i < currentRecipeIndex + recipesPerPage && i < recipeCards.length; i++) {
-            recipeCards[i].style.display = 'none'; // Скрываем текущие рецепты
-        }
-        currentRecipeIndex += recipesPerPage; // Переходим к следующему набору рецептов
-        if (currentRecipeIndex >= recipeCards.length) currentRecipeIndex = 0; // Если достигли конца, начинаем сначала
-        // Показываем следующие рецепты
-        for (let i = currentRecipeIndex; i < currentRecipeIndex + recipesPerPage && i < recipeCards.length; i++) {
-            recipeCards[i].style.display = 'block';
-            setTimeout(() => recipeCards[i].style.opacity = '1', 10); // Небольшая задержка для начала анимации
-        }
-    }, 500); // Задержка должна соответствовать продолжительности анимации в CSS
-}
-
-document.addEventListener('DOMContentLoaded', showInitialRecipes);
-</script>
-
-
-
-
-
-
-
-
-
+<!--document.addEventListener('DOMContentLoaded', showInitialNews);-->
+<!--</script>-->
 {% endblock %}

@@ -1,0 +1,1064 @@
+{% load static %}
+{% block content %}
+
+
+<style>
+    @font-face {
+        font-family: 'MorfinSans';
+        src: url('/static/fonts/ofont.ru_MorfinSans.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    html {
+	  /*background: linear-gradient(90deg, #b9deed, #efefef);*/
+    }
+    body{
+        margin: 0;
+        padding: 0;
+        zoom: 80%
+    }
+    @media (min-width: 1920px) {
+        body {
+            zoom: 100%;
+        }
+    }
+
+
+    .header{
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+        width: 100%;
+        height: 120px;
+        background: #FFF;
+        font-family: Fira Sans Condensed, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    .navbar{
+        display: flex;
+        margin-bottom:auto;
+        margin-top: auto;
+        margin-left: auto;
+        margin-right: 0;
+        height: 25px;
+        width: 823px;
+    }
+    ul{
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        list-style-type: none;
+    }
+    ul li{
+        margin-left: 30px;
+    }
+    .logo{
+        margin-left: 111px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    .navbar a, .about-us-link a{
+        color: black;
+        text-decoration: none;
+    }
+    .navbar a:hover, .about-us-link a:hover{
+        cursor: pointer;
+        color: var(--main-green-dark, #8B8D68);
+        text-decoration-line: underline;
+        transition: 0.5s;
+    }
+
+    .main-bg {
+        position: relative;
+        height: 600px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .bg-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+    }
+
+
+    .main-bg-text{
+        color: var(--main-white, #FFF);
+        font-family: MorfinSans,sans-serif;
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 91%;
+        width: 790px;
+        height: 161.7px;
+        margin-top: 370px;
+        padding-left: 110px;
+    }
+    .main-bg-link{
+        margin-top: auto;
+        margin-bottom: 63px;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: 63px;
+        width: 210px;
+        height: 17.85px;
+        flex-shrink: 0;
+        color: var(--main-white, #FFF);
+        text-align: center;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 100%;
+    }
+    .main-bg-link:hover{
+        color: var(--main-green-dark, #8B8D68);
+        text-decoration-line: underline;
+        transition: 0.5s;
+    }
+    .about-us-trust{
+        margin-bottom: 150px;
+        height: 1100px;
+        width: 100%;
+        background-color: #fff;
+        /*min-width: 1380px;*/
+    }
+    .line{
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        max-width: 1380px;
+        background: var(--main-grey-dark, #595959);
+    }
+    .about-us-block{
+        margin-top: 100px;
+
+    }
+    .about-us-text{
+        color: #000;
+        font-family: MorfinSans,sans-serif;
+        font-size: 64px;
+        font-style: normal;
+        line-height: 100%;
+        width: auto;
+        font-weight: 400;
+    }
+    .about-us-link{
+        width: 155px;
+        height: 22px;
+        cursor: pointer;
+        color: var(--main-grey-dark, #595959);
+        text-align: right;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        text-decoration-line: underline;
+        margin-bottom: auto;
+        margin-top: auto;
+    }
+    .about-us-link:hover{
+        cursor: pointer;
+        color: var(--main-green-dark, #8B8D68);
+        text-decoration-line: underline;
+        transition: 0.5s;
+    }
+    .other-text{
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        max-width: 1380px;
+    }
+    .other-text1{
+        margin-right: 20px;
+        width: 680px;
+        height: 176px;
+        color: #000;
+        text-align: justify;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 108%;
+    }
+    .other-text2{
+        width: 680px;
+        height: 154px;
+        color: #000;
+        text-align: justify;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 108%;
+    }
+    .trust{
+        width: 75%;
+        max-width: 1380px;
+        margin-top: 100px;
+        margin-right: auto;
+        margin-left: auto;
+        height: auto;
+        color: #000;
+        text-align: justify;
+        font-family: Fira Sans Condensed, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 108%;
+    }
+    .trust-text{
+        margin-top: 35px;
+        width: 230px;
+        height: 56px;
+        color: #000;
+        font-family: MorfinSans,sans-serif;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+    }
+    .trust-text-lower{
+        width: 230px;
+        height: 40px;
+        color: #000;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 100%;
+    }
+    .us-bull{
+        height: 1250px;
+        width: 100%;
+        background-color: #fff;
+        /*min-width: 1380px;*/
+    }
+    .bull-photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 1377px;
+        margin: 50px auto;
+        height: 810px;
+    }
+
+    .main-photo {
+        height: 800px;
+        flex: 1.5;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-end;
+        justify-content: start;
+
+    }
+    .main-photo, .small-photo img {
+        transition: opacity 1s;
+    }
+
+    .hidden {
+        opacity: 0;
+    }
+
+    .photo-text {
+        margin-bottom: 17px;
+        color: white;
+        margin-left: 22px;
+        font-family: MorfinSans,sans-serif;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 108%; /* 34.56px */
+    }
+    .photo-text, .small-photo-text {
+        transition: opacity 1s;
+    }
+
+    .divider {
+        background-color: #595959;
+        width: 0;
+        height: 800px;
+        margin: 0 40px;
+    }
+
+    .double-photo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* это свойство заставит блоки разойтись */
+        height: 100%; /* убедимся, что блок занимает всю высоту родительского элемента */
+    }
+
+    .small-photo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .small-photo img{
+        max-height: 320px;
+    }
+
+    .photo-container {
+        flex: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .small-photo img {
+        width: 100%;
+        object-fit: cover;
+        max-height: 320px;
+    }
+
+    .small-photo-text {
+        margin-top: 8px;
+        flex: 1;
+        color: #000;
+        font-family: MorfinSans, sans-serif;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 108%;
+    }
+
+
+    .pointer-about {
+        align-self: flex-start; /* это свойство прикрепит элемент к верху */
+        margin-left: 84px;
+    }
+
+    .news{
+        height: auto;
+        width: 100%;
+        background-color: #fff;
+        /*min-width: 1380px;*/
+    }
+    .invite-to-association{
+        margin-top: 150px;
+        background-color: white;
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+        height: 550px;
+    }
+    .association-text{
+        margin-top: 100px;
+        width: 580px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #000;
+        leading-trim: both;
+        text-edge: cap;
+        font-family: MorfinSans,sans-serif;
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 64px */
+    }
+    .sub-association-text{
+        margin-top: 50px;
+        margin-right: auto;
+        margin-left: auto;
+        color: #000;
+        text-align: center;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 108%; /* 21.6px */
+        max-width: 920px;
+    }
+    .custom-button {
+        display: inline-block;
+        background-color: black;
+        color: var(--main-white, #FFF);
+        text-align: center;
+        font-family: 'Fira Sans Condensed', sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 108%; /* 21.6px */
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .custom-button:hover {
+        opacity: 0.8;
+    }
+
+    .details-button {
+        margin-left: auto;
+        margin-right: auto;
+        width: 360px;
+        height: 80px;
+    }
+
+    .apply-button {
+        width: 520px;
+        height: 80px;
+    }
+    .trust-plus {
+        display: flex;
+        justify-content: space-between;
+        width: 75%;
+        max-width: 1380px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 37px;
+        flex-wrap: wrap; /* Это свойство позволяет элементам переноситься на следующую строку при необходимости */
+    }
+
+    @media (max-width: 768px) { /* Этот медиа запрос срабатывает, когда ширина экрана уменьшается до 768px или меньше */
+        .trust1 {
+            width: 100%; /* Это заставит каждый блок .trust1 занимать всю ширину родительского элемента */
+            margin-bottom: 20px; /* Добавляет немного отступа снизу для разделения блоков */
+        }
+    }
+        /* Медиа-запрос для экранов шириной меньше 1000px */
+    @media (max-width: 1000px) {
+        .pointer-about {
+            /* Настройте следующие свойства так, чтобы подогнать `pointer-about` под уменьшенный экран. Это могут быть изменения в margin, position, transform или другие свойства в зависимости от желаемого поведения. */
+            margin-left: 40px; /* Пример */
+            /* другие стили для адаптации */
+        }
+    }
+    footer{
+        margin-top: 150px;
+        background-color: white;
+        width: 100%;
+        height: 165px;
+        display: flex;
+    }
+    .footer_div{
+        width: 75%;
+    }
+    .column {
+        margin-top: 10px;
+    }
+
+    .column strong {
+        display: block;
+        margin-bottom: 14px;
+        color: #000;
+        text-align: right;
+        font-family: MorfinSans,sans-serif;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 94.5%; /* 26.46px */
+    }
+
+    .column a {
+        display: block;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #000;
+        text-align: right;
+        font-family: Fira Sans Condensed,sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 108%; /* 17.28px */
+    }
+    .column a:hover{
+        color: var(--main-green-dark, #8B8D68);
+        transition: 0.5s;
+    }
+     /* Гамбургер-меню стили */
+    #menu__toggle {
+      opacity: 0;
+    }
+
+    #menu__toggle:checked + .menu__btn > span {
+      transform: rotate(45deg);
+    }
+
+    #menu__toggle:checked + .menu__btn > span::before {
+      top: 0;
+      transform: rotate(0deg);
+    }
+    .buttondiv{
+        display: flex;
+        width: 910px;
+    }
+
+    #menu__toggle:checked + .menu__btn > span::after {
+      top: 0;
+      transform: rotate(90deg);
+    }
+
+    #menu__toggle:checked ~ .menu__box {
+      right: 0 !important; /* Изменение с 'left' на 'right' */
+    }
+
+    .menu__btn {
+      display: none; /* Сначала скрыть кнопку гамбургера */
+      position: fixed;
+      top: 60px;
+      right: 60px; /* Изменение с 'left' на 'right' */
+      width: 26px;
+      height: 26px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .menu__btn > span,
+    .menu__btn > span::before,
+    .menu__btn > span::after {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: #616161;
+      transition-duration: .25s;
+    }
+
+    .menu__btn > span::before {
+      content: '';
+      top: -8px;
+    }
+
+    .menu__btn > span::after {
+      content: '';
+      top: 8px;
+    }
+
+    .menu__box {
+      display: block;
+      position: fixed;
+      top: 0;
+      right: -100%; /* Изменение с 'left' на 'right' */
+      width: 300px;
+      height: 100%;
+      margin: 0;
+      padding: 80px 0;
+      list-style: none;
+      background-color: #fff;
+      box-shadow: -2px 2px 6px rgba(0, 0, 0, .4); /* Изменение с '2px' на '-2px' */
+      transition-duration: .25s;
+      z-index: 5; /* Чтобы гамбургер-меню был над основным контентом */
+    }
+
+    .menu__item {
+      display: block;
+      padding: 12px 24px;
+      color: #333;
+      font-family: Fira Sans Condensed, sans-serif;
+      font-size: 25px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-decoration: none;
+      transition-duration: .25s;
+    }
+
+    .menu__item:hover {
+      background-color: #CFD8DC;
+    }
+
+    .modal {
+        font-family: 'Fira Sans Condensed', sans-serif;
+        font-size: 20px;
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+    }
+
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close-button:hover, .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .second-column{
+        font-size: 16px;
+    }
+    /* Colors */
+    :root {
+      --bg: #111111;
+      --vibrant: #E8474C;
+      --text: white;
+      --label: black;
+      --border: transparent;
+      --static: #222222;
+      --focus: #4E4E4E;
+      --active: white;
+      --inactive: #4E4E4E;
+      --error: #E8474C;
+    }
+
+    .modal-content label {
+      font-weight: bold;
+      color: var(--label);
+    }
+
+    .modal-content input[type="text"],
+    .modal-content input[type="tel"],
+    .modal-content input[type="file"] {
+      width: 100%;
+      background: var(--static);
+      color: white;
+      border: none;
+      padding: 0.75em 1em;
+    }
+
+    .modal-content input[type="submit"] {
+      background: var(--vibrant);
+      color: white;
+      cursor: pointer;
+      padding: 0.75em 1.5em;
+    }
+
+    .modal-content input[type="text"]:focus,
+    .modal-content input[type="tel"]:focus,
+    .modal-content input[type="file"]:focus {
+      background: var(--focus);
+    }
+
+    @media (max-width: 1250px) {
+        .footer_div{
+            width: auto;
+        }
+
+    }
+
+
+
+    /* Медиа-запросы */
+    @media (max-width: 1000px) {
+        .navbar > ul {
+            display: none; /* Скрываем основное меню на маленьких экранах */
+        }
+        .trust-plus{
+            justify-content: center;
+            gap: 100px;
+        }
+        .header{
+            zoom:150%
+        }
+
+        .menu__btn {
+            display: block; /* Показываем кнопку гамбургера на маленьких экранах */
+        }
+        footer img{
+            display: none;
+        }
+        footer{
+            zoom:150%
+        }
+        .footer_div{
+            width: 85%;
+        }
+        .column a{
+            width: auto;
+            font-size: 18px;
+        }
+        .column strong{
+            font-size: 30px;
+        }
+
+        .second-column{
+            font-size: 18px;
+        }
+        .details-button{
+            width: 520px;
+        }
+
+        .main-bg{
+            height: 1200px;
+
+        }
+        .main-bg-link{
+            display: none;
+        }
+        .main-bg-text{
+            padding-top: 0;
+            margin-top: 80%;
+
+        }
+        .about-us-trust{
+            height: auto;
+        }
+        .about-us-link{
+            font-size: 26px;
+            width: auto;
+        }
+        .other-text{
+            display: block;
+            height: auto;
+
+        }
+        .other-text1, .other-text2 {
+            width: auto;
+            margin-right: 0;
+            height: auto;
+            font-size: 38px;
+        }
+        .other-text2{
+            margin-top: 20px;
+        }
+        .trust1{
+            height: auto;
+        }
+        .trust1 img{
+            height: 215px;
+
+        }
+        .trust{
+            font-size: 38px;
+            height: auto;
+        }
+        .trust-text{
+            width: 260px;
+            font-size: 42px;
+            height: auto;
+        }
+        .trust-text-lower{
+            width: 330px;
+            font-size: 36px;
+            height: auto;
+        }
+        .us-bull{
+
+        }
+        .us-bull .trust{
+            font-size: 38px;
+        }
+        .bull-photo{
+            width: 75%;
+        }
+        .pointer-about{
+            display: none;
+        }
+        .small-photo img{
+            min-height: 320px;
+        }
+        .news .about-us-block{
+            margin-top: 200px;
+        }
+        .sub-association-text{
+            font-size: 34px;
+        }
+        .close-button{
+            font-size: 50px;
+        }
+        .modal-content{
+            font-size: 50px;
+            height: auto;
+            width: 80%;
+        }
+        .modal-content form input{
+            height: auto;
+            font-size: 46px;
+        }
+
+        .buttondiv{
+            zoom:120%;
+            display: grid;
+            align-items: center;
+            width: 520px;
+            justify-items: center;
+        }
+        .apply-button{
+            margin-top: 20px;
+        }
+    }
+
+
+
+    @media (min-width: 1001px) {
+        .hamburger-menu {
+            display: none; /* Скрываем гамбургер-меню на больших экранах */
+        }
+        .trust-plus{
+            justify-content: space-between;
+        }
+
+
+    }
+    @media (max-width: 1200px) {
+
+        .trust-plus{
+            justify-content: center;
+        }
+
+    }
+
+    @media (min-width: 1201px) {
+        .trust-plus{
+            justify-content: space-between;
+        }
+    }
+
+    .news-block-pages{
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        height: auto;
+        display: flex;
+        max-width: 1380px;
+    }
+    .news-card{
+        position: relative;
+        width: 580px;
+        height: 330px;
+        border: 1px #000 solid;
+        box-sizing: border-box;
+        margin-right: 20px;
+        transition: opacity 0.5s ease-out;
+        display: none; /* Начальное состояние: не отображается */
+        opacity: 0; /* Начальное состояние: полностью прозрачный */
+        /* Остальные стили */
+    }
+
+    .media-carousel{
+        width: auto;
+        height: 223px;
+        background: #9B5C5C;
+        position: relative;
+        overflow: hidden;
+    }
+    .news-date{
+        position: absolute;
+        font-family: 'Fira Sans Condensed', sans-serif;
+        font-size: 20px;
+        font-style: italic;
+        color: #fff;
+        right: 28px;
+        left: auto;
+        bottom: 129px;
+        top: auto;
+        z-index: 2;
+    }
+    .news-text{
+        width: 521px;
+        height: 57px;
+        margin: 22px;
+        font-family: MorfinSans, sans-serif;
+        font-size: 32px;
+        text-align: right;
+    }
+    .media-carousel img {
+        width: 100%;
+        height: 223px;
+        object-fit: cover; /* Это поможет сохранить пропорции изображений */
+    }
+
+    .media-carousel {
+        overflow: hidden; /* Скрываем части изображений, которые выходят за границы контейнера */
+        position: relative; /* Делаем относительным, чтобы абсолютно позиционировать изображения внутри */
+    }
+
+    .media-carousel img {
+        position: absolute; /* Позиционируем абсолютно, чтобы они могли наслаиваться друг на друга */
+        width: 100%;
+        height: 223px;
+        object-fit: cover;
+        opacity: 0; /* Изначально скрываем все изображения */
+        transition: opacity 1s ease, transform 1s ease; /* Плавное изменение прозрачности и сдвиг */
+        z-index: 1;
+    }
+    @media (max-width: 1500px) {
+
+        .news-block-pages{
+            justify-content: space-between;
+
+        }
+    }
+    @media (max-width: 1240px) {
+        .news-block-pages {
+            display: block;
+            width: auto; /* или конкретная ширина, если вы хотите ограничить её */
+            margin-left: auto;
+            margin-right: auto;
+            justify-content: center; /* это свойство уже не будет действовать, так как display не flex */
+            align-items: center; /* это свойство уже не будет действовать, так как display не flex */
+        }
+        .news-card {
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px; /* сохраняем отступ снизу для вертикального стека */
+            box-sizing: border-box; /* убедитесь, что padding и border включены в общую ширину */
+        }
+    }
+    .gallery{
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Создает две колонки равной ширины */
+        grid-gap: 20px; /* Устанавливает расстояние между элементами сетки */
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        max-width: 1380px;
+    }
+
+
+
+
+
+
+
+
+
+  </style>
+
+<link rel="icon" href="{% static 'logoclear.svg'%}" sizes="32x32">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+
+
+<title>Национальная ассоциация заводчиков герефордского скота</title>
+
+<div class="header" style="display: flex" >
+    <div class="logo">
+        <a href="{% url 'login' %}"><img src="{% static 'Logo_original 2.svg' %}"></a>
+    </div>
+    <div class="navbar">
+        <ul>
+            <li>
+                <div class="main">
+                    <a href="{% url 'login' %}#news-section" >Главная</a>
+                </div>
+            </li>
+            <li>
+                <div class="about-us">
+                    <a href="{% url 'about_us' %}">О нас</a>
+                </div>
+            </li>
+            <li>
+                <div class="production">
+                    <a href="{% url 'market' %}">Продукция</a>
+                </div>
+            </li>
+            <li>
+                <div class="our-farm">
+                    <a href="{% url 'farm' %}">Наши хозяйства</a>
+                </div>
+            </li>
+            <li>
+                <div class="invite">
+                    <a href="{% url 'join'%}">Вступить</a>
+                </div>
+            </li>
+            <li>
+                <div class="contacts">
+                    <a href="{% url 'contacts'%}">Контакты</a>
+                </div>
+            </li>
+        </ul>
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+              <span style="margin-top: 10px;"></span>
+            </label>
+            <ul class="menu__box">
+                <li><a class="menu__item" href="{% url 'login' %}" style="color: var(--main-green-dark, #8B8D68); text-decoration-line: underline;">Главная</a></li>
+                <li><a class="menu__item" href="{% url 'about_us' %}">О нас</a></li>
+                <li><a class="menu__item" href="{% url 'market' %}">Продукция</a></li>
+                <li><a class="menu__item" href="{% url 'farm' %}">Наши хозяйства</a></li>
+                <li><a class="menu__item" href="{% url 'join'%}">Вступить</a></li>
+                <li><a class="menu__item" href="{% url 'contacts'%}">Контакты</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<article>
+    <div class="about-us-block" style="padding-top: 0">
+        <hr class="line" style="margin-bottom: 8px">
+        <div style="display: flex; justify-content: space-between; margin-left: auto; margin-right: auto;width: 75%;max-width: 1380px;">
+            <div class="about-us-text">{{ object.name }}</div>
+        </div>
+        <hr class="line" style="margin-top:8px">
+    </div>
+    <div class="trust">
+        {{ object.recipe|safe }}
+    </div>
+    <div class="gallery">
+        {% for photo_url in object.get_photos %}
+            <a href="{{ photo_url }}" data-lightbox="news-gallery" data-title="{{ object.title }}">
+                <img src="{{ photo_url }}" alt="News image" style="width: 100%; height: auto;">
+            </a>
+        {% endfor %}
+    </div>
+
+</article>
+
+<footer>
+    <div class="footer_div" style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; max-width: 1380px;">
+        <img src="{% static 'fulllogo.svg' %}" style="margin-right: 100px">
+
+        <div class="footer-info" style="width: 653px; height: 138px; display: flex; justify-content: space-between">
+            <!-- Колонка Продукция -->
+            <div class="column" style="width: 158px; height: 111px">
+                <strong>Продукция</strong>
+                <a href="{% url 'market' %}?product_type=1">Племенные животные</a>
+                <a href="{% url 'market' %}?product_type=2">Товарное стадо</a>
+                <a href="{% url 'market' %}?product_type=3">Продукты переработки</a>
+            </div>
+
+            <!-- Колонка Компания -->
+            <div class="column" style="margin-left: 100px; width: 109px; height: 138px">
+                <strong>Компания</strong>
+                <a href="{% url 'about_us' %}">О нас</a>
+                <a href="{% url 'farm' %}">Наши хозяйства</a>
+                <a href="{% url 'join' %}">Вступить</a>
+                <a href="{% url 'contacts' %}">Контакты</a>
+            </div>
+
+            <!-- Колонка Контакты -->
+            <div class="column second-column" style="margin-left: 100px; width: 186px; height: 118px; color: #000; text-align: right; font-family: Fira Sans Condensed,sans-serif;font-style: normal; font-weight: 400; line-height: 108%;">
+                <strong>Контакты</strong>
+                <div align="right" style="width: 186px; ">Национальная ассоциация заводчиков герефордского скота</div>
+                <div align="right" style="margin-top: 10px">ул. 9 Января, 29, Оренбург</div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div style="background-color: white; width: 100%; height: 150px"></div>
+{% endblock %}

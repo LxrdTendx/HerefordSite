@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ProductType, SubProductType, Product, CarouselImage, Farm_point, Region, News_Page
+from .models import ProductType, SubProductType, Product, CarouselImage, Farm_point, Region, News_Page, DishRecipe
 
 
 class RegionAdmin(admin.ModelAdmin):
@@ -31,8 +31,12 @@ class News_pageAdmin(admin.ModelAdmin):
     list_filter = ('date',)
 
 
+class Recipe_pageAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+    search_fields = ('name', 'recipe')
 
 
+admin.site.register(DishRecipe, Recipe_pageAdmin)
 admin.site.register(News_Page, News_pageAdmin)
 admin.site.register(ProductType, ProductTypeAdmin)
 admin.site.register(SubProductType, SubProductTypeAdmin)

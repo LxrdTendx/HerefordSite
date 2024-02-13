@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product, ProductType, SubProductType, CarouselImage, Farm_point, Region, News_Page
+from .models import Product, ProductType, SubProductType, CarouselImage, Farm_point, Region, News_Page, DishRecipe
 from django.views.generic.detail import DetailView
 from django.db.models import Q
 from django.http import HttpResponse
@@ -19,13 +19,30 @@ def news_view(request):
 
     return render(request, 'news_list.html', context)
 
+class RecipesDetailView(DetailView):
+    model = DishRecipe
+    template_name = 'recipes_detail.html'
+
+def recipe_view(request):
+    recipes = DishRecipe.objects.all()
+
+    context = {
+        'recipes': recipes
+    }
+
+    return render(request, 'recipes_list.html', context)
+
+
 def login_view(request):
     carousel_images = CarouselImage.objects.all()
     news_pages = News_Page.objects.all().order_by('-date')  # Получаем все новости, отсортированные по дате
+    recipes = DishRecipe.objects.all()
 
     context = {
         'carousel_images': carousel_images,
-        'news_pages': news_pages
+        'news_pages': news_pages,
+        'recipes': recipes
+
     }
 
     return render(request, 'login.html', context)

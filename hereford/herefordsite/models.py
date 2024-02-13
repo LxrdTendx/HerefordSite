@@ -105,4 +105,23 @@ class News_Page(models.Model):
 
     class Meta:
         verbose_name = 'Страница новостей'
-        verbose_name_plural = 'Страницы новостей'
+        verbose_name_plural = 'Новости'
+
+
+
+
+class DishRecipe(models.Model):
+    name = models.CharField(max_length=70, unique=True, verbose_name='Название стейка')
+    recipe = models.TextField(max_length=6000, blank=True, null=True, verbose_name='Рецепт')
+    photo = models.ImageField(upload_to="recipes/", blank=True, null=True, verbose_name='Фото')
+
+    def get_absolute_url(self):
+        return reverse('recipe_detail', args=[str(self.id)])
+
+    def get_photos(self):
+        photos = [self.photo]
+        return [photo.url for photo in photos if photo]
+
+    class Meta:
+        verbose_name = 'Рецепты'
+        verbose_name_plural = 'Рецепты'
