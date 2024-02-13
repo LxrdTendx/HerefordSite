@@ -12,7 +12,9 @@ urlpatterns = [
     path('join/', views.join, name='join'),
     path('contacts/', views.contacts, name='contacts'),
     path('news', views.news_view, name='news_list'),
-    path('news/<int:pk>/', views.NewsDetailView.as_view(), name='news_detail')
+    path('recipes', views.recipe_view, name='recipes_list'),
+    path('news/<int:pk>/', views.NewsDetailView.as_view(), name='news_detail'),
+    path('recipes/<int:pk>', views.RecipesDetailView.as_view(), name='recipe_detail')
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
