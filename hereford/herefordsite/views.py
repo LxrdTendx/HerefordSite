@@ -4,8 +4,41 @@ from django.views.generic.detail import DetailView
 from django.db.models import Q
 from django.http import HttpResponse
 import psycopg2
+import PyPDF2
+from PyPDF2 import PdfReader, PdfWriter
+from django.conf import settings
+import os
 
 
+def download_pdf(request, farm_id):
+    try:
+        farm = Farm_point.objects.get(id=farm_id)
+        if not farm.pdf_page or not farm.pdf_page_end:
+            return HttpResponse("PDF страницы не определены", status=404)
+
+        pdf_path = os.path.join(settings.STATIC_ROOT, 'Kniga_2019.pdf')
+        output_pdf_path = 'temp_farm_{}_pages.pdf'.format(farm_id)
+
+        with open(pdf_path, "rb") as infile:
+            reader = PdfReader(infile)
+            writer = PdfWriter()
+
+            for i in range(farm.pdf_page - 1, farm.pdf_page_end):
+                writer.add_page(reader.pages[i])
+
+            with open(output_pdf_path, "wb") as outfile:
+                writer.write(outfile)
+
+        with open(output_pdf_path, "rb") as f:
+            response = HttpResponse(f.read(), content_type='application/pdf')
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(output_pdf_path)
+            return response
+
+    except Farm_point.DoesNotExist:
+        return HttpResponse("Фермерская точка не найдена", status=404)
+    finally:
+        if os.path.exists(output_pdf_path):
+            os.remove(output_pdf_path)
 
 class NewsDetailView(DetailView):
     model = News_Page

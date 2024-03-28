@@ -443,7 +443,7 @@ body {
                     {% if farm.website and farm.website != "-" %}
                         <a href="http://{{ farm.website }}">{{ farm.website }}</a>
                     {% else %}
-                        <a href="{% static 'Kniga_2019.pdf' %}#page={{ farm.pdf_page }}">PDF страница</a>
+                        <a href="{% url 'download_pdf' farm.id %}">PDF страница</a>
                     {% endif %}
                 </li>
             </ul>

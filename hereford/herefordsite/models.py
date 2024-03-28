@@ -69,7 +69,8 @@ class Farm_point(models.Model):
     description = models.TextField(blank=True, null=True, verbose_name='Описание')
     region = models.ForeignKey(Region, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Регион')
     website = models.CharField(max_length=50, null=True, verbose_name='Веб-сайт')
-    pdf_page = models.IntegerField(null=True, blank=True, verbose_name='Страница PDF')  # обновлено
+    pdf_page = models.IntegerField(null=True, blank=True, verbose_name='Начальная страница PDF')  # обновлено
+    pdf_page_end = models.IntegerField(null=True, blank=True, verbose_name='Конечная страница PDF')
 
     def __str__(self):
         return self.name

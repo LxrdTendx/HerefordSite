@@ -1006,7 +1006,11 @@
     </div>
 </div>
 <div class="main-bg">
-    <video class="bg-video" autoplay muted loop>
+     <div class="video-loading-overlay" style="color: white; position: absolute; top:40%; left: 45%; font-family: Fira Sans Condensed,sans-serif; font-size: 24px">
+        <div class="tenor-gif-embed" data-postid="25192894" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/amalie-steiness-borregaard-loading-gif-loading-gif-25192894"></a>from <a href="https://tenor.com/search/amalie-gifs"></a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        Загрузка видео...
+    </div>
+    <video class="bg-video" autoplay muted loop oncanplay="hideLoadingOverlay()">
         <source src="{% static 'МСХ_4k.mp4' %}" type="video/mp4">
     </video>
     <div class="main-bg-text">Национальная ассоциация заводчиков герефордовского скота</div>
@@ -1269,7 +1273,12 @@
         </div>
     </footer>
 
-
+<script>
+    function hideLoadingOverlay() {
+        // Когда видео готово к воспроизведению, скрываем элемент загрузки
+        document.querySelector('.video-loading-overlay').style.display = 'none';
+    }
+</script>
 <script>
     function openModal() {
         document.getElementById('applicationForm').style.display = 'block';
