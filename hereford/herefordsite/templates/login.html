@@ -683,6 +683,9 @@
         .header{
             zoom:150%
         }
+        .fixed-button{
+            zoom:140%
+        }
 
         .menu__btn {
             display: block; /* Показываем кнопку гамбургера на маленьких экранах */
@@ -905,6 +908,33 @@
         opacity: 0; /* Изначально скрываем все изображения */
         transition: opacity 1s ease, transform 1s ease; /* Плавное изменение прозрачности и сдвиг */
         z-index: 1;
+    }
+    @keyframes pulse-animation {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    .fixed-button {
+        animation: pulse-animation 2s infinite;
+        font-family: MorfinSans,sans-serif;
+        width: auto;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000; /* Убедитесь, что z-index выше, чем у других элементов */
+        background-color: #8B8D68; /* Зеленый цвет, как в вашем основном стиле */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 38px;
+        text-decoration: none; /* Убираем подчеркивание у ссылки */
+    }
+
+    .fixed-button:hover {
+        transition: 1s ease;
+        background-color: #6A6C50; /* Темнее при наведении */
     }
     @media (max-width: 1500px) {
 
@@ -1241,9 +1271,10 @@
 
     <hr class="line" style="margin-top:120px">
 </div>
+<a href="{% url 'market' %}" class="fixed-button">Наша продукция</a>
 <footer>
         <div class="footer_div" style="margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; max-width: 1380px;">
-            <img src="{% static 'fulllogo.svg' %}" style="margin-right: 100px">
+            <img src="{% static 'nazgslogo.svg' %}" style="margin-right: 100px">
 
             <div class="footer-info" style="width: 653px; height: 138px; display: flex; justify-content: space-between">
                 <!-- Колонка Продукция -->
