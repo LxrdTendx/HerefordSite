@@ -81,7 +81,7 @@
 
     .main-bg {
         position: relative;
-        height: 840px;
+        height: 100vh;
         width: 100%;
         overflow: hidden;
     }
@@ -101,6 +101,7 @@
 
 
     .main-bg-text{
+        position: absolute;
         color: var(--main-white, #FFF);
         font-family: MorfinSans,sans-serif;
         font-size: 64px;
@@ -109,15 +110,16 @@
         line-height: 91%;
         width: 790px;
         height: 161.7px;
-        margin-top: 615px;
-        padding-left: 110px;
+        bottom: 63px;
+        left: 110px;
     }
     .main-bg-link{
+        position: absolute;
         margin-top: auto;
-        margin-bottom: 63px;
+        bottom: 63px;
         cursor: pointer;
         margin-left: auto;
-        margin-right: 63px;
+        right: 63px;
         width: 210px;
         height: 17.85px;
         flex-shrink: 0;
@@ -128,6 +130,7 @@
         font-style: normal;
         font-weight: 500;
         line-height: 100%;
+        z-index: 2;
     }
     .main-bg-link:hover{
         color: var(--main-green-dark, #8B8D68);
@@ -715,7 +718,7 @@
         }
 
         .main-bg{
-            height: 1200px;
+            height: 48vh;
 
         }
         .main-bg-link{
@@ -943,6 +946,11 @@
 
         }
     }
+    @media (min-width: 2000px) {
+        .main-bg{
+            height: 85vh;
+        }
+    }
     @media (max-width: 1240px) {
          .news-block-pages, .cook .news-block-pages {
             zoom:140%;
@@ -1036,13 +1044,13 @@
     </div>
 </div>
 <div class="main-bg">
-     <div class="video-loading-overlay" style="color: white; position: absolute; top:40%; left: 45%; font-family: Fira Sans Condensed,sans-serif; font-size: 24px">
-        <div class="tenor-gif-embed" data-postid="25192894" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/amalie-steiness-borregaard-loading-gif-loading-gif-25192894"></a>from <a href="https://tenor.com/search/amalie-gifs"></a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-        Загрузка видео...
+<!--     <div class="video-loading-overlay" style="color: white; position: absolute; top:40%; left: 45%; font-family: Fira Sans Condensed,sans-serif; font-size: 24px">-->
+<!--        <div class="tenor-gif-embed" data-postid="25192894" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/amalie-steiness-borregaard-loading-gif-loading-gif-25192894"></a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>-->
+<!--        Загрузка видео...-->
+<!--    </div>-->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;">
+        <iframe class="bg-video" src="https://www.youtube.com/embed/-L5NO93itEo?autoplay=1&controls=0&loop=1&playlist=-L5NO93itEo&mute=1&vq=hd720" style="position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; transform: translate(-50%, -50%) scale(1.5); object-fit: cover; border: none;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
-    <video class="bg-video" autoplay muted loop oncanplay="hideLoadingOverlay()">
-        <source src="{% static 'Видео.mp4' %}" type="video/mp4">
-    </video>
     <div class="main-bg-text">Национальная ассоциация заводчиков герефордовского скота</div>
     <div class="main-bg-link"><a href="{% url 'about_us' %}">Узнать больше о нас</a></div>
 
@@ -1304,6 +1312,17 @@
         </div>
     </footer>
 
+
+<script>
+$(function(){
+  $('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
+
+  // If you want to keep full screen on window resize
+  $(window).resize(function(){
+    $('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
+  });
+});
+</script>
 <script>
     function hideLoadingOverlay() {
         // Когда видео готово к воспроизведению, скрываем элемент загрузки
